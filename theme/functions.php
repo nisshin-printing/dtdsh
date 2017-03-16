@@ -52,9 +52,7 @@ if ( ! function_exists( 'theme_setup' ) ) {
 
 
 		// Let wp know we want to use post thumbnails
-		/*
 		add_theme_support( 'post-thumbnails' );
-		*/
 		
 		// Add Custom Logo Support.
 		/*
@@ -66,12 +64,10 @@ if ( ! function_exists( 'theme_setup' ) ) {
 		*/
 
 		// Register navigation menus for theme
-		/*
 		register_nav_menus( array(
 			'primary' => 'Main Menu',
 			'footer'  => 'Footer Menu'
 		) );
-		*/
 
 
 		// Let wp know we are going to handle styling galleries
@@ -110,12 +106,12 @@ if ( ! function_exists( 'theme_setup' ) ) {
 		// in wp-config.php. add the following snippet
 		// under the line:
 		// define( 'WP_DEBUG', false );
-		/*
+
 		//Contact Form 7 Plugin Configuration
 		define ( 'WPCF7_LOAD_JS',  false ); // Added to disable JS loading
 		define ( 'WPCF7_LOAD_CSS', false ); // Added to disable CSS loading
 		define ( 'WPCF7_AUTOP',    false ); // Added to disable adding <p> & <br> in form output
-		*/
+
 
 
 		// Register Autoloaders Loader

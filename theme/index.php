@@ -6,7 +6,6 @@
  */
 ?>
 <?php get_header(); ?>
-
 	<article class="hero">
 		<div class="hero__content">
 

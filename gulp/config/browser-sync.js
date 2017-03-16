@@ -4,4 +4,9 @@
  * Config
  *
  */
-module.exports = {};
+module.exports = {
+    proxy: "dtdsh.dev",
+    logSnippet: true,
+    ghostMode: true,
+    open: "local"
+};
