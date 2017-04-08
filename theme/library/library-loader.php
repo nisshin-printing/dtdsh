@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) or die();
 // Register the class autoloader for
 // the mozaik library
 spl_autoload_register( function ( $class ) {
-	$prefix = 'MOZ_';
+	$prefix = 'NID_';
 
 	if ( substr( $class, 0, strlen( $prefix ) ) == $prefix ) {
 		$class = substr( $class, strlen( $prefix ) );

@@ -1,10 +1,9 @@
 <?php
 /**
  * Walker Nav Menu extension
- * to support BEM class naming
+ * to support FLOCSS class naming
  * conventions
  *
- * @author Max G J Panas <http://maxpanas.com>
  */
 
 
@@ -14,7 +13,7 @@ defined( 'ABSPATH' ) or die();
 
 
 /**
- * Class MOZ_Walker_Nav_Menu
+ * Class NID_Walker_Nav_Menu
  *
  * Prints the Html for the multi tier navigation
  * menus
@@ -23,7 +22,7 @@ defined( 'ABSPATH' ) or die();
  *
  * @uses  Walker_Nav_Menu
  */
-class MOZ_Walker_Nav_Menu extends Walker_Nav_Menu {
+class NID_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 
 
@@ -40,16 +39,16 @@ class MOZ_Walker_Nav_Menu extends Walker_Nav_Menu {
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$list_classes = array(
-			'__list',
-			'__list--submenu'
+			'_item',
+			'_item -submenu'
 		);
 
 		if ( isset( $args->show_level_class ) && $args->show_level_class ) {
-			$list_classes[] = '__list--level-' . ($depth + 1);
+			$list_classes[] = '_list-level-' . ($depth + 1);
 		}
 
 		// BEM-ify the given sub classes
-		$list_classes_str = MOZ_BEM::get_bem( $args->menu_class, $list_classes );
+		$list_classes_str = NID_FLOCSS::get_flocss( 'c-nav', $list_classes );
 
 		$output .= "<ul class=\"$list_classes_str\">";
 	}
@@ -73,24 +72,24 @@ class MOZ_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 		/// Menu Item Opening
 
-		$item_classes = array( '__item' );
+		$item_classes = array( '_item' );
 
 		// add classes to current/parent/ancestor items
 		if ( isset( $item->current ) && $item->current ) {
-			$item_classes[] = '__item--current';
+			$item_classes[] = '_item-current';
 		}
 		if ( isset( $item->current_item_ancestor ) && $item->current_item_ancestor ) {
-			$item_classes[] = '__item--ancestor';
+			$item_classes[] = '_item-ancestor';
 		}
 		if ( isset( $item->current_item_parent ) && $item->current_item_parent ) {
-			$item_classes[] = '__item--parent';
+			$item_classes[] = '_item-parent';
 		}
 		if ( isset( $item->has_children ) && $item->has_children ) {
-			$item_classes[] = '__item--has-children';
+			$item_classes[] = '_item-has-children';
 		}
 
 		// BEM-ify the given sub classes
-		$item_classes_str = MOZ_BEM::get_bem( $args->menu_class, $item_classes );
+		$item_classes_str = NID_FLOCSS::get_flocss( 'c-nav', $item_classes );
 
 		if ( isset( $item->classes[0] ) && ! empty( $item->classes[0] ) ) {
 			// the first item in the 'classes' array is the user-set class
@@ -107,7 +106,7 @@ class MOZ_Walker_Nav_Menu extends Walker_Nav_Menu {
 			'target' => $item->target,
 			'rel'    => $item->xfn,
 			'href'   => ( ! empty( $item->url ) && '#' !== $item->url ) ? $item->url : '',
-			'class'  => "{$args->menu_class}__link"
+			'class'  => 'c-nav_link'
 		), function ( $attr ) {
 			// filter out the empty
 			// attributes
@@ -117,11 +116,11 @@ class MOZ_Walker_Nav_Menu extends Walker_Nav_Menu {
 		$tag = isset( $attrs['href'] ) ? 'a' : 'span';
 
 		$link_content = $args->link_before
-		                . apply_filters( 'the_title', $item->title, $item->ID )
-		                . $args->link_after;
+										 . apply_filters( 'the_title', $item->title, $item->ID )
+										 . $args->link_after;
 
 		$output .= $args->before;
-		$output .= MOZ_Html::get_element( $tag, $attrs, $link_content );
+		$output .= NID_Html::get_element( $tag, $attrs, $link_content );
 		$output .= $args->after;
 	}
 
@@ -139,7 +138,7 @@ class MOZ_Walker_Nav_Menu extends Walker_Nav_Menu {
 	 * @param array  $args   An array of arguments. @see wp_nav_menu()
 	 */
 	public function end_lvl( &$output, $depth = 0, $args = array() ) {
-		$output .= '</ul>'; // end of .{$args->menu_class}__list
+		$output .= '</ul>'; // end of .c-nav_list
 	}
 
 

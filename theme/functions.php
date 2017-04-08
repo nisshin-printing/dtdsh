@@ -53,6 +53,9 @@ if ( ! function_exists( 'theme_setup' ) ) {
 
 		// Let wp know we want to use post thumbnails
 		add_theme_support( 'post-thumbnails' );
+
+		// Over WordPress 4.1
+		add_theme_support( 'title-tag' );
 		
 		// Add Custom Logo Support.
 		/*
@@ -133,10 +136,11 @@ if ( ! function_exists( 'theme_styles' ) ) {
 	function theme_styles() {
 		$theme_dir = get_stylesheet_directory_uri();
 
-		wp_enqueue_style( 'main', "$theme_dir/assets/css/main.css", array(), null, 'all' );
+		wp_enqueue_style( 'hannari', "//fonts.googleapis.com/earlyaccess/hannari.css", array(), null, 'all' );
+		wp_enqueue_style( 'sawarabi', "//fonts.googleapis.com/earlyaccess/sawarabimincho.css", array(), null, 'all' );
+		wp_enqueue_style( 'main', "$theme_dir/assets/css/main.css", array( 'hannari', 'sawarabi' ), null, 'all' );
 	}
 }
-
 
 /**
  * Register and/or Enqueue

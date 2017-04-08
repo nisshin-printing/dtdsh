@@ -8,11 +8,11 @@
 
 
 /**
- * Class MOZ_Html
+ * Class NID_Html
  *
  *
  */
-class MOZ_Html {
+class NID_Html {
 
 
 	/**

@@ -1,0 +1,60 @@
+.c-social {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    @include breakpoint(large) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition-delay: 0.3s;
+        pointer-events: auto;
+    }
+}
+
+.c-social_list {
+    @extend .no-bullet;
+    width: 180px;
+    padding: 0;
+    margin: 0;
+    @include breakpoint(large) {
+        margin-left: -1.125rem;
+        margin-bottom: -1.125rem;
+    }
+}
+
+.c-social_item {
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    font-size: 1rem;
+    margin: 0 -1.3px;
+    padding-left: 0;
+    width: 50%;
+}
+
+.c-social_link {
+    display: block;
+    padding: 1.125rem;
+    padding: 5px 0;
+    @include breakpoint(medium) {
+        padding: .9375rem 3.75rem;
+    }
+    @include breakpoint(large) {
+        padding: 1.125rem;
+    }
+}
+
+svg {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    fill: #000;
+    overflow: hidden;
+}
+
+.c-social_icon {
+    width: 1rem;
+    height: 1rem;
+    fill: currentColor;
+}

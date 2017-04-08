@@ -6,49 +6,36 @@
  */
 ?>
 <?php get_header(); ?>
-	<article class="hero">
-		<div class="hero__content">
 
-			<header>
-				<h1 class="hero__title">
-					The Mozaik WordPress Theme Starter
-				</h1>
-			</header>
-
-			<p>
-				Build tools included! :)
-			</p>
-
-			<p>
-				<strong>Happy Hacking!</strong>
-			</p>
-
-			<footer>
-
-				<a class="hero__cta"
-				   target="_blank"
-				   href="https://github.com/MozaikAgency/wp-theme-starter">
-					check out the README
-				</a>
-
-				<?php get_template_part( 'elements/github' ); ?>
-
-				<div class="hero__icon">
-					<?php MOZ_SVG::svg( 'medal' ); ?>
+<div class="o-main-wrap u-background">
+	<main class="o-main js-main u-background" id="main">
+		<div class="o-content">
+			<div class="o-container">
+				<div class="o-grid">
+					<div class="o-whole">
+						<a href="<?php echo get_permalink( get_page_by_path( 'about' ) ); ?>" class="c-block -link o-arrow -right js-wow u-fadeInUp">
+							<article class="c-block_container">
+								<p class="c-block_category">会社案内</p>
+								<h2>創業1928年、<?php echo (int)date( 'Y' )-1928; ?>年間。<br>それが、日進印刷の強さです。</h2>
+								<span class="c-block_arrow o-arrow_wrap">→</span>
+							</article>
+						</a>
+					</div>
+					<div class="o-half"></div>
+					<div class="o-half"></div>
+					<div class="o-half"></div>
+					<div class="o-half"></div>
+					<div class="o-whole"></div>
+					<div class="o-whole"></div>
+					<div class="o-whole"></div>
+					<div class="o-whole"></div>
+					<div class="o-whole"></div>
+					<div class="o-whole"></div>
+					<div class="o-whole"></div>
 				</div>
-
-				<div class="hero__credits">
-					<p>
-						Background image of Everest courtesy of <a target="_blank" href="https://unsplash.it/">Unsplash It.</a>
-					</p>
-					<p>
-						SVG medal created by Creative Stall, from the <a target="_blank" href="https://thenounproject.com/creativestall/">Noun Project.</a>
-					</p>
-				</div>
-
-			</footer>
-
+			</div>
 		</div>
-	</article>
+	</main>
+</div>
 
 <?php get_footer(); ?>

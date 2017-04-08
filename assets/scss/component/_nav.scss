@@ -1,0 +1,79 @@
+.c-nav-wrap.-main {
+    @include breakpoint (medium down) {
+        position: absolute;
+        top: 0;
+        left: -50%;
+        width: 50%;
+        height: 100vh;
+        z-index: 2;
+        padding: 0;
+        text-align: left;
+        transition: transform .4s;
+        transition-timing-function: cubic-bezier( .4, 0, .2, 1);
+    }
+}
+
+.c-nav.-main {
+    text-align: left;
+    position: relative;
+    font-size: 3rem;
+    transform: translateY(0);
+    transition: transform, background-color;
+    transition-duration: .3s, 0s;
+    pointer-events: auto;
+    @include breakpoint(large) {
+        margin-left: -1.5625rem;
+        margin-right: -1.5625rem;
+        z-index: 1;
+        font-size: 1rem;
+    }
+}
+
+.c-nav_list {
+    display: inline-block;
+    z-index: 1000;
+    @extend .no-bullet;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    text-align: left;
+}
+
+.c-nav_item {
+    @include breakpoint(large) {
+        display: inline-block;
+    }
+}
+
+.c-nav_item-current .c-nav_link::after,
+.c-nav_link:hover::after {
+    width: 2rem;
+}
+
+.c-nav_link {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: currentColor;
+    padding: .5rem 1.5625rem;
+    padding: 3.5rem 1.5625rem;
+    @include breakpoint(medium) {
+        padding: 1rem 3.75rem
+    }
+    @include breakpoint(large) {
+        padding: 2.1rem 1.5625rem;
+        height: 6.25rem;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 1.8rem;
+        margin: 0 auto;
+        width: 0;
+        height: 1px;
+        background-color: currentColor;
+        transition: width .1s cubic-bezier( .4, 0, .2, 1);
+    }
+}
