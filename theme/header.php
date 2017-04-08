@@ -54,7 +54,7 @@
 					) );
 				?>
 			</div>
-			<div class="c-social -fixed -nav">
+			<div class="c-social">
 				<ul class="c-social_list">
 					<li class="c-social_item">
 						<a href="https://www.facebook.com/nisshin.dtdsh" class="c-social_link" target="_blank">
