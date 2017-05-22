@@ -70,6 +70,7 @@
 		<span class="c-block_arrow o-arrow"><span class="o-arrow_text">サービスを見る<?php NID_SVG::icon( 'arrow', array( 'class' => 'o-arrow_icon' ) ); ?></span></span>
 	</a>
 </div>
+<!--
 <div class="column small-12 o-whole">
 	<a href="<?php echo get_permalink( get_page_by_path( 'service' ) ), '#real-estate'; ?>" class="c-block c-service -secondary -extended -link js-wow u-fadeInUp">
 		<article class="row align-justify align-middle o-row">
@@ -87,6 +88,7 @@
 		<span class="c-block_arrow o-arrow"><span class="o-arrow_text">サービスを見る<?php NID_SVG::icon( 'arrow', array( 'class' => 'o-arrow_icon' ) ); ?></span></span>
 	</a>
 </div>
+-->
 <div class="column small-12 o-whole">
 	<div class="c-block row align-middle align-center -flex js-wow u-fadeInUp">
 		<div class="column o-button_wrap">

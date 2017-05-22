@@ -56,7 +56,7 @@
 						<h4 class="c-block_title c-list_title o-title_border">データ分析・解析</h4>
 						<ul class="c-list_service">
 							<li>Googleアナリティクス</li>
-							<li>Google社認定アナリストによるコンサルティング</li>
+							<li>Google社認定アナリスト（GAIQ保有者）によるコンサルティング</li>
 							<li>Googleタグマネージャー導入</li>
 							<li>Yahoo!アナリティクス</li>
 							<li>Python</li>
@@ -123,7 +123,7 @@
 					<?php NID_SVG::icon( 'ads', array( 'class' => 'c-service_icon' ), 'ウェブ広告のアイコン' ); ?>
 					<h3 class="c-block_title c-service_title">ウェブ広告</h3>
 					<div class="c-service_desc">
-						<p>熟練マーケターとGoogle社認定アナリストがマーケティングとデータ解析に基づいた広告運用をサポート/代行します。</p><p>ウェブ広告では年齢・性別はもちろん、行動データまでを基にした様々なターゲティングが可能なので、指定したターゲットが見た/クリックしたときだけ費用が発生します。弊社はGoogle Partnerです。</p>
+						<p>熟練マーケターとGoogle社認定アナリスト（GAIQ保有者）がマーケティングとデータ解析に基づいた広告運用をサポート/代行します。</p><p>ウェブ広告では年齢・性別はもちろん、行動データまでを基にした様々なターゲティングが可能なので、指定したターゲットが見た/クリックしたときだけ費用が発生します。弊社は<a href="https://www.google.com/partners/?hl=ja#a_profile;idtf=4021537698;" target="_blank">Google Partner</a>ですので、初めてGoogle AdWordsをご利用いただくクライアント様は<u>初回30日最大10,000円の無料広告枠が使用できます</u>。</p>
 					</div>
 					<div class="column small-12 c-block -extended">
 						<ul class="c-list_service">
@@ -149,7 +149,7 @@
 					<?php NID_SVG::icon( 'web', array( 'class' => 'c-service_icon' ), 'SEO対策のアイコン' ); ?>
 					<h3 class="c-block_title c-service_title">SEO対策</h3>
 					<div class="c-service_desc">
-						<p>日進印刷のWeb事業は検索順位向上（SEO対策）から始まりました。「○○　広島」で10年以上検索上位を維持し続けるSEO対策では、決してクライアント同士が競合することがないようお断りしております。</p>
+						<p>日進印刷のWeb事業は検索順位向上（SEO対策）から始まりました。「○○　広島」で10年以上検索上位を維持し続けるSEO対策では、<u>決してクライアント同士が競合することのないよう、お断りしております</u>。</p>
 					</div>
 					<div class="column small-12 c-block -extended">
 						<ul class="c-list_service">
@@ -159,6 +159,7 @@
 							<li>ペナルティ解除</li>
 							<li>コンテンツマーケティング</li>
 							<li>「○○　広島」で上位維持10年以上</li>
+							<li>悪口/口コミ対策</li>
 						</ul>
 					</div>
 				</div>

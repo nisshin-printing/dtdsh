@@ -11,7 +11,27 @@
 			<div class="column small-12">
 				<h3 class="c-block_title">ホームページ制作</h3>
 				<p>弊社では、原則、制作後もサポートするために初期費用なしの月額料金制を取り入れています。<br>ホームページを作ってから、いかに最大限の効果を発揮するかは運営力次第です。</p>
-				<p>サポート内容に応じて4 つのプランがありますが、実際にはプラン制ではなく、より細かくご希望や現状に応じてカスタマイズされます。<br>機能・仕様を絞ったり、報告書が不要・無料オプション不要とすると安くなり、追加機能のご要望などで価格が上がります。<br>※表示価格は、消費税別の月額料金です。</p>
+				<p>サポート内容に応じて4 つのプランがありますが、実際にはプラン制ではなく、より細かくご希望や現状に応じてカスタマイズされます。<br>機能・仕様を絞ったり、報告書が不要・無料オプション不要とすると安くなり、追加機能のご要望などで価格が上がります。<br><span class="u-underline">この部分は1つ下位プランと異なる部分です</span>。※表示価格は、消費税別の月額料金です。</p>
+			</div>
+			<div class="column c-price small-12 large-6">
+				<h4 class="c-block_title o-title_border">お試しプラン</h4>
+				<p class="c-price_price">\10,000-</p>
+				<p>※サーバ・ドメイン費用込</p>
+				<h5 class="o-title_underline">機能・仕様</h5>
+				<ul>
+					<li>WordPress等のCMS導入可能</li>
+					<li>トップページ + 5P程度</li>
+				</ul>
+				<h5 class="o-title_underline">特長</h5>
+				<ul>
+					<li>初期費用不要</li>
+					<li>6ヶ月～12ヶ月に一回、報告書（アドバイスコメント付き）を提出</li>
+				</ul>
+				<h5 class="o-title_underline">毎月選べる無料オプション</h5>
+				<ul>
+					<li>なんでも相談（1回/月）</li>
+					<li>ウェブ広告運用アドバイス（1回/月）</li>
+				</ul>
 			</div>
 			<div class="column c-price small-12 large-6">
 				<h4 class="c-block_title o-title_border">スタンダードプラン</h4>
@@ -25,47 +45,75 @@
 				<h5 class="o-title_underline">特長</h5>
 				<ul>
 					<li>初期費用不要</li>
-					<li>随時アップデート有り</li>
-					<li>3ヶ月～6ヶ月に一回、報告書（アドバイスコメント付き）を提出</li>
+					<li><span class="u-underline">随時アップデート有り</span></li>
+					<li><span class="u-underline">3ヶ月～6ヶ月に一回</span>、報告書（アドバイスコメント付き）を提出</li>
 				</ul>
 				<h5 class="o-title_underline">毎月選べる無料オプション</h5>
 				<ul>
-					<li>更新作業のサポート（月に数回まで）</li>
-					<li>回数無制限の相談</li>
+					<li><span class="u-underline">更新作業のサポート（月に数回まで）</span></li>
+					<li><span class="u-underline">回数無制限の相談</span></li>
 					<li>ウェブ広告運用アドバイス（1回/月）</li>
 				</ul>
 			</div>
 			<div class="column c-price small-12 large-6">
-				<h4 class="c-block_title o-title_border">+ SEO対策プラン</h4>
+				<h4 class="c-block_title o-title_border">+ SEO対策コンサルティングプラン</h4>
 				<p class="c-price_price">\50,000-</p>
-				<p>※サーバ・ドメイン費用込</p>
+				<p><span class="u-underline">※施策を弊社で実施する場合は、\100,000</span><br>※サーバ・ドメイン費用込</p>
 				<h5 class="o-title_underline">機能・仕様</h5>
 				<ul>
 					<li>WordPress等のCMS導入可能</li>
-					<li>トップページ + 8P程度</li>
+					<li>トップページ + <span class="u-underline">8P</span>程度</li>
 				</ul>
 				<h5 class="o-title_underline">特長</h5>
 				<ul>
 					<li>初期費用不要</li>
+					<li><span class="u-underline">回数無制限の相談</span></li>
 					<li>随時アップデート有り</li>
-					<li>3ヶ月～6ヶ月に一回、面談可能（1時間程度）</li>
-					<li>毎月、報告書と検索順位向上のための提案書類を提出</li>
+					<li>3ヶ月～6ヶ月に一回、<span class="u-underline">面談可能</span>（1時間程度）</li>
+					<li><span class="u-underline">毎月、報告書と検索順位向上のための提案書類を提出</span></li>
+					<li><spna class="u-underline">他クライアントと競合する場合は、お断りいたします</spna>。</li>
 				</ul>
 				<h5 class="o-title_underline">毎月選べる無料オプション</h5>
 				<ul>
-					<li>無制限の更新作業サポート</li>
-					<li>回数無制限の相談</li>
+					<li><span class="u-underline">無制限</span>の更新作業サポート</li>
 					<li>ウェブ広告運用アドバイス（1回/月）</li>
 				</ul>
 			</div>
 			<div class="column c-price small-12 large-6">
 				<h4 class="c-block_title o-title_border">+ Webコンサルティングプラン</h4>
 				<p class="c-price_price">\60,000-</p>
-				<p>※施策を弊社で実施する場合は、\150,000<br>※サーバ・ドメイン費用込</p>
+				<p><span class="u-underline">※施策を弊社で実施する場合は、\150,000</span><br>※サーバ・ドメイン費用込</p>
 				<h5 class="o-title_underline">機能・仕様</h5>
 				<ul>
 					<li>WordPress等のCMS導入可能</li>
 					<li>トップページ + 8P程度</li>
+					<li><span class="u-underline">ウェブ広告運用代行</span></li>
+				</ul>
+				<h5 class="o-title_underline">特長</h5>
+				<ul>
+					<li>初期費用不要</li>
+					<li>随時アップデート有り</li>
+					<li><span class="u-underline">毎月、面談可能</span>（1時間程度）</li>
+					<li>毎月、報告書と提案書類（<span class="u-underline">Webに関するすべて</span>）を提出</li>
+				</ul>
+				<h5 class="o-title_underline">毎月選べる無料オプション</h5>
+				<ul>
+					<li>無制限の更新作業サポート</li>
+					<li><span class="u-underline">広告用ランディングページ作成</span>（年に1～3回程度）</li>
+					<li><span class="u-underline">サイトのA/Bテスト実施</span></li>
+					<li><span class="u-underline">サイトのリニューアル</span>（年1回）</li>
+				</ul>
+			</div>
+			<div class="column c-price small-12 large-6">
+				<h4 class="c-block_title o-title_border">+ ウェブ担当者代理プラン</h4>
+				<p class="c-price_price">\300,000-</p>
+				<p><span class="u-underline">※2人分以上の作業量がある場合は、30万×作業量（単位は人数/月）×1/2となります</span>。<br><span class="u-underline">※コーディングなどエンジニアリングを弊社で実施する場合は\500,000</span>。<br>※サーバ・ドメイン費用込</p>
+				<h5 class="o-title_underline">機能・仕様</h5>
+				<ul>
+					<li>WordPress等のCMS導入可能</li>
+					<li>トップページ + <span class="u-underline">10P</span>程度</li>
+					<li><span class="u-underline">Web/デザイン/広告/マーケティング/動画のスペシャリスト計5人を1人分の給料で雇うのと実質同じ！</span></li>
+					<li><span class="u-underline">無制限の更新作業サポート</span></li>
 					<li>ウェブ広告運用代行</li>
 				</ul>
 				<h5 class="o-title_underline">特長</h5>
@@ -73,34 +121,30 @@
 					<li>初期費用不要</li>
 					<li>随時アップデート有り</li>
 					<li>毎月、面談可能（1時間程度）</li>
-					<li>毎月、報告書と提案書類（Webに関するすべて）を提出</li>
-				</ul>
-				<h5 class="o-title_underline">毎月選べる無料オプション</h5>
-				<ul>
-					<li>無制限の更新作業サポート</li>
-					<li>広告用ランディングページ作成（年に1～3回程度）</li>
-					<li>サイトのA/Bテスト実施</li>
-					<li>サイトのリニューアル（年1回）</li>
+					<li>毎月、報告書と提案書類（<span class="u-underline">業務に関するすべて</span>）を提出</li>
+					<li><span class="u-underline">担当（専属1人）が対応できることはすべて対応</span></li>
+					<li><span class="u-underline">ウェブ担当者として1人を採用したのと同じように扱って構いません</span>。</li>
 				</ul>
 			</div>
 			<div class="column c-price small-12 large-6">
-				<h4 class="c-block_title o-title_border">+ ウェブ担当者代理プラン</h4>
-				<p class="c-price_price">\300,000-</p>
-				<p>※2人分以上の作業量がある場合は、30万×作業量（単位は人数/月）×1/2となります。<br>※サーバ・ドメイン費用込</p>
+				<h4 class="c-block_title o-title_border">+ チーム派遣プラン</h4>
+				<p class="c-price_price">\500,000-</p>
+				<p>※サーバ・ドメイン費用込</p>
 				<h5 class="o-title_underline">機能・仕様</h5>
 				<ul>
 					<li>WordPress等のCMS導入可能</li>
 					<li>トップページ + 10P程度</li>
-					<li>Web/デザイン/広告/マーケティング/動画のスペシャリスト計5人を1人分の給料で雇うのと同じプラン</li>
+					<li><span class="u-underline">単発イベントや季節イベント前、新商品のPRなど短期でスペシャリストが出動します！</span>。</li>
 				</ul>
 				<h5 class="o-title_underline">特長</h5>
 				<ul>
 					<li>初期費用不要</li>
 					<li>随時アップデート有り</li>
-					<li>毎月、面談可能（1時間程度）</li>
+					<li><span class="u-underline">LP制作/EFO/LPOなんでも対応可</span></li>
+					<li><span class="u-underline">コピーライティング/ちらし印刷</span></li>
+					<li><span class="u-underline">隔日で面談可能</span>（1時間程度）</li>
 					<li>毎月、報告書と提案書類（業務に関するすべて）を提出</li>
-					<li><u>担当（専属1人）が対応できることはすべて対応</u></li>
-					<li><u>ウェブ担当者として1人を採用したのと同じように扱って構いません。</u></li>
+					<li><span class="u-underline">対応可能な業務すべて対応します</span>。</li>
 				</ul>
 			</div>
 		</div>
@@ -109,12 +153,12 @@
 		<div class="row o-row">
 			<div class="column small-12">
 				<h3 class="c-block_title">印刷</h3>
-				<p>印刷物は、用紙や使用インキ量・部数はもちろん、納品場所・納期・印刷データの質など様々な要因によって価格が変動します。<br>下記では、一般的な印刷物の料金を公表しておりますが、上記理由により、ご依頼前に無料の見積もりを取ることをオススメします。</p>
+				<p>印刷物は、用紙や使用インキ量・部数はもちろん、納品場所・納期・印刷データの質など様々な要因によって価格が大きく変動します。<br>下記では、一般的な印刷物の料金を公表しておりますが、上記理由により、ご依頼前に無料の見積もりを取ることをオススメします。</p>
 				<p>弊社は戦後直後も営業していた広島で唯一の印刷会社です。当時に官公庁からのすべての印刷を対応できるよう体制を整えました。<br>現在も、<u>どのような</u>印刷物でも、<u>他社に断られた</u>印刷物でも、何なりとご用命ください。</p>
 			</div>
 			<div class="column c-price small-12 large-6">
 				<h4 class="c-block_title o-title_border">名刺</h4>
-				<p class="c-price_price">\1,000-</p>
+				<p class="c-price_price">\3,000-</p>
 				<h5 class="o-title_underline">特長</h5>
 				<ul>
 					<li>原則100枚単位です。</li>
@@ -123,7 +167,8 @@
 					<li>3,000以上のフォントを保有しています。</li>
 					<li>現在の名刺そっくりにお作りすることも可能です。</li>
 					<li>印刷可能であれば、どのような用紙でもご対応できます。</li>
-					<li>依頼予定量などにより配達/郵送も無料となります。</li>
+					<li>配達/郵送も無料です。</li>
+					<li>配達なしや納期延長で<span class="u-underline">値引き</span>も可能です。</li>
 				</ul>
 			</div>
 			<div class="column c-price small-12 large-6">
@@ -163,7 +208,7 @@
 					<li>長3封筒のダンボールが1,000枚単位なので、原則1,000枚単位です。</li>
 					<li>角2封筒のダンボールが500枚単位なので、原則500枚単位です。</li>
 					<li>最小単位でのご注文は、当日～2営業日中のお渡しが可能です。</li>
-					<li>分けて納品することが可能です。<br>例えば、10,000枚（10箱）ご注文後、毎月1,000枚/1箱ずつ納品します。</li>
+					<li><span class="u-underline">分けて納品することが可能</span>です。<br>例えば、10,000枚（10箱）ご注文後、毎月1,000枚/1箱ずつ納品します。</li>
 					<li>依頼予定量などにより配達/郵送も無料となります。</li>
 				</ul>
 			</div>
@@ -183,7 +228,7 @@
 <div class="column small-12 o-whole">
 	<div class="c-block c-service row align-middle align-center -flex -cta">
 		<div class="c-action_link-wrap column">
-			<a class="c-action_link js-next-link js-wow u-slideUp" href="<?php echo get_permalink( get_page_by_path( 'contact' ) ); ?>" data-hover="見積もり依頼">見積もり依頼</a>
+			<button class="c-action_link js-next-link js-contact-open" data-page="project" data-hover="見積もり依頼">見積もり依頼</button>
 		</div>
 	</div>
 </div>
