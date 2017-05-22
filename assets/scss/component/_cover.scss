@@ -1,0 +1,47 @@
+.c-cover_wrap {
+    &.-main {
+        @include breakpoint(large) {
+            padding-right: 250px;
+        }
+        @include breakpoint(large only) {
+            padding-right: 180px;
+        }
+        .column {
+            margin-top: 100px;
+            @include breakpoint(large) {
+                margin-top: 113px;
+            }
+        }
+        .c-block_title {
+            margin-bottom: 2em;
+        }
+        .c-cover_link {
+            display: block;
+            @include breakpoint(large) {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+.c-cover {
+    &.-bg_img {
+        background: {
+            repeat: no-repeat;
+            position: center center;
+            size: cover;
+        }
+    }
+}
+
+.c-cover_image {
+    color: #FFF;
+    padding: 0 50px;
+}
+
+.c-cover_desc {
+    display: inline-block;
+    margin: 5rem auto 0;
+    text-align: left;
+    font-size: .8rem;
+}

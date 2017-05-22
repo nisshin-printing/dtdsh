@@ -1,0 +1,23 @@
+#works-seo {
+    background-image: linear-gradient(to right, rgba(#4ca1af, .8), rgba(#c4e0e5, .8)),
+    url(#{$p_images}google-search.gif);
+    color: $white;
+}
+
+#works-print {
+    background-image: linear-gradient(to right, rgba(#76b852, .25), rgba(#8dc26f, .25)),
+    url(#{$p_images}storage.jpg);
+    color: $white;
+}
+
+#works-web {
+    background-image: url(#{$p_images}responsive.png),
+    linear-gradient(to right, #ff5f6d, #ffc371);
+    color: $black;
+}
+
+#works-consult {
+    background-image: linear-gradient(to right, rgba(#243B55, .5), rgba(#141E30, .5)),
+    url(#{$p_images}reviews.jpg);
+    color: $white;
+}

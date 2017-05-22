@@ -5,37 +5,41 @@
  *
  */
 ?>
-<?php get_header(); ?>
+<?php
+	if ( empty( $_GET['_pjax'] ) ) get_header();
+?>
 
-<div class="o-main-wrap u-background">
-	<main class="o-main js-main u-background" id="main">
-		<div class="o-content">
-			<div class="o-container">
-				<div class="o-grid">
-					<div class="o-whole">
-						<a href="<?php echo get_permalink( get_page_by_path( 'about' ) ); ?>" class="c-block -link o-arrow -right js-wow u-fadeInUp">
-							<article class="c-block_container">
-								<p class="c-block_category">会社案内</p>
-								<h2>創業1928年、<?php echo (int)date( 'Y' )-1928; ?>年間。<br>それが、日進印刷の強さです。</h2>
-								<span class="c-block_arrow o-arrow_wrap">→</span>
-							</article>
-						</a>
-					</div>
-					<div class="o-half"></div>
-					<div class="o-half"></div>
-					<div class="o-half"></div>
-					<div class="o-half"></div>
-					<div class="o-whole"></div>
-					<div class="o-whole"></div>
-					<div class="o-whole"></div>
-					<div class="o-whole"></div>
-					<div class="o-whole"></div>
-					<div class="o-whole"></div>
-					<div class="o-whole"></div>
+<main id="js-main">
+	<div class="o-container">
+		<div class="row expanded o-content">
+			<div class="column small-12">
+				<div class="row expanded o-grid">
+					<?php
+						if ( is_front_page() ) {
+							get_template_part( 'templates/front' );
+						} else {
+							NID_Crumbs::crumbs();
+							if ( is_page( 'service' ) ) {
+								get_template_part( 'templates/service' );
+							} elseif ( is_page( 'price' ) ) {
+								get_template_part( 'templates/price' );
+							} elseif ( is_page( 'about' ) ) {
+								get_template_part( 'templates/about' );
+							} elseif ( is_page( 'recruit' ) ) {
+								get_template_part( 'templates/recruit' );
+							} elseif ( is_page( 'contact' ) ) {
+								get_template_part( 'templates/contact' );
+							} else {
+								get_template_part( 'templates/404' );
+							}
+						}
+					?>
 				</div>
 			</div>
 		</div>
-	</main>
-</div>
+	</div>
+</main>
 
-<?php get_footer(); ?>
+<?php
+	if ( empty( $_GET['_pjax'] ) ) get_footer();
+?>

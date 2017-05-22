@@ -85,7 +85,7 @@ if ( ! function_exists( 'theme_setup' ) ) {
 
 
 		// Remove toolbar for all users in front end
-		show_admin_bar( false );
+		// show_admin_bar( false );
 
 
 		// Add Custom Image Sizes
@@ -111,9 +111,9 @@ if ( ! function_exists( 'theme_setup' ) ) {
 		// define( 'WP_DEBUG', false );
 
 		//Contact Form 7 Plugin Configuration
-		define ( 'WPCF7_LOAD_JS',  false ); // Added to disable JS loading
-		define ( 'WPCF7_LOAD_CSS', false ); // Added to disable CSS loading
-		define ( 'WPCF7_AUTOP',    false ); // Added to disable adding <p> & <br> in form output
+		// define ( 'WPCF7_LOAD_JS',  false ); // Added to disable JS loading
+		// define ( 'WPCF7_LOAD_CSS', false ); // Added to disable CSS loading
+		// define ( 'WPCF7_AUTOP',    false ); // Added to disable adding <p> & <br> in form output
 
 
 
@@ -137,8 +137,10 @@ if ( ! function_exists( 'theme_styles' ) ) {
 		$theme_dir = get_stylesheet_directory_uri();
 
 		wp_enqueue_style( 'hannari', "//fonts.googleapis.com/earlyaccess/hannari.css", array(), null, 'all' );
-		wp_enqueue_style( 'sawarabi', "//fonts.googleapis.com/earlyaccess/sawarabimincho.css", array(), null, 'all' );
-		wp_enqueue_style( 'main', "$theme_dir/assets/css/main.css", array( 'hannari', 'sawarabi' ), null, 'all' );
+		if ( preg_match( '/Android/i', $_SERVER['HTTP_USER_AGENT'] ) ) {
+			wp_enqueue_style( 'sawarabi', "//fonts.googleapis.com/earlyaccess/sawarabimincho.css", array(), null, 'all' );
+		}
+		wp_enqueue_style( 'main', "$theme_dir/assets/css/main.css", array( 'hannari' ), null, 'all' );
 	}
 }
 
@@ -152,7 +154,7 @@ if ( ! function_exists( 'theme_scripts' ) ) {
 	function theme_scripts() {
 		$theme_dir = get_stylesheet_directory_uri();
 
-		wp_enqueue_script( 'main', "$theme_dir/assets/js/main.js", array(), null, true );
+		wp_enqueue_script( 'main', "$theme_dir/assets/js/main.js", array( 'jquery' ), null, true );
 	}
 }
 

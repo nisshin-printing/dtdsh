@@ -1,0 +1,41 @@
+table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+tr:last-child() {
+    th,
+    td {
+        border-bottom: 0;
+    }
+}
+
+th,
+td {
+    padding: $table-padding;
+    border-bottom: $table-border;
+}
+
+.c-table_stack {
+    @include breakpoint(medium down) {
+        tr,
+        th,
+        td {
+            display: block;
+            text-align: left;
+            border: none;
+        }
+        td {
+            border-bottom: $table-border;
+        }
+    }
+}
+
+.-hover tr:hover {
+    >th,
+    >td {
+        background-color: $table-row-hover;
+    }
+}

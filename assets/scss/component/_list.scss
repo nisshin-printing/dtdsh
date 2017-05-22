@@ -1,0 +1,7 @@
+.c-list_service {
+    @extend .no-bullet;
+    li {
+        display: inline-block;
+        margin: .5rem 1rem;
+    }
+}

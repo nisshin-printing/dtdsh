@@ -1,0 +1,93 @@
+a {
+    transition: color .3s;
+}
+
+button {
+    cursor: pointer;
+}
+
+.o-button_wrap {
+    text-align: center;
+    perspective: 500px;
+}
+
+.o-button {
+    display: inline-block;
+    font-size: 1rem;
+    text-align: center;
+    color: currentColor;
+    @include breakpoint(medium) {
+        font-size: 1.5rem;
+    }
+    span {
+        color: $primary-color;
+        background-color: #FFF;
+        border: 1px solid currentColor;
+        display: inline-block;
+        padding: 1rem 2rem;
+    }
+    &:hover span {
+        color: #FFF;
+        background-color: $primary-color;
+        animation: p-jumpback .3s ease-out;
+        animation-fill-mode: forwards;
+    }
+    &.-secondary {
+        color: #FFF;
+        span {
+            color: #FFF;
+            background-color: $primary-color;
+        }
+        &:hover span {
+            color: $primary-color;
+            background-color: #FFF;
+            animation: s-jumpback .3s ease-out;
+        }
+    }
+}
+
+@keyframes p-jumpback {
+    from {
+        transform: translateZ(0px) rotateX(0deg);
+        background-color: #ffffff;
+        color: $primary-color;
+    }
+    49.99% {
+        transform: translateZ(100px) rotateX(90deg);
+        background-color: #808080;
+        color: $primary-color;
+    }
+    50.00% {
+        transform: translateZ(100px) rotateX(-90deg);
+        background-color: $primary-color;
+        color: #808080;
+    }
+    to {
+        transform: translateZ(0px) rotateX(0deg);
+        background-color: $primary-color;
+        color: #ffffff;
+    }
+}
+
+@keyframes s-jumpback {
+    from {
+        transform: translateZ(0px) rotateX(0deg);
+        background-color: $primary-color;
+        color: #FFF;
+    }
+    49.99% {
+        transform: translateZ(100px) rotateX(90deg);
+        background-color: #808080;
+        color: #FFF;
+    }
+    50.00% {
+        transform: translateZ(100px) rotateX(-90deg);
+        background-color: #FFF;
+        color: #808080;
+    }
+    to {
+        transform: translateZ(0px) rotateX(0deg);
+        background-color: #FFF;
+        color: $primary-color;
+    }
+}

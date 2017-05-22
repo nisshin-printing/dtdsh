@@ -1,0 +1,33 @@
+.o-title {
+    &_border {
+        position: relative;
+        padding-bottom: 1rem;
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -.5rem;
+            width: 3rem;
+            height: 1px;
+            background-color: currentColor;
+        }
+    }
+    &_underline {
+        text-decoration: underline;
+    }
+}
+
+#copy-header {
+    @include breakpoint(medium) {
+        font-size: calc(2rem + .25vw);
+    }
+    @include breakpoint(large) {
+        font-size: calc(2.7rem + .25vw);
+    }
+}
+
+#copy-vision {
+    @include breakpoint(medium) {
+        font-size: calc(1.6rem + .25vw);
+    }
+}

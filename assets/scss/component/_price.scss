@@ -1,0 +1,16 @@
+.c-price {
+    padding-bottom: 2rem;
+    @include breakpoint(large) {
+        padding: 3rem;
+        &:nth-of-type(2n-1) {
+            padding-top: 20rem;
+        }
+    }
+}
+
+.c-price_price {
+    font-size: 2rem;
+    &.-small {
+        font-size: 1rem;
+    }
+}

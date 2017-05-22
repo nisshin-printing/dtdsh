@@ -1,0 +1,296 @@
+.has-contact-open {
+    overflow: hidden;
+}
+
+.c-contact {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 901;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility, opacity;
+    transition-duration: 0s, .4s;
+    transition-delay: .5s, .2s;
+    .has-contact-open & {
+        transition-duration: 0s, .3s;
+        transition-delay: .3s, 0s;
+        visibility: visible;
+        opacity: 1;
+        overflow-y: auto;
+    }
+}
+
+.c-contact_wrap {
+    padding: 5.625rem 25px 5rem;
+    @include breakpoint(medium) {
+        padding: 10rem 3.75rem 5rem;
+    }
+    @include breakpoint(large) {
+        padding: 10rem 5rem 5rem;
+    }
+}
+
+.c-contact_item {
+    opacity: 0;
+    transition: opacity .3s cubic-bezier(.4, 0, .2, 1), transform .3s cubic-bezier(.4, 0, .2, 1);
+    position: relative;
+    transform: translateY(100%);
+    margin-bottom: 1.25rem;
+    width: 95%;
+    @include breakpoint(medium) {
+        margin-bottom: 1.875rem;
+    }
+    &.large {
+        font-size: 1.2rem;
+    }
+    &.is-active {
+        opacity: 1;
+        transform: none;
+        transition-delay: 1.5s;
+    }
+    &.c-contact_submit-error {
+        margin-bottom: 0;
+    }
+    input,
+    select,
+    option,
+    .o-file_wrap,
+    .o-contact_submit {
+        padding: 0 1.25rem;
+        height: 3.75rem;
+        width: 95%;
+    }
+    textarea {
+        resize: vertical;
+    }
+    &.small-12:not(.large-6) {
+        input,
+        select,
+        option,
+        textarea,
+        .o-file_wrap,
+        .o-contact_submit {
+            width: 95%;
+            @include breakpoint(large) {
+                width: 98%;
+            }
+        }
+    }
+}
+
+.c-contact_label {
+    margin-left: .5rem;
+}
+
+.c-contact_content {
+    z-index: 0;
+    display: none;
+    &.is-active {
+        z-index: 100;
+        display: block;
+        width: 100%;
+    }
+    &.-menu {
+        text-align: center;
+    }
+}
+
+.c-contact_message {
+    position: relative;
+    background-color: transparent;
+    line-height: 1.2;
+    font-size: 1.35rem;
+    margin: 1.875rem 0;
+    @include breakpoint(medium) {
+        font-size: 2.3rem;
+        margin: 3.75rem 0;
+    }
+    @include breakpoint(large) {
+        font-size: 3rem;
+    }
+}
+
+.c-contact_textbox {
+    display: inline-block;
+    width: auto;
+    outline: none;
+    line-height: 1.1;
+}
+
+.c-contact_button {
+    transition: opacity .6s;
+    margin-left: .625rem;
+}
+
+.c-contact_back {
+    color: $white;
+    position: absolute;
+    left: 0;
+    padding: 1rem 2rem 1rem 0;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity .1s ease-out, ;
+    cursor: pointer;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    top: 0;
+    margin-top: -5rem;
+    @include breakpoint(medium) {
+        top: 15%;
+        margin-top: -7.45rem;
+    }
+    &.is-active {
+        opacity: 1;
+        transition: opacity .2s ease-out 1.5s;
+    }
+    &.o-arrow::before {
+        top: 13px;
+        right: -115%;
+        left: auto;
+        transition: .2s cubic-bezier(.25, .46, .45, .94);
+    }
+    .o-arrow_text {
+        padding-left: 0;
+        padding-right: 60px;
+    }
+    .o-arrow_icon {
+        transform: rotate(180deg);
+        top: -2px;
+        transition: .2s cubic-bezier(.25, .46, .45, .94);
+    }
+    &:hover {
+        &::before {
+            right: 0;
+        }
+        .o-arrow_icon {
+            left: -5px;
+        }
+    }
+}
+
+.c-contact_filename {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    color: $white;
+    transform: traslateY(-50%);
+}
+
+.c-contact_spinner {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.c-contact_spinner_wheel {
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+    border: 3px solid currentColor;
+    border-radius: 50%;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    animation: cssload-spin 1400ms infinite linear;
+}
+
+@keyframes cssload-spin {
+    100% {
+        transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.c-contact_item.align-center {
+    @include breakpoint(medium down) {
+        text-align: center;
+    }
+    @include breakpoint(large) {
+        display: flex !important;
+    }
+}
+
+.c-contact_recaptcha {
+    @include breakpoint(medium down) {
+        margin: 1.8rem;
+        display: inline-block;
+    }
+}
+
+.c-contact_submit-wrap {
+    width: 100%;
+    @include breakpoint(large) {
+        text-align: right;
+        padding-right: 2%;
+    }
+}
+
+.c-contact_submit {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    input[type="submit"] {
+        @extend .button;
+        @extend .large;
+        @extend .secondary;
+        width: 100%;
+        height: 78px;
+        margin: 0 !important;
+        z-index: 50;
+    }
+    &.is-active input {
+        color: transparent;
+        &:hover {
+            color: transparent;
+        }
+    }
+}
+
+.ajax-loader {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    &.is-active {
+        opacity: 1;
+        background-color: $white;
+        z-index: 40;
+        &::after {
+            animation: cssload-spin 1400ms infinite linear;
+        }
+    }
+    &::after {
+        content: '';
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border: 5px solid $black;
+        border-radius: 50%;
+        border-left-color: transparent;
+        border-right-color: transparent;
+    }
+}
+
+@keyframes cssload-spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}

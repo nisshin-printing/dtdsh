@@ -1,0 +1,37 @@
+.c-titlebox_wrap {
+    position: relative;
+    background-color: #f8f8f8;
+}
+
+.c-titlebox_title {
+    position: relative;
+    display: inline-block;
+    &::after {
+        @include breakpoint(large) {
+            content: '';
+            position: absolute;
+            width: 20%;
+            height: 0;
+            top: .85em;
+            left: 100%;
+            margin-left: .25em;
+            border-top: 1px solid #c4c5c3;
+        }
+    }
+}
+
+.c-titlebox_more {
+    @extend .show-for-medium;
+    @include breakpoint(medium) {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        margin-top: -32.5px;
+    }
+    .o-button span {
+        @include breakpoint(medium) {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+        }
+    }
+}

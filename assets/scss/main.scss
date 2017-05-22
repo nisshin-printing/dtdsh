@@ -31,7 +31,6 @@
 @import 'foundation';
 @include foundation-flex-grid;
 @include foundation-global-styles;
-@include foundation-flex-grid;
 @include foundation-typography;
 @include foundation-forms;
 @include foundation-button;
@@ -44,8 +43,6 @@
 @include foundation-card;
 @include foundation-close-button;
 @include foundation-menu;
-@include foundation-menu-icon;
-@include foundation-drilldown-menu;
 @include foundation-dropdown;
 @include foundation-dropdown-menu;
 @include foundation-responsive-embed;
@@ -56,10 +53,8 @@
 @include foundation-pagination;
 @include foundation-progress-bar;
 @include foundation-slider;
-@include foundation-sticky;
 @include foundation-reveal;
 @include foundation-switch;
-@include foundation-table;
 @include foundation-tabs;
 @include foundation-thumbnail;
 @include foundation-title-bar;
@@ -71,12 +66,35 @@
 
 /**
  * Your Custom Styles.
+ * - Config
+ */
+
+@import 'config/images';
+@import 'config/fonts';
+
+/**
+ * Your Custom Styles.
  * - Components
  */
 
+@import 'component/action';
 @import 'component/header';
+@import 'component/footer';
 @import 'component/nav';
 @import 'component/social';
+@import 'component/block';
+@import 'component/service';
+@import 'component/list';
+@import 'component/price';
+@import 'component/recruit';
+@import 'component/accordion';
+@import 'component/table';
+@import 'component/fab';
+@import 'component/titlebox';
+@import 'component/cover';
+@import 'component/contact';
+@import 'component/loading';
+@import 'component/form';
 
 /**
  * Your Custom Styles.
@@ -84,3 +102,16 @@
  */
 
 @import 'object/grid';
+@import 'object/button';
+@import 'object/arrow';
+@import 'object/title';
+@import 'object/file';
+@import 'object/menu';
+
+/**
+ * Your Custom Styles.
+ * - Utility
+ */
+
+@import 'utility/background';
+@import 'utility/front-block_background';

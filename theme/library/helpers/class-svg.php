@@ -8,9 +8,9 @@
 
 
 /**
- * Class MOZ_SVG
+ * Class NID_SVG
  */
-class MOZ_SVG {
+class NID_SVG {
 
 
 	/**
@@ -57,16 +57,16 @@ class MOZ_SVG {
 		$default_attrs = $alt ? array( 'role' => 'img' ) : array( 'aria-hidden' => 'true' );
 		$final_attrs   = array_merge( $default_attrs, $attrs );
 
-		$content = MOZ_Html::get_element( 'use', array(
+		$content = NID_Html::get_element( 'use', array(
 			'xmlns:xlink' => 'http://www.w3.org/1999/xlink',
-			'xlink:href'  => "#icon-$icon"
+			'xlink:href'  => get_template_directory_uri() . "/assets/svg/sprite-icon.svg#icon-$icon"
 		) );
 
 		if ( $alt ) {
 			$content = "<title>$alt</title>" . $content;
 		}
 
-		return MOZ_Html::get_element( 'svg', $final_attrs, $content );
+		return NID_Html::get_element( 'svg', $final_attrs, $content );
 	}
 
 

@@ -9,10 +9,10 @@
 
 
 /**
- * Class MOZ_Crumbs
+ * Class NID_Crumbs
  *
  */
-class MOZ_Crumbs {
+class NID_Crumbs {
 
 
 	/**
@@ -47,15 +47,15 @@ class MOZ_Crumbs {
 		ob_start();
 		?>
 
-		<nav class="crumbs">
-			<ul class="crumbs__list">
+		<nav aria-label="あなたはここにいます!!" role="navigation">
+			<ul class="breadcrumbs">
 				<?php foreach ( $breadcrumbs_items as $item ) : ?>
 
-					<li class="crumbs__list-item">
+					<li>
 						<?php
-							$classes = 'crumbs__item';
+							$classes = '';
 							if ( $item['current'] ) {
-								$classes .= ' crumbs__item--current';
+								$classes .= 'current';
 							}
 
 							$tag   = 'span';
@@ -65,7 +65,7 @@ class MOZ_Crumbs {
 								$attrs['href'] = $item['link'];
 							}
 
-							MOZ_Html::element( $tag, $attrs, $item['text'] );
+							NID_Html::element( $tag, $attrs, $item['text'] );
 						?>
 					</li>
 
@@ -90,13 +90,13 @@ class MOZ_Crumbs {
 	 */
 	public static function get_crumbs_array( $theme_location = 'primary', $options = array() ) {
 		$clean_options = wp_parse_args( $options, array(
-			'home_title'   => __( 'Home' )
+			'home_title'   => 'トップ'
 		) );
 
 		$current_item = self::get_current_crumb_item();
 		$crumbs       = array( $current_item );
 
-		if ( $current_item['id'] && ( $parents = MOZ_Menu::get_parent_menu_items( $theme_location, $current_item['id'] ) ) ) {
+		if ( $current_item['id'] && ( $parents = NID_Menu::get_parent_menu_items( $theme_location, $current_item['id'] ) ) ) {
 			$crumbs = array_merge( self::menu_items_to_crumbs( $parents ), $crumbs );
 		}
 
@@ -106,7 +106,7 @@ class MOZ_Crumbs {
 			) ) );
 		}
 
-		return apply_filters( 'moz_crumbs_array', $crumbs, $theme_location, $options );
+		return apply_filters( 'NID_crumbs_array', $crumbs, $theme_location, $options );
 	}
 
 
@@ -199,8 +199,8 @@ class MOZ_Crumbs {
 	protected static function get_crumb_item( $item_id, $link, $text, $flags = array() ) {
 		$flags = wp_parse_args( $flags, array(
 			'current'   => false,
-			'parent'    => false,
-			'type'      => false
+			'parent'    => true,
+			'type'      => true
 		) );
 
 		return array_merge( array(

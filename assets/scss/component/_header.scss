@@ -1,90 +1,116 @@
-.c-header-main_background {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 900;
-    transition: transform, background-color, opacity;
-    transition-duration: .3s, 0s, .3s;
-    transition-delay: 0s, 0s, 0s;
-    backface-visibility: hidden;
-    &.is-top:not(.u-background-accent) {
-        background-color: transparent !important;
+.c-header-main {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: $global-width;
+    margin: 0 auto;
+    max-height: 605px;
+    @include breakpoint(large) {
+        min-height: 605px;
+    }
+    .c-block.-extended {
+        height: 75vh;
+        min-height: 450px;
+        max-height: 605px;
+        @include breakpoint(large) {
+            min-height: 605px;
+        }
+        .home &,
+        .error404 & {
+            height: 100vh;
+            max-height: none;
+        }
+    }
+    .home &,
+    .error404 & {
+        height: 100vh;
+        max-height: none;
+        background-color: #FFF;
     }
 }
 
-.c-header-main_container {
-    position: fixed;
+.c-header-main_logo {
+    position: absolute;
     top: 0;
     right: 0;
     left: 0;
-    z-index: 1000;
-    backface-visibility: hidden;
-    transition: transform .3s cubic-bezier( .4, 0, .2, 1);
-}
-
-.c-header-main_logo {
-    position: relative;
-    z-index: 3;
-    pointer-events: auto;
-    padding: 1rem;
+    padding: 2rem;
+    text-align: center;
+    margin: 0;
+    display: block;
+    @include breakpoint(small only) {
+        display: none;
+    }
+    @include breakpoint(medium only) {
+        font-size: calc(1rem + .25vw);
+    }
     @include breakpoint(large) {
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        width: 11.25rem;
-        padding: 3.75rem;
+        top: auto;
+        left: auto;
+        bottom: 0;
+        width: 250px;
+        padding: 5rem;
+        padding-bottom: 1rem !important;
+        font-size: rem-calc(37.7575);
+        .home &,
+        .error404 & {
+            font-size: calc(2rem + .25vh);
+        }
+    }
+    @include breakpoint(large only) {
+        width: 180px;
+        padding: 3.75rem
+    }
+    a {
+        z-index: 1010;
     }
 }
 
 .c-header-main_nav-button {
     position: absolute;
     top: 0;
-    right: 0;
     left: 0;
     cursor: pointer;
-    z-index: 3;
+    z-index: 1010;
     user-select: none;
     transition: transform 0.4s;
     -webkit-tap-highlight-color: transparent;
-    @include breakpoint(medium only) {
-        padding: 2.1875rem 3.75rem;
-        margin-left: -1rem;
-    }
-    @include breakpoint(large) {
-        display: none;
-    }
-}
-
-.c-header-main_nav-button {
-    @include breakpoint(small only) {
-        margin-left: -10px;
-        padding: 17px 25px;
-    }
-    @include breakpoint(medium down) {
-        position: absolute;
-        top: 0;
-        left: 0;
-        cursor: pointer;
-        z-index: 3;
-        user-select: none;
-        transition: transform 0.4s;
-        -webkit-tap-highlight-color: transparent;
+    text-align: left;
+    margin-left: -1rem;
+    padding: 1.6rem 1.5rem;
+    @include breakpoint(medium) {
+        padding: 1.5rem 2rem;
     }
     @include breakpoint(large) {
         display: none;
     }
     &:hover {
-        @include breakpoint(large) {
-            .c-header-main_nav-button_lines::before {
-                transform: translateY(-8px);
-            }
-            .c-header-main_nav-button_lines::after {
-                transform: translateY(8px);
-            }
+        .c-header-main_nav-button_lines::before {
+            transform: translateY(-8px);
         }
+        .c-header-main_nav-button_lines::after {
+            transform: translateY(8px);
+        }
+    }
+}
+
+@keyframes pathanimation {
+    1% {
+        opacity: 1;
+    }
+    40% {
+        stroke-dasharray: 22 230;
+    }
+    60% {
+        stroke-dashoffset: -65;
+    }
+    95% {
+        opacity: 1;
+    }
+    100% {
+        stroke-dashoffset: -65;
+        stroke-dasharray: 160;
+        opacity: 0;
     }
 }
 
@@ -93,6 +119,8 @@
     border-radius: 50%;
     display: inline-block;
     vertical-align: middle;
+    cursor: pointer;
+    z-index: 3;
     @include breakpoint(small only) {
         width: 42px;
         height: 42px;
@@ -111,6 +139,10 @@
         transition: border 0s linear;
         border-radius: 50%;
         border: 0;
+    }
+    .has-nav-open &::after {
+        transition: border 0s linear .4s;
+        border: 2px solid currentColor;
     }
 }
 
@@ -133,11 +165,21 @@
         width: 22px;
         border-top: 2px solid;
         transform: translateY(-6px);
-        transition: transform 0.4s;
+        transition: transform .4s;
         transform-origin: 100% 50%;
     }
     &::after {
         transform: translateY(6px);
+    }
+    .has-nav-open & {
+        transition: border-color .4s steps(1, start);
+        border-color: transparent;
+        &::before {
+            transform: translateX(-3px) translateY(-8px) rotate(-45deg) !important;
+        }
+        &::after {
+            transform: translateX(-3px) translateY(8px) rotate(45deg) !important;
+        }
     }
 }
 
@@ -170,11 +212,28 @@
     stroke-dasharray: 22 230;
     transition: stroke-dasharray 0.4s, stroke-dashoffset 0.4s, opacity 0.4s steps(1, end);
     animation: pathanimation-out 0.4s linear;
-    width: 48px;
-    height: 48px;
-    margin-top: -3px;
+    width: 42px;
+    height: 42px;
+    vertical-align: middle;
     @include breakpoint(medium) {
         width: 54px;
         height: 54px;
+    }
+    .has-nav-open & {
+        opacity: 0;
+        transition: opacity .4s steps(1, start);
+        animation: pathanimation .4s linear;
+        animation-fill-mode: forwards;
+    }
+}
+
+.c-header-main_nav-button_label {
+    display: inline-block;
+    vertical-align: middle;
+    transition: transform .3s cubic-bezier(.4, 0, .2, 1), opacity .3s cubic-bezier(.4, 0, .2, 1);
+    margin-left: -10px;
+    margin-bottom: 1px;
+    .has-nav-open & {
+        opacity: 0;
     }
 }

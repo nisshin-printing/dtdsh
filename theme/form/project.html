@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label for="p-name">お名前<span class="c-contact_label label alert">必須</span>[text* p-name]</label>
+    </div>
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label for="p-company">会社名[text p-company]</label>
+    </div>
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label for="p-email">メールアドレス<span class="c-contact_label label alert">必須</span>[email* p-email]</label>
+    </div>
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label for="p-tel">電話番号[tel p-tel]</label>
+    </div>
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label for="p-budget">ご予算<span class="c-contact_label label alert">必須</span>[select* p-budget include_blank "～1万円" "1万～5万円" "5万～10万円" "10万～50万円" "50万～100万円" "100万～"]</label>
+    </div>
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label for="p-type">仕事の種類<span class="c-contact_label label alert">必須</span>[select* p-type include_blank "Webサイト" "不動産貸借" "戦略/データ解析" "製図/デザイン" "雑貨販売" "その他"]</label>
+    </div>
+    <div class="column small-12 c-contact_item js-contact-step">
+        <label for="p-desc">お問い合わせ内容<span class="c-contact_label label alert">必須</span>[textarea* p-desc placeholder "プロジェクトや目標、依頼内容など"]</label>
+    </div>
+    <div class="column small-12 row align-center c-contact_item js-contact-step">
+        <div class="column small-12 c-contact_submit-wrap c-contact_item js-contact-step">
+            <div class="c-contact_submit js-contact-submit" id="js-project-submit">
+                [submit "送信する"]
+                <div class="c-contact_submit-spinner">
+                    <div class="c-contact_submit-spinner_wheel"></div>
+                </div>
+            </div>
+            <div class="c-contact_submit-error" id="js-submit-error">[response]</div>
+        </div>
+    </div>
+</div>

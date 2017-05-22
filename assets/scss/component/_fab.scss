@@ -1,0 +1,89 @@
+.c-fab {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    transition: z-index 0s, transform .3s;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    margin: 25px;
+    right: -13px;
+    @include breakpoint(medium) {
+        margin: 1.875rem;
+    }
+    @include breakpoint(large) {
+        margin: 2.5rem;
+    }
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.c-fab_ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: scale(.005);
+    transition: transform .6s .2s, opacity .3s, visibility 0s 0s;
+    width: 250vh;
+    height: 250vh;
+    margin-top: -125vh;
+    margin-left: -125vh;
+    @include breakpoint(medium) {
+        width: 250vw;
+        height: 250vw;
+        margin-top: -125vw;
+        margin-left: -125vw;
+    }
+    .has-contact-open &,
+    .is-loading & {
+        transform: scale(1);
+        opacity: 0;
+        visibility: hidden;
+        transition: {
+            duration: .6s, .3s, 0s, ;
+            delay: 0s, .5s, .9s;
+        }
+    }
+    .is-loading & {
+        transition-delay: 0;
+    }
+}
+
+.c-fab_button {
+    position: relative;
+    border-radius: 50%;
+    font-size: 0;
+    z-index: 2;
+    box-shadow: 0 1px 1.5px 0 rgba(#000, .12), 0 1px 1px 0 rgba(#000, .24);
+    transition: color .3s, background-color .3s, box-shadow .3s, visibility 0s, opacity 0s;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 0 4px 5px rgba(#000, .14), 0 1px 10px 0 rgba(#000, .12), 0 2px 4px -1px rgba(#000, .2);
+    }
+    .has-contact-open & {
+        transition-delay: 0s;
+        background-color: $white;
+        color: $black;
+    }
+}
+
+.c-fab_icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: opacity .3s;
+    width: 24px;
+    height: 24px;
+    margin-top: -12px;
+    margin-left: -12px;
+    .has-contact-open &.-open {
+        opacity: 0;
+    }
+    .has-contact-open &.-close {
+        opacity: 1;
+    }
+}

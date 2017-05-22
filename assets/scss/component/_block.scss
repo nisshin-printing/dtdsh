@@ -1,0 +1,136 @@
+.c-block {
+    display: block;
+    text-decoration: none;
+    padding: 1.5rem;
+    height: 21rem;
+    @include breakpoint(medium) {
+        padding: 3rem;
+        height: 27rem;
+    }
+    & & {
+        padding: .5rem;
+    }
+    &.-primary {
+        background: linear-gradient( -48deg, #000, #323335);
+        color: #FFF;
+    }
+    &.-secondary {
+        background: linear-gradient( -48deg, #FAFAFA, #FFF);
+    }
+    &.-link::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transform: translate3d(0, 0, 0);
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        opacity: 0;
+        transition: opacity 0.3s;
+        @include breakpoint(large) {
+            z-index: 800;
+        }
+    }
+    &.-link:hover::after {
+        opacity: 1;
+    }
+    &.row.-flex {
+        display: flex;
+    }
+    &.-extended {
+        height: auto;
+        .c-block_arrow {
+            bottom: auto;
+        }
+    }
+    &.-bg_img {
+        background: {
+            repeat: no-repeat;
+            position: center center;
+            size: cover;
+        }
+    }
+    &.-contain {
+        background-size: contain;
+    }
+    &.-title.c-block_container {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    &.-cta {
+        min-height: calc(100vh - 8.75rem);
+    }
+    &.-expanded {
+        padding: 0;
+        >*:not(.c-block_expanded-expanded) {
+            padding: 1.5rem;
+            @include breakpoint(medium) {
+                padding: 3rem;
+            }
+        }
+    }
+    &.-disabled {
+        z-index: 1;
+        cursor: not-allowed;
+        &::before {
+            content: 'Coming Soon.';
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: inline-block;
+            padding: 1rem 2rem;
+            color: $white;
+            background: rgba(#000, .8);
+            z-index: 5;
+        }
+    }
+}
+
+.c-block_title {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    @media #{breakpoint(medium)} and #{breakpoint(1080px down)} {
+        font-size: 1.4rem;
+    }
+    &.-big {
+        @include breakpoint(small only) {
+            font-size: 1.5rem;
+        }
+        @media #{breakpoint(medium)} and #{breakpoint(674px down)} {
+            font-size: 2.3rem;
+        }
+        @media #{breakpoint(674px)} and #{breakpoint(medium down)} {
+            font-size: 2.5rem;
+        }
+    }
+    &.-center {
+        text-align: center;
+    }
+}
+
+.c-block_description {
+    position: absolute;
+    bottom: 3rem;
+    left: 0;
+    right: 0;
+    line-height: 1.2;
+    p {
+        margin: 0;
+        font-size: 13px;
+    }
+}
+
+.c-block_arrow {
+    position: absolute;
+    right: 1rem;
+}
+
+.c-block.-link:hover {
+    .o-arrow::before {
+        left: 12.3rem;
+    }
+    .o-arrow_icon {
+        left: 30px;
+    }
+}

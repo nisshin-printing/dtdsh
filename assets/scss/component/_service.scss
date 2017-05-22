@@ -1,0 +1,47 @@
+.c-service_toc-wrap {
+    display: none;
+    @include breakpoint(large) {
+        display: block;
+        z-index: 10;
+    }
+}
+
+.c-service_toc {
+    right: 0;
+}
+
+.c-service_icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1rem;
+    @include breakpoint(medium) {
+        width: 6rem;
+        height: 6rem;
+        margin-right: 3rem;
+    }
+}
+
+.c-service_title {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.c-service_desc {
+    @include breakpoint(medium) {
+        margin-top: 2rem;
+    }
+}
+
+.c-service_keywords {
+    .-primary & {
+        color: #D8DAD8;
+    }
+    .-secondary & {
+        color: #797a78;
+    }
+    @include breakpoint(medium down) {
+        margin-top: 2rem;
+    }
+}

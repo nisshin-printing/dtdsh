@@ -9,10 +9,10 @@
 
 
 /**
- * Class MOZ_Pagination
+ * Class NID_Pagination
  *
  */
-class MOZ_Pagination {
+class NID_Pagination {
 
 
 	/**
@@ -67,7 +67,7 @@ class MOZ_Pagination {
 									$attrs['href'] = $item['link'];
 								}
 
-								MOZ_Html::element( $tag, $attrs, $item['text'] );
+								NID_Html::element( $tag, $attrs, $item['text'] );
 							?>
 						</li>
 

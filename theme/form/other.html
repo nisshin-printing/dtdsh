@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label for="ot-name">お名前<span class="c-contact_label label alert">必須</span></label> [text* ot-name]
+    </div>
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label for="ot-email">メールアドレス<span class="c-contact_label label alert">必須</span></label> [email* ot-email]
+    </div>
+    <div class="column small-12 c-contact_item js-contact-step">
+        <label for="ot-file">入稿データ<span class="c-contact_label label alert">必須</span></label>
+        <div class="o-file_wrap">
+            <svg aria-hidden="true" class="o-file_icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://dtdsh.dev/wp-content/themes/dtdsh/assets/svg/sprite-icon.svg#icon-clip"></use></svg> [file* ot-file limit:10000mb filetypes:zip|doc|docx|txt|xls|csv|xls|xlam|xlsx|ppt|pptx|jpg|jpeg|gif|png|tif|pdf|mov|mp3|mp4|ai|eps|psd
+            class:o-file class:js-file]
+            <span class="o-file_name js-file-name"></span>
+            <span class="o-file_clear js-file-clear">クリア</span>
+        </div>
+    </div>
+    <div class="column small-12 c-contact_item js-contact-step">
+        <label for="p-desc">お問い合わせ内容<span class="c-contact_label label alert">必須</span></label> [textarea* p-desc class:o-textarea placeholder "御社名/お問い合わせ内容/入稿データの詳細..."]
+    </div>
+    <div class="column small-12 row align-center c-contact_item js-contact-step">
+        <div class="column small-12 c-contact_submit-wrap c-contact_item js-contact-step">
+            <div type="submit" class="c-contact_submit button large secondary js-contact-submit" id="js-other-submit">
+                [submit "送信する"]
+            </div>
+            <div class="c-contact_submit-error c-contact_item">[response]</div>
+        </div>
+    </div>
+</div>

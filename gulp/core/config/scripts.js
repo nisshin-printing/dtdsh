@@ -9,6 +9,10 @@ var deepMerge = require('../utils/deepMerge');
 var overrides = require('../../config/scripts');
 var assets = require('./common').paths.assets;
 
+let = definePlugin = new webpack.DefinePlugin({
+    __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true'))
+});
+
 /**
  * Script Building
  * Configuration
@@ -17,112 +21,109 @@ var assets = require('./common').paths.assets;
  * @type {{}}
  */
 module.exports = deepMerge({
-	paths: {
-		watch: assets.src + '/js/**/*.js',
-		src: [
-			assets.src + '/js/*.js',
-			'!' + assets.src + '/js/**/_*'
-		],
-		dest: assets.dest + '/js',
-		clean: assets.dest + '/js/**/*.{js,map}'
-	},
+    paths: {
+        watch: assets.src + '/js/**/*.js',
+        src: [
+            assets.src + '/js/*.js',
+            '!' + assets.src + '/js/**/_*'
+        ],
+        dest: assets.dest + '/js',
+        clean: assets.dest + '/js/**/*.{js,map}'
+    },
 
-	options: {
-		webpack: {
+    options: {
+        webpack: {
 
-			// merged with defaults
-			// for :watch task
-			watch: {
-				cache: true,
-				watch: true,
-				devtool: 'eval',
-				keepalive: true
-			},
-
-
-			// merged with defaults
-			// for :dev task
-			dev: {
-				devtool: 'eval'
-			},
+            // merged with defaults
+            // for :watch task
+            watch: {
+                cache: true,
+                watch: true,
+                devtool: 'eval',
+                keepalive: true
+            },
 
 
-			// merged with defaults
-			// for :prod task
-			prod: {
-				plugins: [
-					new webpack.optimize.DedupePlugin(),
-					new webpack.optimize.OccurenceOrderPlugin(true),
-					new webpack.optimize.UglifyJsPlugin({
-						sourceMap: false,
-						comments: false,
-						screw_ie8: true,
-						compress: {
-							drop_console: true,
-							unsafe: true,
-							unsafe_comps: true,
-							screw_ie8: true,
-							warnings: false
-						}
-					})
-				],
-				eslint: {
-					failOnError: true,
-					failOnWarning: true
-				}
-			},
+            // merged with defaults
+            // for :dev task
+            dev: {
+                devtool: 'eval'
+            },
 
-			defaults: {
-				resolve: {
-					extensions: ['', '.js', '.jsx']
-				},
-				output: {
-					chunkFilename: 'chunk-[name].js'
-				},
-				stats: {
-					colors: true
-				},
-				module: {
-					preLoaders: [
-						{
-							test: /\.jsx?$/,
-							exclude: [
-								/node_modules/,
-								/bower_components/,
-								/vendor/,
-								/polyfills/
-							],
-							loader: 'eslint'
-						}
-					],
-					loaders: [
-						{
-							test: /\.jsx?$/,
-							exclude: [
-								/node_modules/,
-								/bower_components/,
-								/polyfills/
-							],
-							loader: 'babel',
-							query: {
-								presets: ['es2015', 'stage-2'],
-								plugins: ['transform-runtime']
-							}
-						}
-					]
-				},
-				plugins: [
-					new BowerWebpackPlugin({
-						includes: /\.jsx?$/
-					})
-				],
-				eslint: {
-					emitError: true,
-					emitWarning: true,
-					configFile: path.resolve('./.eslintrc')
-				}
-			}
 
-		}
-	}
+            // merged with defaults
+            // for :prod task
+            prod: {
+                plugins: [
+                    new webpack.optimize.DedupePlugin(),
+                    new webpack.optimize.OccurenceOrderPlugin(true),
+                    new webpack.optimize.UglifyJsPlugin({
+                        sourceMap: false,
+                        comments: false,
+                        screw_ie8: true,
+                        compress: {
+                            drop_console: true,
+                            unsafe: true,
+                            unsafe_comps: true,
+                            screw_ie8: true,
+                            warnings: false
+                        }
+                    })
+                ],
+                eslint: {
+                    failOnError: false,
+                    failOnWarning: false
+                }
+            },
+
+            defaults: {
+                resolve: {
+                    extensions: ['', '.js', '.jsx']
+                },
+                output: {
+                    chunkFilename: 'chunk-[name].js'
+                },
+                stats: {
+                    colors: true
+                },
+                module: {
+                    preLoaders: [{
+                        test: /\.jsx?$/,
+                        exclude: [
+                            /bower_components/,
+                            /vendor/,
+                            /polyfills/,
+                            /node_modules/
+                        ],
+                        loader: 'eslint'
+                    }],
+                    loaders: [{
+                        test: /\.jsx?$/,
+                        exclude: [
+                            /bower_components/,
+                            /polyfills/,
+                            /node_modules/
+                        ],
+                        loader: 'babel',
+                        query: {
+                            presets: ['es2015', 'stage-2'],
+                            plugins: ['transform-runtime']
+                        }
+                    }]
+                },
+                plugins: [
+                    new BowerWebpackPlugin({
+                        includes: /\.jsx?$/
+                    }),
+                    definePlugin
+                ],
+                eslint: {
+                    emitError: true,
+                    emitWarning: true,
+                    configFile: path.resolve('./.eslintrc')
+                }
+            }
+
+        }
+    }
 }, overrides);

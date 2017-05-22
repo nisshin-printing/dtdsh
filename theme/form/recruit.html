@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label for="r-name">お名前<span class="c-contact_label label alert">必須</span></label> [text* r-name]
+    </div>
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label for="r-email">メールアドレス<span class="c-contact_label label alert">必須</span></label> [email* r-email]
+    </div>
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label for="r-tel">電話番号</label> [tel r-tel]
+    </div>
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label for="r-type">応募職種<span class="c-contact_label label alert">必須</span></label> [select r-type include_blank "Webプロデューサー/アナリスト/マーケター/コンサルタント" "デザイナー/フロントエンドディベロッパー/エンジニア"]
+    </div>
+    <div class="column small-12 c-contact_item js-contact-step">
+        <label for="r-file">提出書類<span class="c-contact_label label alert">必須</span></label>
+        <div class="o-file_wrap">
+            <svg aria-hidden="true" class="o-file_icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://dtdsh.dev/wp-content/themes/dtdsh/assets/svg/sprite-icon.svg#icon-clip"></use></svg> [file* r-file limit:10000mb filetypes:zip|doc|docx|txt|xls|csv|xls|xlam|xlsx|ppt|pptx|jpg|jpeg|gif|png|tif|pdf|mov|mp3|mp4|ai|eps|psd
+            class:o-file class:js-file]
+            <span class="o-file_name js-file-name"></span>
+            <span class="o-file_clear js-file-clear">クリア</span>
+        </div>
+    </div>
+    <div class="column small-12 c-contact_item js-contact-step">
+        <label for="p-desc">自由記入欄<span class="c-contact_label label alert">必須</span></label> [textarea* p-desc class:o-textarea placeholder "簡単な自己紹介など"]
+    </div>
+    <div class="column small-12 row align-center c-contact_item js-contact-step">
+        <div class="column small-12 c-contact_submit-wrap c-contact_item js-contact-step">
+            <div type="submit" class="c-contact_submit button large secondary js-contact-submit" id="js-recruit-submit">
+                [submit "送信する"]
+                <div class="c-contact_submit-spinner">
+                    <div class="c-contact_submit-spinner_wheel"></div>
+                </div>
+            </div>
+            <div class="c-contact_submit-error c-contact_item" id="js-submit-error">[response]</div>
+        </div>
+    </div>
+</div>

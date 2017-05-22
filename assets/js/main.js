@@ -8,11 +8,16 @@ import './vendor/webpack.publicPath';
 
 /**
  * Your theme's js starts
+ * Utility
+ */
+import './utils/_foundation';
+import './utils/_page-scroll';
+import './utils/_file';
+import './utils/_sticky';
+
+/**
+ * Your theme's js starts
  * here...
  */
-
-// silly example:
-import obj from './scripts/example';
-
-/* eslint no-console: 0 */
-console.log(obj);
+import './scripts/_header';
+import './scripts/_contact';

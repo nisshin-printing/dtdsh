@@ -1,0 +1,23 @@
+.c-recruit_title {
+    @include clearfix;
+}
+
+.c-recruit_entry {
+    display: inline-block;
+    margin: 3rem auto;
+}
+
+.c-recruit_job {
+    font-size: 1.5rem;
+}
+
+.c-recruit_time {
+    float: right;
+    font-size: 1.25rem;
+    margin-top: -1rem;
+    margin-right: 1rem;
+    display: none;
+    @include breakpoint(medium) {
+        display: block;
+    }
+}

@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label>お名前<span class="c-contact_label label alert">必須</span></label>
+        <input type="text" autocomplete="name" required>
+    </div>
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label>会社名</label>
+        <input type="text" autocomplete="organization">
+    </div>
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label>メールアドレス<span class="c-contact_label label alert">必須</span></label>
+        <input type="email" autocomplete="email" required>
+    </div>
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label>電話番号</label>
+        <input type="tel" autocomplete="tel">
+    </div>
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label>ご予算<span class="c-contact_label label alert">必須</span></label>
+        <select required>
+				<option>---- 選択 ----</option>
+				<option value="～1万円">～1万円</option>
+				<option value="1万～5万円">1万～5万円</option>
+				<option value="5万～10万円">5万～10万円</option>
+				<option value="10万～50万円">10万～50万円</option>
+				<option value="50万～100万円">50万～100万円</option>
+				<option value="100万～">100万～</option>
+			</select>
+    </div>
+    <div class="column small-12 large-6 c-contact_item js-contact-step">
+        <label>仕事の種類<span class="c-contact_label label alert">必須</span></label>
+        <select required>
+				<option>---- 選択 ----</option>
+				<option value="Webサイト">Webサイト</option>
+				<option value="不動産貸借">不動産貸借</option>
+				<option value="印刷">印刷</option>
+				<option value="戦略/データ解析">戦略/データ解析</option>
+				<option value="製図/デザイン">製図/デザイン</option>
+				<option value="雑貨販売">雑貨販売</option>
+				<option value="その他">その他</option>
+			</select>
+    </div>
+    <div class="column small-12 c-contact_item js-contact-step">
+        <label>お問い合わせ内容<span class="c-contact_label label alert">必須</span></label>
+        <textarea class="o-textarea" placeholder="プロジェクトや目標、依頼内容など" required></textarea>
+    </div>
+    <div class="column small-12 row align-center c-contact_item js-contact-step">
+        <div id="project-recaptcha" class="column small-12 large-6 c-contact_recaptcha js-recaptcha" data-sitekey="6LdkkSEUAAAAABnclK3BXjUi5qtfrs4J2wNtF0sy" data-callback="projectCallback"></div>
+        <div class="column small-12 large-6 c-contact_submit-wrap c-contact_item js-contact-step">
+            <button type="submit" class="c-contact_submit button large secondary js-contact-submit" id="js-project-submit" mozactionhint="send">
+						<span class="o-contact_submit-text">送信する</span>
+						<div class="c-contact_submit-spinner">
+							<div class="c-contact_submit-spinner_wheel"></div>
+						</div>
+					</button>
+            <div class="c-contact_submit-error c-contact_item" id="js-submit-error">エラーが発生しました...</div>
+        </div>
+    </div>
+</div>
