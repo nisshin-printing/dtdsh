@@ -1,7 +1,7 @@
 <div class="column small-12 o-whole">
 	<div class="c-block -secondary -extended js-wow u-fadeInUp">
 		<div class="row o-row">
-			<div id="js-accordion" class="c-accordion column small-12" data-accordion>
+			<div class="c-accordion accordion column small-12" data-accordion data-options="slideSpeed: 500;multiExpand: true;allowAllClosed: true;">
 				<article class="c-accordion_item" data-accordion-item>
 					<a class="c-accordion_title js-nojax">Webプロデューサー/アナリスト<br>マーケター/コンサルタント<?php NID_SVG::icon( 'accordion-arrows', array( 'class' => 'c-accordion_icon' ), '開く/閉じる' ); ?><span class="c-recruit_time">フルタイム</span></a>
 					<div class="c-accordion_content js-accordion-content" data-tab-content>

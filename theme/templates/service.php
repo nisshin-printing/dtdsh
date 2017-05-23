@@ -9,7 +9,7 @@
 	<div class="row o-row c-service_toc-wrap">
 		<div id="js-service-toc" class="c-service_toc column large-3">
 			<nav>
-				<ul class="o-menu -vertical menu vertical" data-magellan>
+				<ul class="o-menu -vertical menu vertical" data-magellan data-options="animationEasing: swing;activeClass: is-active">
 					<li class="o-menu_title">目次</li>
 					<li><a class="js-nojax" href="#marketing">マーケティング</a></li>
 					<li><a class="js-nojax" href="#web">Web制作</a></li>

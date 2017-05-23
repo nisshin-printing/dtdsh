@@ -62,7 +62,7 @@
 					'container_id' => 'js-nav-main',
 					'container_class' => 'c-nav -main',
 					'menu_class' => 'c-nav_list js-dropdown dropdown menu',
-					'items_wrap' => '<ul class="%2$s" data-dropdown-menu role="menu">%3$s</ul>',
+					'items_wrap' => '<ul class="%2$s" data-dropdown-menu data-closing-time="100" role="menu">%3$s</ul>',
 					'walker' => new NID_Walker_Nav_Menu
 				) );
 			?>
