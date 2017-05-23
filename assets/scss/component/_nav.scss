@@ -68,7 +68,9 @@
         }
         .-submenu {
             @extend .no-bullet;
-            left: 20% !important;
+            @include breakpoint(large) {
+                left: 20% !important;
+            }
         }
         .c-nav_link {
             position: relative;
@@ -98,7 +100,7 @@
                 @include breakpoint(small only) {
                     left: 1.5625rem;
                     right: auto;
-                    bottom: .25rem;
+                    bottom: -.22rem;
                 }
                 @include breakpoint(medium only) {
                     left: 3.75rem;
@@ -108,29 +110,42 @@
             }
         }
     }
-    .is-submenu-item {
-        .c-nav_link {
-            padding: .5rem 1.5rem;
-            height: auto;
-            text-align: left;
+}
+
+.is-submenu-item {
+    .c-nav_link {
+        padding: .5rem 1.5rem;
+        height: auto;
+        text-align: left;
+        &::before {
+            width: 1px;
+            height: 100%;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: auto;
+        }
+        &:hover {
+            background-color: darken($white, 2%);
             &::before {
                 width: 1px;
-                height: 100%;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: auto;
-            }
-            &:hover {
-                background-color: darken($white, 2%);
-                &::before {
-                    width: 1px;
-                }
             }
         }
-        &.-current .c-nav_link::before {
-            width: 3px;
-        }
+    }
+    &.-current .c-nav_link::before {
+        width: 3px;
+    }
+}
+
+.is-dropdown-submenu-parent>a::after {
+    right: 2rem !important;
+}
+
+.is-dropdown-submenu {
+    @include breakpoint(medium down) {
+        position: static;
+        margin-left: 1.5rem !important;
+        font-size: .9em;
     }
 }
 
