@@ -7,6 +7,11 @@
 
 
 /* =========================================
+		Define
+   ========================================= */
+define( 'DTDSH_THEME_VERSION', '1.0' );
+
+/* =========================================
 		ACTION HOOKS & FILTERS
    ========================================= */
 
@@ -17,6 +22,21 @@ add_action( 'after_setup_theme',  'theme_setup' );
 add_action( 'wp_enqueue_scripts', 'theme_styles' );
 
 add_action( 'wp_enqueue_scripts', 'theme_scripts' );
+
+add_action( 'wp_head', 'theme_favicon' );
+
+add_action( 'admin_head', 'theme_favicon' );
+
+remove_action( 'wp_head', 'feed_links_extra', 3 );
+
+remove_action( 'wp_head', 'rsd_link' );
+
+remove_action( 'wp_head', 'wlwmanifest_link' );
+
+remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head' );
+
+remove_action( 'wp_head', 'wp_generator' );
+
 
 // expose php variables to js. just uncomment line
 // below and see function theme_scripts_localize
@@ -142,7 +162,7 @@ if ( ! function_exists( 'theme_styles' ) ) {
 		} else {
 			
 		}
-		wp_enqueue_style( 'main', "$theme_dir/assets/css/main.css", array( 'hannari' ), '1.0', 'all' );
+		wp_enqueue_style( 'main', "$theme_dir/assets/css/main.css", array( 'hannari' ), DTDSH_THEME_VERSION, 'all' );
 	}
 }
 
@@ -157,7 +177,7 @@ if ( ! function_exists( 'theme_scripts' ) ) {
 		$theme_dir = get_stylesheet_directory_uri();
 		wp_deregister_script( 'jquery' );
 		wp_enqueue_script( 'jQuery', '//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js', array(), null, true );
-		wp_enqueue_script( 'main', "$theme_dir/assets/js/main.js", array( 'jQuery' ), '1.0', true );
+		wp_enqueue_script( 'main', "$theme_dir/assets/js/main.js", array( 'jQuery' ), DTDSH_THEME_VERSION, true );
 	}
 }
 
@@ -195,18 +215,8 @@ if ( ! function_exists( 'theme_scripts_localize' ) ) {
 
 
 // Add Favicon
-		function theme_favicon() {
-			$theme_dir = get_stylesheet_directory_uri();
-			echo "<link rel=\"SHORTCUT ICON\" href=\"$theme_dir/assets/img/favicon.ico\">",
-			"<link rel=\"apple-touch-icon\" href=\"$theme_dir/assets/img/favicon-144.png\">";
-		}
-		add_action( 'wp_head', 'theme_favicon' );
-		add_action( 'admin_head', 'theme_favicon' );
-
-
-// wp_head Clearner.
-remove_action( 'wp_head', 'feed_links_extra', 3 );
-remove_action( 'wp_head', 'rsd_link' );
-remove_action( 'wp_head', 'wlwmanifest_link' );
-remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head' );
-remove_action( 'wp_head', 'wp_generator' );
+function theme_favicon() {
+	$theme_dir = get_stylesheet_directory_uri();
+	echo "<link rel=\"SHORTCUT ICON\" href=\"$theme_dir/assets/img/favicon.ico\">",
+		"<link rel=\"apple-touch-icon\" href=\"$theme_dir/assets/img/favicon-144.png\">";
+}
