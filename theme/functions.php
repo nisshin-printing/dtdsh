@@ -139,8 +139,10 @@ if ( ! function_exists( 'theme_styles' ) ) {
 		wp_enqueue_style( 'hannari', "//fonts.googleapis.com/earlyaccess/hannari.css", array(), null, 'all' );
 		if ( preg_match( '/Android/i', $_SERVER['HTTP_USER_AGENT'] ) ) {
 			wp_enqueue_style( 'sawarabi', "//fonts.googleapis.com/earlyaccess/sawarabimincho.css", array(), null, 'all' );
+		} else {
+			
 		}
-		wp_enqueue_style( 'main', "$theme_dir/assets/css/main.css", array( 'hannari' ), null, 'all' );
+		wp_enqueue_style( 'main', "$theme_dir/assets/css/main.css", array( 'hannari' ), '1.0', 'all' );
 	}
 }
 
@@ -153,8 +155,9 @@ if ( ! function_exists( 'theme_styles' ) ) {
 if ( ! function_exists( 'theme_scripts' ) ) {
 	function theme_scripts() {
 		$theme_dir = get_stylesheet_directory_uri();
-
-		wp_enqueue_script( 'main', "$theme_dir/assets/js/main.js", array( 'jquery' ), null, true );
+		wp_deregister_script( 'jquery' );
+		wp_enqueue_script( 'jQuery', '//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js', array(), null, true );
+		wp_enqueue_script( 'main', "$theme_dir/assets/js/main.js", array( 'jQuery' ), '1.0', true );
 	}
 }
 
@@ -189,3 +192,21 @@ if ( ! function_exists( 'theme_scripts_localize' ) ) {
 		) );
 	}
 }
+
+
+// Add Favicon
+		function theme_favicon() {
+			$theme_dir = get_stylesheet_directory_uri();
+			echo "<link rel=\"SHORTCUT ICON\" href=\"$theme_dir/assets/img/favicon.ico\">",
+			"<link rel=\"apple-touch-icon\" href=\"$theme_dir/assets/img/favicon-144.png\">";
+		}
+		add_action( 'wp_head', 'theme_favicon' );
+		add_action( 'admin_head', 'theme_favicon' );
+
+
+// wp_head Clearner.
+remove_action( 'wp_head', 'feed_links_extra', 3 );
+remove_action( 'wp_head', 'rsd_link' );
+remove_action( 'wp_head', 'wlwmanifest_link' );
+remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head' );
+remove_action( 'wp_head', 'wp_generator' );

@@ -94,7 +94,7 @@ $font-family-monospace: Consolas,
 Courier,
 monospace;
 $header-color: inherit;
-$header-lineheight: 1.4;
+$header-lineheight: 1.5;
 $header-margin-bottom: 0.5rem;
 $header-styles: ( small: ( 'h1': ('font-size': 24), 'h2': ('font-size': 20), 'h3': ('font-size': 19), 'h4': ('font-size': 18), 'h5': ('font-size': 17), 'h6': ('font-size': 16), ), medium: ( 'h1': ('font-size': 48), 'h2': ('font-size': 40), 'h3': ('font-size': 31), 'h4': ('font-size': 25), 'h5': ('font-size': 20), 'h6': ('font-size': 16), ), );
 $header-text-rendering: optimizeLegibility;
@@ -265,11 +265,11 @@ $dropdown-sizes: ( tiny: 100px, small: 200px, large: 400px, );
 // 18. Dropdown Menu
 // -----------------
 $dropdownmenu-arrows: true;
-$dropdownmenu-arrow-color: $anchor-color;
+$dropdownmenu-arrow-color: currentColor;
 $dropdownmenu-arrow-size: 6px;
 $dropdownmenu-min-width: 200px;
 $dropdownmenu-background: $white;
-$dropdownmenu-border: 1px solid $medium-gray;
+$dropdownmenu-border: none;
 // 19. Forms
 // ---------
 $fieldset-border: none;
@@ -327,12 +327,12 @@ $mediaobject-image-width-stacked: 100%;
 // --------
 $menu-margin: 0;
 $menu-margin-nested: 1rem;
-$menu-item-padding: 0.7rem 1rem;
+$menu-item-padding: .5rem 1rem;
 $menu-item-color-active: $light-gray;
 $menu-item-background-active: transparent;
 $menu-icon-spacing: 0.25rem;
-$menu-item-background-hover: $light-gray;
-$menu-border: $light-gray;
+$menu-item-background-hover: transparent;
+$menu-border: transparent;
 // 23. Meter
 // ---------
 $meter-height: 1rem;

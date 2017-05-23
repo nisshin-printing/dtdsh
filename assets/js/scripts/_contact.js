@@ -134,8 +134,12 @@ jQuery(document).ready($ => {
                 position: 'fixed',
                 top: -scrollTop
             });
+            // Theming.
+            $('meta[name="theme-color"]').attr('content', '#1F1F1F');
             changePage(param);
         } else {
+            // Theming.
+            $('meta[name="theme-color"]').attr('content', '#FFFFFF');
             init();
             body.css({
                 position: 'static',
@@ -162,7 +166,7 @@ jQuery(document).ready($ => {
     // Menuへ戻る
     cBack.click(() => changePage('menu'));
     // Loading.
-    jQuery(window).load(() => {
+    $(window).on('load', () => {
         body.removeClass('is-loading');
     });
     // Pjax
@@ -174,10 +178,10 @@ jQuery(document).ready($ => {
         rewrite: document => {
             const newBodyClass = $('#js-body', document).attr('class');
             $('#js-body').attr('class', newBodyClass);
-            const newCurrentItem = $('.c-nav_item-current', document);
+            const newCurrentItem = $('.-current', document);
             const newCurrentLink = newCurrentItem.find('a').attr('href');
-            $('#js-nav-main').find('.c-nav_item-current').removeClass('c-nav_item-current');
-            $('#js-nav-main').find(`a[href="${newCurrentLink}"]`).parent('.c-nav_item').addClass('c-nav_item-current');
+            $('#js-nav-main').find('.-current').removeClass('-current');
+            $('#js-nav-main').find(`a[href="${newCurrentLink}"]`).parent('.c-nav_item').addClass('-current');
         }
     });
     $(document).on('pjax:fetch', () => {
@@ -185,6 +189,10 @@ jQuery(document).ready($ => {
     });
     $(document).on('pjax:render', () => {
         body.removeClass('is-loading');
+        body.css({
+            position: 'static',
+            top: '0'
+        });
         dataLayer.push({ event: 'changePage' }); // eslint-disable-line no-undef
     });
 });

@@ -18,11 +18,11 @@
             margin-bottom: 0;
             background-color: transparent;
             &:hover {
-                background-color: $menu-item-background-hover;
+                background-color: darken($white, 5%);
             }
             &.is-active {
-                color: $menu-item-color-active;
-                background-color: $menu-item-background-active;
+                color: $white;
+                background-color: $black;
             }
         }
     }

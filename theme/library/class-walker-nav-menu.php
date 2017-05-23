@@ -40,7 +40,7 @@ class NID_Walker_Nav_Menu extends Walker_Nav_Menu {
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$list_classes = array(
 			'_item',
-			'_item -submenu'
+			'_item -submenu is-dropdown-submenu'
 		);
 
 		if ( isset( $args->show_level_class ) && $args->show_level_class ) {
@@ -50,7 +50,7 @@ class NID_Walker_Nav_Menu extends Walker_Nav_Menu {
 		// BEM-ify the given sub classes
 		$list_classes_str = NID_FLOCSS::get_flocss( 'c-nav', $list_classes );
 
-		$output .= "<ul class=\"$list_classes_str\">";
+		$output .= "<ul class=\"$list_classes_str\" role=\"submenu\">";
 	}
 
 
@@ -76,16 +76,16 @@ class NID_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 		// add classes to current/parent/ancestor items
 		if ( isset( $item->current ) && $item->current ) {
-			$item_classes[] = '_item-current';
+			$item_classes[] = '_item -current';
 		}
 		if ( isset( $item->current_item_ancestor ) && $item->current_item_ancestor ) {
-			$item_classes[] = '_item-ancestor';
+			$item_classes[] = '_item -ancestor';
 		}
 		if ( isset( $item->current_item_parent ) && $item->current_item_parent ) {
-			$item_classes[] = '_item-parent';
+			$item_classes[] = '_item -parent';
 		}
 		if ( isset( $item->has_children ) && $item->has_children ) {
-			$item_classes[] = '_item-has-children';
+			$item_classes[] = '_item -has-children';
 		}
 
 		// BEM-ify the given sub classes
@@ -97,7 +97,7 @@ class NID_Walker_Nav_Menu extends Walker_Nav_Menu {
 			$item_classes_str .= " {$item->classes[0]}";
 		}
 
-		$output .= "<li class=\"$item_classes_str\">";
+		$output .= "<li class=\"$item_classes_str\" role=\"menuitem\">";
 
 		/// Menu Link
 

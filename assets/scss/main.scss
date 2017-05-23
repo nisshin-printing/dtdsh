@@ -44,7 +44,7 @@
 // @include foundation-close-button;
 @include foundation-menu;
 // @include foundation-dropdown;
-// @include foundation-dropdown-menu;
+@include foundation-dropdown-menu;
 // @include foundation-responsive-embed;
 @include foundation-label;
 // @include foundation-media-object;
@@ -53,8 +53,9 @@
 // @include foundation-pagination;
 // @include foundation-progress-bar;
 // @include foundation-slider;
-// @include foundation-reveal;
+@include foundation-sticky;
 // @include foundation-switch;
+// @include foundation-reveal;
 // @include foundation-tabs;
 // @include foundation-thumbnail;
 // @include foundation-title-bar;
@@ -63,6 +64,7 @@
 @include foundation-visibility-classes;
 // @include foundation-float-classes;
 @include foundation-flex-classes;
+@include foundation-sticky;
 
 /**
  * Your Custom Styles.

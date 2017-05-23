@@ -16,19 +16,22 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Google Tag Manager 
+	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 	})(window,document,'script','dataLayer','GTM-WV7S6J');</script>
-		 End Google Tag Manager -->
+	<!-- End Google Tag Manager -->
 
 	<?php // replace the no-js class with js on the html element ?>
 	<script>document.documentElement.className=document.documentElement.className.replace(/\bno-js\b/,'js')</script>
 
 	<?php // load the core js polyfills ?>
 	<script async defer src="<?php echo get_template_directory_uri(), '/assets/js/core.js'; ?>"></script>
+
+	<?php // Theming ?>
+	<meta name="theme-color" content="#FFFFFF">
 
 	<?php /*
 	<?php // load the reCAPTCHA API ?>
@@ -58,8 +61,8 @@
 					'container' => 'nav',
 					'container_id' => 'js-nav-main',
 					'container_class' => 'c-nav -main',
-					'menu_class' => 'c-nav_list',
-					'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+					'menu_class' => 'c-nav_list js-dropdown dropdown menu',
+					'items_wrap' => '<ul class="%2$s" data-dropdown-menu role="menu">%3$s</ul>',
 					'walker' => new NID_Walker_Nav_Menu
 				) );
 			?>

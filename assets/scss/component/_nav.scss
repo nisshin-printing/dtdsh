@@ -55,52 +55,81 @@
     margin: 0;
     position: relative;
     text-align: left;
-}
-
-.c-nav_item {
     @include breakpoint(large) {
-        display: inline-block;
+        text-align: right;
     }
-}
-
-.c-nav_item-current .c-nav_link::after,
-.c-nav_link:hover::after {
-    width: 2rem;
-}
-
-.c-nav_link {
-    position: relative;
-    display: block;
-    text-decoration: none;
-    color: currentColor;
-    padding: .5rem 1.5625rem;
-    @include breakpoint(medium) {
-        padding: 1rem 3.75rem
-    }
-    @include breakpoint(large) {
-        padding: 2.1rem 1.5625rem;
-        height: 6.25rem;
-    }
-    &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 1.8rem;
-        margin: 0 auto;
-        width: 0;
-        height: 1px;
-        background-color: currentColor;
-        transition: width .1s cubic-bezier( .4, 0, .2, 1);
-        @include breakpoint(small only) {
-            left: 1.5625rem;
-            right: auto;
-            bottom: .25rem;
+    >.c-nav_item {
+        @include breakpoint(large) {
+            display: inline-block;
         }
-        @include breakpoint(medium only) {
-            left: 3.75rem;
-            right: auto;
-            bottom: .5rem;
+        &.-current>.c-nav_link::before,
+        &>.c-nav_link:hover::before {
+            width: 2rem;
+        }
+        .-submenu {
+            @extend .no-bullet;
+            left: 20% !important;
+        }
+        .c-nav_link {
+            position: relative;
+            display: block;
+            text-decoration: none;
+            color: currentColor;
+            padding: .5rem 1.5625rem;
+            transition: .3s;
+            @include breakpoint(medium) {
+                padding: 1rem 3.75rem
+            }
+            @include breakpoint(large) {
+                padding: 2.1rem 1.5625rem;
+                height: 6.25rem;
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 1.8rem;
+                margin: 0 auto;
+                width: 0;
+                height: 1px;
+                background-color: currentColor;
+                transition: width .1s cubic-bezier( .4, 0, .2, 1);
+                @include breakpoint(small only) {
+                    left: 1.5625rem;
+                    right: auto;
+                    bottom: .25rem;
+                }
+                @include breakpoint(medium only) {
+                    left: 3.75rem;
+                    right: auto;
+                    bottom: .5rem;
+                }
+            }
+        }
+    }
+    .is-submenu-item {
+        .c-nav_link {
+            padding: .5rem 1.5rem;
+            height: auto;
+            text-align: left;
+            &::before {
+                width: 1px;
+                height: 100%;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: auto;
+            }
+            &:hover {
+                background-color: darken($white, 2%);
+                &::before {
+                    width: 1px;
+                }
+            }
+        }
+        &.-current .c-nav_link::before {
+            width: 3px;
         }
     }
 }
