@@ -132,6 +132,9 @@
             bottom: 0;
             right: auto;
             margin: auto;
+            @include breakpoint(large) {
+                left: 0;
+            }
         }
         &:hover {
             background-color: darken($white, 2%);
@@ -150,7 +153,6 @@
         margin: auto;
         @include breakpoint(large) {
             left: 0;
-            height: 100%;
         }
     }
 }

@@ -195,4 +195,7 @@ jQuery(document).ready($ => {
         });
         dataLayer.push({ event: 'changePage' }); // eslint-disable-line no-undef
     });
+    document.addEventListener('wpcf7mailsent', event => { // eslint-disable-line no-undef, no-unused-vars
+        ga('send', 'event', 'Contact Form', 'submit'); // eslint-disable-line no-undef, no-unused-vars
+    }, false);
 });

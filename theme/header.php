@@ -91,11 +91,14 @@
 			$header_link = '';
 			$now_Y = (int)date( 'Y' )-1928;
 			if ( is_front_page() ) {
-				$header_copy = '創業1928年、' . $now_Y . '年間。<br>それが、日進印刷の強さです。';
+				$header_copy = "創業1928年、${now_Y}年間。<br>それが、日進印刷の強さです。";
 				$header_link = '<div class="c-cover_link o-button_wrap"><a href="' . get_permalink( get_page_by_path( 'about' ) ) . '" class="o-button js-wow u-fadeInUp"><span>会社案内を見る</span></a></div>';
 			} elseif ( is_page( 'service' ) ) {
 				$header_copy = 'あらゆる課題に<br>お応えできます。';
-				$header_desc = '<ul><li>' . $now_Y . '年間蓄え続けたマーケティング知識と経験</li><li>制作会社/印刷会社が頼る“速さ”</li><li>Google アナリティクスの認定資格GAIQ保有率100%</li></ul><p>提供するサービスすべてが一流です。</p>';
+				$header_desc = "<ul><li>${now_Y}年間蓄え続けたマーケティング知識と経験</li><li>制作会社/印刷会社が頼る“速さ”</li><li>Google アナリティクスの認定資格GAIQ保有率100%</li></ul><p>提供するサービスすべてが一流です。</p>";
+			} elseif ( is_page( 'service/balance-design' ) ) {
+				$header_copy = '<span style="font-family:\'Poiret One\'">Balance Design</span>';
+				$header_desc = '<p>手芸/編み物などハンドメイドが趣味の社員を日進印刷のマーケターが全力サポート。<br>販売経験がなかったので、流行/競合調査により新作デザインの提案、実店舗やオンラインストアの価格帯も同時に調査し価格の提案をしました。</p><p>その結果、販売開始後2週間で注文が殺到し、さらにその2週間後までに200人ものお客様へ雑貨をお届けしました。</p>';
 			} elseif ( is_page( 'price' ) ) {
 				$header_copy = '低価格のサービスも<br>高価格のサービスも<br>費用対効果を評価してください。';
 			} elseif ( is_page( 'about' ) ) {
