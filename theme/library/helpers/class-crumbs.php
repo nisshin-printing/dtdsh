@@ -176,6 +176,11 @@ class NID_Crumbs {
 			$title   = get_the_title();
 			$type    = 'single';
 
+		} else if ( is_page() ) {
+			$item_id = get_the_ID();
+			$url     = get_permalink();
+			$title   = get_the_title();
+			$type    = 'page';
 		}
 
 		return self::get_crumb_item( $item_id, $url, $title, array(
