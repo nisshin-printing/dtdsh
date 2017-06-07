@@ -23,6 +23,8 @@
 								get_template_part( 'templates/service' );
 							} elseif ( is_page( 'service/balance-design' ) ) {
 								get_template_part( 'templates/item' );
+							} elseif ( is_page( 'service/web-consulting' ) ) {
+								get_template_part( 'templates/service/web-consulting' );
 							} elseif ( is_page( 'price' ) ) {
 								get_template_part( 'templates/price' );
 							} elseif ( is_page( 'about' ) ) {

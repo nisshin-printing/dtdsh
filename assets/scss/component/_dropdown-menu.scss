@@ -27,13 +27,16 @@ $dropdownmenu-border: 1px solid $medium-gray !default;
 // @type Length
 $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 @mixin left-right-arrows {
-    >span::after {
+    >span::after,
+    >a::after {
         #{$global-right}: 14px;
     }
-    &.opens-left>span::after {
+    &.opens-left>span::after,
+    &.opens-left>a::after {
         @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, left);
     }
-    &.opens-right>span::after {
+    &.opens-right>span::after,
+    &.opens-right>a::after {
         @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, right);
     }
 }
@@ -55,11 +58,13 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
             }
         }
         @if $dropdownmenu-arrows {
-            >li.is-dropdown-submenu-parent>span {
+            >li.is-dropdown-submenu-parent>span,
+            >li.is-dropdown-submenu-parent>a{
                 position: relative;
                 padding-#{$global-right}: 1.5rem;
             }
-            >li.is-dropdown-submenu-parent>span::after {
+            >li.is-dropdown-submenu-parent>span::after,
+            >li.is-dropdown-submenu-parent>a::after {
                 @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, down);
                 #{$global-right}: 5px;
                 margin-top: -1 * ($dropdownmenu-arrow-size / 2);
@@ -96,7 +101,8 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 @mixin dtdsh-dropdown-menu {
     .dropdown.menu {
         @include dropdown-menu-direction(horizontal);
-        span {
+        span,
+        a {
             @include disable-mouse-outline;
         }
         .no-js & ul {
@@ -133,7 +139,8 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     }
     .is-dropdown-submenu-parent {
         position: relative;
-        span::after {
+        span::after,
+        a::after {
             position: absolute;
             top: 50%;
             #{$global-right}: 5px;
