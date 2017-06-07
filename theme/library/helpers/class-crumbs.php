@@ -48,10 +48,13 @@ class NID_Crumbs {
 		?>
 
 		<nav aria-label="あなたはここにいます!!" role="navigation">
-			<ul class="breadcrumbs">
-				<?php foreach ( $breadcrumbs_items as $item ) : ?>
+			<ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+				<?php
+					$count = count( $breadcrumbs_items );
+					foreach ( $breadcrumbs_items as $item ) :
+				?>
 
-					<li>
+					<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 						<?php
 							$classes = '';
 							if ( $item['current'] ) {
@@ -59,17 +62,26 @@ class NID_Crumbs {
 							}
 
 							$tag   = 'span';
-							$attrs = array( 'class' => $classes );
+							$attrs = array(
+								'class' => $classes,
+								'itemprop' => 'item'
+							);
 							if ( $item['link'] && '#' !== $item['link'] ) {
 								$tag           = 'a';
 								$attrs['href'] = $item['link'];
 							}
 
-							NID_Html::element( $tag, $attrs, $item['text'] );
+							$content = '<span itemprop="name">' . $item['text'] . '</span>';
+
+							NID_Html::element( $tag, $attrs, $content );
 						?>
+						<meta itemprop="position" content="<?php echo $count; ?>">
 					</li>
 
-				<?php endforeach; ?>
+				<?php
+						$count--;
+					endforeach;
+				?>
 			</ul>
 		</nav>
 

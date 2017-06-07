@@ -18,7 +18,7 @@
 					<li><a class="js-nojax" href="#design">デザイン/アート/グラフィック</a></li>
 					<li><a class="js-nojax" href="#video">映像・CG</a></li>
 					<li><a class="js-nojax" href="#print">各種印刷</a></li>
-					<li><a class="js-nojax" href="#real-estate">テナントオフィス</a></li>
+<!--					<li><a class="js-nojax" href="#real-estate">テナントオフィス</a></li> -->
 				</ul>
 			</nav>
 		</div>
@@ -516,6 +516,7 @@
 			</div>
 		</article>
 	</div>
+<!--
 	<div id="real-estate" data-magellan-target="real-estate" class="column small-12 o-whole">
 		<article class="c-block c-service -secondary -extended js-wow u-fadeInUp">
 			<div class="row o-row">
@@ -553,6 +554,7 @@
 			</div>
 		</article>
 	</div>
+-->
 </section>
 <div class="column small-12 o-whole">
 	<div class="c-block c-service row align-middle align-center -flex -cta">
