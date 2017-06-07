@@ -88,6 +88,9 @@
 			} elseif ( is_page( 'service' ) ) {
 				$header_copy = 'あらゆる課題に<br>お応えできます。';
 				$header_desc = "<ul><li>${now_Y}年間蓄え続けたマーケティング知識と経験</li><li>制作会社/印刷会社が頼る“速さ”</li><li>Google アナリティクスの認定資格GAIQ保有率100%</li></ul><p>提供するサービスすべてが一流です。</p>";
+			} elseif ( is_page( 'service/web-consulting' ) ) {
+				$header_copy = '中小企業向け<br>Webコンサルティング<br>広島No.1  <small>※</small>';
+				$header_desc = '<small>※クライアントの売上・規模・検索順位（「広島　○○」というキーワード）・市場シェア率・それらの維持年月などからクライアント自体が広島トップクラスです。そしてそれを支える日進印刷のWebコンサルティングもクライアントNo.1の比率が広島No.1です。（2017年6月現在100%。該当No.1企業との最長継続契約年数10年以上）</small>';
 			} elseif ( is_page( 'service/balance-design' ) ) {
 				$header_copy = '<span style="font-family:\'Poiret One\'">Balance Design</span>';
 				$header_desc = '<p>手芸/編み物などハンドメイドが趣味の社員を日進印刷のマーケターが全力サポート。<br>販売経験がなかったので、流行/競合調査により新作デザインの提案、実店舗やオンラインストアの価格帯も同時に調査し価格の提案をしました。</p><p>その結果、販売開始後2週間で注文が殺到し、さらにその2週間後までに200人ものお客様へ雑貨をお届けしました。</p>';
