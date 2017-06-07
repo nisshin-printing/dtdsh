@@ -157,7 +157,7 @@
     }
 }
 
-.is-dropdown-submenu-parent>a::after {
+.is-dropdown-submenu-parent>span::after {
     @include breakpoint(medium down) {
         right: 2rem !important;
     }

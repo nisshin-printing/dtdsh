@@ -203,9 +203,9 @@ class NID_Crumbs {
 	 */
 	protected static function get_crumb_item( $item_id, $link, $text, $flags = array() ) {
 		$flags = wp_parse_args( $flags, array(
-			'current'   => true,
-			'parent'    => true,
-			'type'      => true
+			'current'   => false,
+			'parent'    => false,
+			'type'      => false
 		) );
 
 		return array_merge( array(

@@ -44,7 +44,8 @@
 // @include foundation-close-button;
 @include foundation-menu;
 // @include foundation-dropdown;
-@include foundation-dropdown-menu;
+@import 'component/dropdown-menu';
+@include dtdsh-dropdown-menu;
 // @include foundation-responsive-embed;
 @include foundation-label;
 // @include foundation-media-object;
