@@ -50,7 +50,7 @@ class NID_Crumbs {
 		<nav aria-label="あなたはここにいます!!" role="navigation">
 			<ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
 				<?php
-					$count = count( $breadcrumbs_items );
+					$count = 1;
 					foreach ( $breadcrumbs_items as $item ) :
 				?>
 
@@ -79,7 +79,7 @@ class NID_Crumbs {
 					</li>
 
 				<?php
-						$count--;
+						$count++;
 					endforeach;
 				?>
 			</ul>
