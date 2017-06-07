@@ -37,6 +37,8 @@ remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head' );
 
 remove_action( 'wp_head', 'wp_generator' );
 
+add_action( 'wp_head', 'tagmanager_install' );
+
 
 // expose php variables to js. just uncomment line
 // below and see function theme_scripts_localize
@@ -221,4 +223,22 @@ function theme_favicon() {
 	$theme_dir = get_stylesheet_directory_uri();
 	echo "<link rel=\"SHORTCUT ICON\" href=\"$theme_dir/assets/img/favicon.ico\">",
 		"<link rel=\"apple-touch-icon\" href=\"$theme_dir/assets/img/favicon-144.png\">";
+}
+
+
+// Install Google Tag Manager.
+function tagmanager_install() {
+	if ( ! preg_match( '/(local|dev)/', $_SERVER['SERVER_NAME'] ) ) :
+		echo <<< EOT
+<!-- Google Tag Manager -->
+<script>
+	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-WV7S6J');
+</script>
+<!-- End Google Tag Manager -->
+EOT;
+endif;
 }
