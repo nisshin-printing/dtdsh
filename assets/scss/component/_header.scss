@@ -4,16 +4,16 @@
     width: 100%;
     max-width: $global-width;
     margin: 0 auto;
-    max-height: 605px;
+    max-height: 637px;
     @include breakpoint(large) {
-        min-height: 605px;
+        min-height: 637px;
     }
     .c-block.-extended {
         height: 75vh;
         min-height: 450px;
-        max-height: 605px;
+        max-height: 637px;
         @include breakpoint(large) {
-            min-height: 605px;
+            min-height: 637px;
         }
         .home &,
         .error404 & {
