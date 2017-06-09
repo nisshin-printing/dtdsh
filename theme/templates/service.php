@@ -53,7 +53,7 @@
 							<li>LPO</li>
 							<li>EFO</li>
 						</ul>
-						<p><a href="<?php echo get_permalink( get_page_by_path( 'web-consulting' ) ); ?>" class="button">Webコンサルティングについて詳しく見る</a></p>
+						<p><a href="<?php echo get_permalink( get_page_by_path( 'service/web-consulting' ) ); ?>" class="button">Webコンサルティングについて詳しく見る</a></p>
 						<h4 class="c-block_title c-list_title o-title_border">データ分析・解析</h4>
 						<ul class="c-list_service">
 							<li>Googleアナリティクス</li>
