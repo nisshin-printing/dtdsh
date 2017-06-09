@@ -1,0 +1,28 @@
+.o-cta_box {
+    margin: 3rem auto;
+    background-color: #FFF;
+    padding: 3rem;
+    border: 1px double $dark-gray;
+    @include breakpoint(medium) {
+        margin: 5rem auto;
+    }
+    @include breakpoint(large) {
+        margin: 8rem auto;
+    }
+    p:last-of-type() {
+        margin-bottom: 0;
+    }
+}
+
+.o-cta_title {
+    text-align: center;
+    @extend h3;
+    margin-bottom: 1.5rem !important;
+    &.text-left {
+        text-align: left;
+    }
+}
+
+.o-cta_button {
+    margin-top: 3rem;
+}

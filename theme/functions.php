@@ -9,7 +9,7 @@
 /* =========================================
 		Define
    ========================================= */
-define( 'DTDSH_THEME_VERSION', '1.2' );
+define( 'DTDSH_THEME_VERSION', '1.3' );
 
 /* =========================================
 		ACTION HOOKS & FILTERS
@@ -158,15 +158,11 @@ if ( ! function_exists( 'theme_styles' ) ) {
 	function theme_styles() {
 		$theme_dir = get_stylesheet_directory_uri();
 
-		wp_enqueue_style( 'hannari', "//fonts.googleapis.com/earlyaccess/hannari.css", array(), null, 'all' );
-		if ( preg_match( '/Android/i', $_SERVER['HTTP_USER_AGENT'] ) ) {
-			wp_enqueue_style( 'sawarabi', "//fonts.googleapis.com/earlyaccess/sawarabimincho.css", array(), null, 'all' );
-		}
 		if ( is_page('service/balance-design' ) ) {
 			wp_enqueue_style( 'poiret-one', '//fonts.googleapis.com/css?family=Poiret+One&text=BalanceDesign', array(), '', 'all' );
 			wp_enqueue_style( 'lato', '//fonts.googleapis.com/css?family=Lato&text=1234567890', array(), '', 'all' );
 		}
-		wp_enqueue_style( 'main', "$theme_dir/assets/css/main.css", array( 'hannari' ), DTDSH_THEME_VERSION, 'all' );
+		wp_enqueue_style( 'main', "$theme_dir/assets/css/main.css", array(), DTDSH_THEME_VERSION, 'all' );
 	}
 }
 

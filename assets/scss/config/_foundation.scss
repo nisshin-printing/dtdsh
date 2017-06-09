@@ -54,14 +54,7 @@ $black: #1F1F1F;
 $white: #FFF;
 $body-background: $white;
 $body-font-color: $black;
-$body-font-family: 'Hannari',
-'游明朝',
-YuMincho,
-'ヒラギノ明朝 Pro',
-'HiraMinProN-W3',
-'Sawarabi Mincho',
-'モトヤLマルベリ3等幅',
-serif;
+$body-font-family: $serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -89,10 +82,7 @@ $block-grid-max: 8;
 $header-font-family: $body-font-family;
 $header-font-weight: $global-weight-normal;
 $header-font-style: normal;
-$font-family-monospace: Consolas,
-'Liberation Mono',
-Courier,
-monospace;
+$font-family-monospace: $monospace;
 $header-color: inherit;
 $header-lineheight: 1.5;
 $header-margin-bottom: 0.5rem;
@@ -100,7 +90,7 @@ $header-styles: ( small: ( 'h1': ('font-size': 24), 'h2': ('font-size': 20), 'h3
 $header-text-rendering: optimizeLegibility;
 $small-font-size: 80%;
 $header-small-font-color: $medium-gray;
-$paragraph-lineheight: 1.6;
+$paragraph-lineheight: 1.5;
 $paragraph-margin-bottom: 1rem;
 $paragraph-text-rendering: optimizeLegibility;
 $code-color: $black;
