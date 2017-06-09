@@ -20,7 +20,9 @@
 			<div class="c-item_desc-wrap">
 				<h3 class="c-item_title"><?php the_title(); ?></h3>
 				<p class="c-item_price">400円</p>
-				<div class="storesjp-button c-item_buy-button" data-storesjp-item="5923d6b1f22a5b04c80007a7" data-storesjp-variation="5923d9313210d52ff2001398" data-storesjp-name="balance-design" data-storesjp-layout="layout_c" data-storesjp-lang="ja"></div><script>(function(d,s,id){var st=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}var nst=d.createElement(s);nst.id=id;nst.src="//btn.stores.jp/button.js";nst.charset="UTF-8";st.parentNode.insertBefore(nst,st);})(document, "script", "storesjp-button");</script>
+				<div class="c-item_buy-button js-storesjp-button">
+					<div class="storesjp-button" data-storesjp-item="5923d6b1f22a5b04c80007a7" data-storesjp-variation="5923d9313210d52ff2001398" data-storesjp-name="balance-design" data-storesjp-layout="layout_c" data-storesjp-lang="ja"></div><script>(function(d,s,id){var st=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}var nst=d.createElement(s);nst.id=id;nst.src="//btn.stores.jp/button.js";nst.charset="UTF-8";st.parentNode.insertBefore(nst,st);})(document, "script", "storesjp-button");</script>
+				</div>
 			</div>
 		</div>
 	<?php
