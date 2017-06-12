@@ -11,7 +11,7 @@
 <div class="c-cover_wrap column small-12 o-whole">
 	<div class="c-block -primary -title c-block_container row -flex align-middle c-cover js-wow u-fadeInUp">
 		<div class="column">
-			<div class="c-block_title -center o-row">
+			<div class="c-block_title -center -extended o-row">
 				<p><img src="<?php echo get_template_directory_uri(), '/assets/img/slogan-white.png'; ?>" alt="Your Success is Our Business." class="c-cover_image" width="594" height="52"></p>
 				<p class="c-cover_desc" style="margin-top:3rem">日進印刷のサービスは、Webサイト制作やマーケティング・印刷という単品ではなく、<br>今も昔も“クライアントが真に求めている課題を解決する”ことです。<br>企画や戦略立案から運用マネジメント、エンドユーザーを理解するためのリサーチやマーケティング<!--  、好立地な不動産貸借  -->。<br>すべては“クライアントが真に求めている課題を解決する”ために、サービスや事業を広げていきます。
 				</p>

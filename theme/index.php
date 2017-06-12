@@ -6,6 +6,8 @@
  */
 ?>
 <?php
+	if ( ! is_single() || ! is_category() || ! is_tag() || ! is_author() || ! is_search() || is_home() ) {
+
 	if ( empty( $_GET['_pjax'] ) ) get_header();
 ?>
 
@@ -46,4 +48,14 @@
 
 <?php
 	if ( empty( $_GET['_pjax'] ) ) get_footer();
+
+
+	} else {
+
+	if ( empty( $_GET['_pjax'] ) ) get_header( 'blog' );
 ?>
+<h1>YeaaaaaaaaaaaaaaaaaaaH!</h1>
+<?php
+
+	if ( empty( $_GET['_pjax'] ) ) get_footer( 'blog' );
+	}
