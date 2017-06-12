@@ -46,7 +46,7 @@
 // @include foundation-close-button;
 @include foundation-menu;
 // @include foundation-dropdown;
-@import 'component/dropdown-menu';
+@import './component/dropdown-menu';
 @include dtdsh-dropdown-menu;
 // @include foundation-responsive-embed;
 @include foundation-label;
@@ -78,6 +78,7 @@
 @import './component/header';
 @import './component/footer';
 @import './component/nav';
+@import './component/sidenav';
 @import './component/social';
 @import './component/block';
 @import './component/service';
@@ -108,6 +109,7 @@
 @import './object/menu';
 @import './object/text-body';
 @import './object/cta';
+@import './object/waves';
 
 /**
  * Your Custom Styles.

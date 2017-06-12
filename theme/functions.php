@@ -37,8 +37,9 @@ remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head' );
 
 remove_action( 'wp_head', 'wp_generator' );
 
-add_action( 'wp_head', 'tagmanager_install' );
-
+if ( ! preg_match( '/(local|dev)/', $_SERVER['SERVER_NAME'] ) && ! is_user_logged_in() ) :
+	add_action( 'wp_head', 'tagmanager_install' );
+endif;
 
 // expose php variables to js. just uncomment line
 // below and see function theme_scripts_localize
@@ -161,6 +162,11 @@ if ( ! function_exists( 'theme_styles' ) ) {
 		wp_enqueue_style( 'poiret-one', '//fonts.googleapis.com/css?family=Poiret+One&text=BalanceDesign', array(), '', 'all' );
 		wp_enqueue_style( 'lato', '//fonts.googleapis.com/css?family=Lato&text=1234567890', array(), '', 'all' );
 		wp_enqueue_style( 'main', "$theme_dir/assets/css/main.css", array(), DTDSH_THEME_VERSION, 'all' );
+		if ( is_front_page() || is_page() ) {
+			echo '<link rel="preload" as="style" href="', $theme_dir, '/assets/css/blog.css?ver=', DTDSH_THEME_VERSION, '" onload="this.rel=\'stylesheet\'">';
+		} else {
+			wp_enqueue_style( 'blog', "$theme_dir/assets/css/blog.css", array(), DTDSH_THEME_VERSION, 'all' );
+		}
 	}
 }
 
@@ -222,7 +228,6 @@ function theme_favicon() {
 
 // Install Google Tag Manager.
 function tagmanager_install() {
-	if ( ! preg_match( '/(local|dev)/', $_SERVER['SERVER_NAME'] ) || ! is_user_logged_in() ) :
 		echo <<< EOT
 <!-- Google Tag Manager -->
 <script>
@@ -234,5 +239,4 @@ function tagmanager_install() {
 </script>
 <!-- End Google Tag Manager -->
 EOT;
-endif;
 }
