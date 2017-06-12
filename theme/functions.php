@@ -222,7 +222,7 @@ function theme_favicon() {
 
 // Install Google Tag Manager.
 function tagmanager_install() {
-	if ( ! preg_match( '/(local|dev)/', $_SERVER['SERVER_NAME'] ) || ! is_user_logged_in() ) :
+	if ( ! preg_match( '/(local|dev)/', $_SERVER['SERVER_NAME'] ) || is_user_logged_in() ) :
 		echo <<< EOT
 <!-- Google Tag Manager -->
 <script>
