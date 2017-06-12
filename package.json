@@ -61,6 +61,7 @@
     "jQuery": "^1.7.4",
     "lodash": "4.17.4",
     "map-stream": "0.0.7",
+    "materialize-css": "^0.98.2",
     "merge-stream": "1.0.1",
     "node-notifier": "5.1.2",
     "pjax-api": "^3.10.1",
