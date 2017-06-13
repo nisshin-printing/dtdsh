@@ -8,10 +8,10 @@
 
 
 /**
- * Class MOZ_Utils
+ * Class NID_Utils
  *
  */
-class MOZ_Utils {
+class NID_Utils {
 	/**
 	 * Return an escaped email
 	 * string to be used with

@@ -5,14 +5,6 @@
  *
  */
 ?>
-<?php
-
-	if ( empty( $_GET['_pjax'] ) ) get_header();
-?>
-
-<main id="js-main">
+<main id="js-main-blog">
 
 </main>
-
-<?php
-	if ( empty( $_GET['_pjax'] ) ) get_footer();

@@ -376,9 +376,9 @@ $pagination-mobile-current-item: false;
 $pagination-arrows: true;
 // 27. Progress Bar
 // ----------------
-$progress-height: 1rem;
+$progress-height: 3px;
 $progress-background: $medium-gray;
-$progress-margin-bottom: $global-margin;
+$progress-margin-bottom: 0;
 $progress-meter-background: $primary-color;
 $progress-radius: $global-radius;
 // 28. Responsive Embed

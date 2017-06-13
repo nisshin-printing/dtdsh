@@ -1,11 +1,3 @@
-<?php
-/**
- * Read up on the WP Template Hierarchy for
- * when this file is used
- *
- */
-	if ( empty( $_GET['_pjax'] ) ) get_header();
-?>
 <main id="js-main">
 	<div class="o-container">
 		<div class="row expanded o-content">
@@ -40,5 +32,3 @@
 		</div>
 	</div>
 </main>
-<?php
-	if ( empty( $_GET['_pjax'] ) ) get_footer();
