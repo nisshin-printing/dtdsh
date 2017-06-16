@@ -3,7 +3,10 @@
 ?>
 
 
-<main id="js-main">
+<?php
+	$is_single = ( is_single() ) ? ' itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog"' : '';
+?>
+<main id="js-main" role="main"<?php echo $is_single; ?>>
 	<div class="o-container">
 		<div class="row expanded o-content">
 			<div class="column small-12">

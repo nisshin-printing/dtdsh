@@ -6,6 +6,10 @@
     @include breakpoint(34rem) {
         font-size: 23px;
     }
+    .post-info {
+        font-size: 1rem;
+        color: $dark-gray;
+    }
     h1,
     h2,
     h3,
