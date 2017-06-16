@@ -7,4 +7,8 @@ jQuery(document).ready($ => {
             stickyClass: 'is-sticky'
         });
     }
+    $(document.getElementById('js-pagenav')).stick_in_parent({
+        parent: '#js-pagenav-wrap',
+        stickyClass: 'is-sticky'
+    });
 });

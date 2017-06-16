@@ -1,11 +1,10 @@
-.o-text_body {
-    font-size: 1rem;
-    max-width: 704px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    @include breakpoint(34rem) {
-        font-size: 23px;
-    }
+@import './config/fonts';
+body.mceContentBody {
+    font-size: 23px;
+    @include font-family('serif');
+}
+
+.editor-area {
     h1,
     h2,
     h3,
@@ -48,7 +47,7 @@
             text-decoration: none;
         }
     }
-    .wp-post-image {
-        margin-bottom: 1.25rem;
+    .u-underline {
+        background: linear-gradient( transparent 40%, #FF0 40%);
     }
 }

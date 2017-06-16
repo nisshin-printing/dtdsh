@@ -7,8 +7,8 @@
 </div>
 <section id="js-service-wrap" class="row column small-12 expanded c-service_wrap">
 	<div class="row o-row c-service_toc-wrap">
-		<div id="js-service-toc" class="c-service_toc column large-3">
-			<nav>
+		<div class="c-service_toc column large-3" data-sticky-container>
+			<nav class="sticky" data-sticky data-options="stickyOn: large;anchor: js-service-wrap;">
 				<ul class="o-menu -vertical menu vertical" data-magellan data-options="animationEasing: swing;activeClass: is-active">
 					<li class="o-menu_title">目次</li>
 					<li><a class="js-nojax" href="#marketing">マーケティング</a></li>

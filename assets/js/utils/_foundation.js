@@ -8,6 +8,7 @@ import '../vendor/foundation.util.triggers';
 import '../vendor/foundation.magellan';
 import '../vendor/foundation.dropdownMenu';
 import '../vendor/foundation.accordion';
+import '../vendor/foundation.sticky';
 
 $(document).foundation();
 
@@ -18,4 +19,6 @@ jQuery(document).ready($ => {
             allItem.parent().foundation('toggle', allItem.find('.js-accordion-content'), true);
         }
     });
+
+    Foundation.Sticky.defaults.stickyOn = 'small'; // eslint-disable-line no-undef
 });

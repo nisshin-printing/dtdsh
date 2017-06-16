@@ -105,6 +105,10 @@
 				$header_copy = 'お話しましょう。';
 			} elseif ( is_404() ) {
 				$header_copy = '404 - ページが見つかりません...';
+			} elseif ( is_page() || is_search() ) {
+				$header_copy = get_the_title();
+			} elseif ( is_single() ) {
+				$header_copy = 'ブログ';
 			}
 		?>
 			<div class="c-cover_wrap -main">

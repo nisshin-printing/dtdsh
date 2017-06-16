@@ -9,7 +9,7 @@
 /* =========================================
 		Define
    ========================================= */
-define( 'DTDSH_THEME_VERSION', '1.4' );
+define( 'DTDSH_THEME_VERSION', '1.5' );
 
 /* =========================================
 		ACTION HOOKS & FILTERS
@@ -22,6 +22,12 @@ add_action( 'after_setup_theme',  'theme_setup' );
 add_action( 'wp_enqueue_scripts', 'theme_styles' );
 
 add_action( 'wp_enqueue_scripts', 'theme_scripts' );
+
+add_editor_style( get_stylesheet_directory_uri() . '/assets/css/editor-style.css' );
+
+add_filter( 'tiny_mce_before_init', 'theme_editor_styles' );
+
+add_filter( 'mce_buttons', 'theme_editor_buttons' );
 
 add_action( 'wp_head', 'theme_favicon' );
 
@@ -162,11 +168,6 @@ if ( ! function_exists( 'theme_styles' ) ) {
 		wp_enqueue_style( 'poiret-one', '//fonts.googleapis.com/css?family=Poiret+One&text=BalanceDesign', array(), '', 'all' );
 		wp_enqueue_style( 'lato', '//fonts.googleapis.com/css?family=Lato&text=1234567890', array(), '', 'all' );
 		wp_enqueue_style( 'main', "$theme_dir/assets/css/main.css", array(), DTDSH_THEME_VERSION, 'all' );
-		if ( is_front_page() || is_page() ) {
-			echo '<link rel="preload" as="style" href="', $theme_dir, '/assets/css/blog.css?ver=', DTDSH_THEME_VERSION, '" onload="this.rel=\'stylesheet\'">';
-		} else {
-			wp_enqueue_style( 'blog', "$theme_dir/assets/css/blog.css", array(), DTDSH_THEME_VERSION, 'all' );
-		}
 	}
 }
 
@@ -239,4 +240,27 @@ function tagmanager_install() {
 </script>
 <!-- End Google Tag Manager -->
 EOT;
+}
+
+
+/**
+ * ビジュアルエディターCSS
+ */
+function theme_editor_styles( $initArray) {
+	$initArray['body_class'] = 'editor-area';
+	$initArray['block_formats'] = "見出し2=h2;見出し3=h3;見出し4=h4;見出し5=h5;見出し6=h6;段落=p;";
+	$style_formats = array(
+		array(
+			'title' => '蛍光マーカー',
+			'inline' => 'span',
+			'classes' => 'u-underline',
+			'wrapper' => true
+		)
+	);
+	$initArray['style_formats'] = json_encode( $style_formats );
+	return $initArray;
+}
+function theme_editor_buttons( $buttons ) {
+	array_splice( $buttons, 1, 0, 'styleselect' );
+	return $buttons;
 }

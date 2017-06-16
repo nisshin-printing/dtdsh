@@ -1,13 +1,12 @@
 .c-service_toc-wrap {
-    display: none;
     @include breakpoint(large) {
         display: block;
         z-index: 10;
     }
 }
 
-.c-service_toc {
-    right: 0;
+.c-service_toc .is-stuck {
+    right: 0 !important;
 }
 
 .c-service_icon {
