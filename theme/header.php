@@ -105,11 +105,16 @@
 				$header_copy = 'お話しましょう。';
 			} elseif ( is_404() ) {
 				$header_copy = '404 - ページが見つかりません...';
-			} elseif ( is_page() || is_search() ) {
+			} elseif ( is_page() ) {
 				$header_copy = get_the_title();
 			} elseif ( is_single() ) {
 				$header_copy = 'ブログ';
+			} elseif ( is_search() ) {
+				$header_copy = '「%sで検索した結果...」';
+			} elseif ( is_archive() ) {
+				$header_copy = wp_title( '', false );
 			}
+			
 		?>
 			<div class="c-cover_wrap -main">
 				<div class="c-block row -flex align-middle -title -extended js-wow u-fadeInUp">

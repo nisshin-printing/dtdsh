@@ -166,4 +166,15 @@ class NID_Utils {
 	public static function copyright_years( $original_copyright_year, $separator = '-' ) {
 		echo self::get_copyright_years( $original_copyright_year, $separator );
 	}
+
+
+	public static function get_thumbnail_url() {
+		$image_id = get_post_thumbnail_id();
+		$image_url = wp_get_attachment_image_src( $image_id, true );
+		return $image_url[0];
+	}
+
+	public static function thumb_url() {
+		echo self::get_thumbnail_url();
+	}
 }

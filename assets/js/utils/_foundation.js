@@ -19,6 +19,4 @@ jQuery(document).ready($ => {
             allItem.parent().foundation('toggle', allItem.find('.js-accordion-content'), true);
         }
     });
-
-    Foundation.Sticky.defaults.stickyOn = 'small'; // eslint-disable-line no-undef
 });

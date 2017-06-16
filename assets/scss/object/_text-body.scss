@@ -2,7 +2,12 @@
     font-size: 1rem;
     max-width: 704px;
     margin: 0 auto;
-    padding: 0 2rem;
+    &.-serif {
+        @include font-family( 'serif');
+    }
+    &.-sans-serif {
+        @include font-family( 'sans-serif');
+    }
     @include breakpoint(34rem) {
         font-size: 23px;
     }

@@ -32,8 +32,8 @@
 								get_template_part( 'templates/contact' );
 							} elseif ( is_404() ) {
 								get_template_part( 'templates/404' );
-							} elseif ( is_page() || is_single() || is_search() ) {
-								get_template_part( 'templates/content' );
+							} elseif ( is_page() || is_single() || is_search() || is_archive() ) {
+								get_template_part( 'templates/blog' );
 							}
 						}
 					?>
