@@ -1,6 +1,3 @@
-<?php
-	// Template Name: フロントページ
-?>
 <div class="column small-12 o-whole">
 	<div class="c-block c-titlebox_wrap -extended js-wow u-fadeInUp">
 		<div class="o-row">

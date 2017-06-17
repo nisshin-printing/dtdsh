@@ -13,10 +13,10 @@ import '../vendor/foundation.sticky';
 $(document).foundation();
 
 jQuery(document).ready($ => {
-    $('a[href="#all"]').click(() => {
-        const allItem = $(document.getElementById('all'));
-        if (!allItem.hasClass('is-active')) {
-            allItem.parent().foundation('toggle', allItem.find('.js-accordion-content'), true);
-        }
-    });
+	$('a[href="#all"]').click(() => {
+		const allItem = $(document.getElementById('all'));
+		if (!allItem.hasClass('is-active')) {
+			allItem.parent().foundation('toggle', allItem.find('.js-accordion-content'), true);
+		}
+	});
 });

@@ -1,193 +1,193 @@
 .has-nav-open {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .c-nav-wrap.-main {
-    z-index: 1000;
-    @include breakpoint (medium down) {
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100vh;
-        padding: 0;
-        background-color: $secondary-color;
-        text-align: left;
-        overflow-y: auto;
-        transition: transform .4s;
-        transition-timing-function: cubic-bezier( .4, 0, .2, 1);
-    }
-    @include breakpoint(medium only) {
-        width: 50%;
-        left: -50%;
-    }
-    @include breakpoint(large) {
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-    }
-    .has-nav-open & {
-        transform: translateX(100%);
-    }
+  z-index: 1000;
+  @include breakpoint (medium down) {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+    background-color: $secondary-color;
+    text-align: left;
+    overflow-y: auto;
+    transition: transform .4s;
+    transition-timing-function: cubic-bezier( .4, 0, .2, 1);
+  }
+  @include breakpoint(medium only) {
+    width: 50%;
+    left: -50%;
+  }
+  @include breakpoint(large) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+  .has-nav-open & {
+    transform: translateX(100%);
+  }
 }
 
 .c-nav.-main {
-    text-align: left;
-    position: relative;
-    font-size: 1.5rem;
-    transform: translateY(0);
-    transition: transform, background-color;
-    transition-duration: .3s, 0s;
-    pointer-events: auto;
-    margin-top: 8rem;
-    @include breakpoint(large) {
-        margin-top: 0;
-        font-size: 1rem;
-        text-align: right;
-    }
+  text-align: left;
+  position: relative;
+  font-size: 1.5rem;
+  transform: translateY(0);
+  transition: transform, background-color;
+  transition-duration: .3s, 0s;
+  pointer-events: auto;
+  margin-top: 8rem;
+  @include breakpoint(large) {
+    margin-top: 0;
+    font-size: 1rem;
+    text-align: right;
+  }
 }
 
 .c-nav_list {
-    display: inline-block;
-    @extend .no-bullet;
-    padding: 0;
-    margin: 0;
-    position: relative;
-    text-align: left;
+  display: inline-block;
+  @extend .no-bullet;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  text-align: left;
+  @include breakpoint(large) {
+    text-align: right;
+  }
+  >.c-nav_item {
     @include breakpoint(large) {
-        text-align: right;
+      display: inline-block;
     }
-    >.c-nav_item {
-        @include breakpoint(large) {
-            display: inline-block;
-        }
-        &.-current>.c-nav_link::before,
-        &>.c-nav_link:hover::before {
-            width: 2rem;
-        }
-        .-submenu {
-            @extend .no-bullet;
-            @include breakpoint(large) {
-                left: 20% !important;
-            }
-        }
+    &.-current>.c-nav_link::before,
+    &>.c-nav_link:hover::before {
+      width: 2rem;
     }
+    .-submenu {
+      @extend .no-bullet;
+      @include breakpoint(large) {
+        left: 20% !important;
+      }
+    }
+  }
 }
 
 .c-nav_link {
-    position: relative;
-    display: block;
-    text-decoration: none;
-    color: currentColor;
-    transition: .3s;
-    line-height: 1.5 !important;
-    .c-nav_list>.c-nav_item>& {
-        padding: .5rem 1.5625rem;
-        @include breakpoint(medium) {
-            padding: 1rem 3.75rem
-        }
-        @include breakpoint(large) {
-            padding: 2.1rem 1.5625rem;
-            height: 6.25rem;
-        }
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: currentColor;
+  transition: .3s;
+  line-height: 1.5 !important;
+  .c-nav_list>.c-nav_item>& {
+    padding: .5rem 1.5625rem;
+    @include breakpoint(medium) {
+      padding: 1rem 3.75rem
     }
-    &::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 1.8rem;
-        margin: 0 auto;
-        width: 0;
-        height: 1px;
-        background-color: currentColor;
-        transition: width .1s cubic-bezier( .4, 0, .2, 1);
-        @include breakpoint(small only) {
-            left: 1.5625rem;
-            right: auto;
-            bottom: -.22rem;
-        }
-        @include breakpoint(medium only) {
-            left: 3.75rem;
-            right: auto;
-            bottom: .5rem;
-        }
+    @include breakpoint(large) {
+      padding: 2.1rem 1.5625rem;
+      height: 6.25rem;
     }
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1.8rem;
+    margin: 0 auto;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width .1s cubic-bezier( .4, 0, .2, 1);
+    @include breakpoint(small only) {
+      left: 1.5625rem;
+      right: auto;
+      bottom: -.22rem;
+    }
+    @include breakpoint(medium only) {
+      left: 3.75rem;
+      right: auto;
+      bottom: .5rem;
+    }
+  }
 }
 
 .is-submenu-item {
-    .c-nav_link {
-        height: auto;
-        text-align: left;
-        padding: 1rem 3.75rem;
-        @include breakpoint(large) {
-            padding: .5rem 1.5rem;
-        }
-        &::before {
-            width: 1px;
-            height: 50%;
-            top: 0;
-            left: 1rem;
-            bottom: 0;
-            right: auto;
-            margin: auto;
-            @include breakpoint(large) {
-                left: 0;
-            }
-        }
-        &:hover {
-            background-color: darken($white, 2%);
-            &::before {
-                width: 1px;
-            }
-        }
+  .c-nav_link {
+    height: auto;
+    text-align: left;
+    padding: 1rem 3.75rem;
+    @include breakpoint(large) {
+      padding: .5rem 1.5rem;
     }
-    &.-current .c-nav_link::before {
-        width: 3px;
-        top: 0;
-        right: auto;
-        left: 1rem;
-        bottom: 0;
-        height: 50%;
-        margin: auto;
-        @include breakpoint(large) {
-            left: 0;
-        }
+    &::before {
+      width: 1px;
+      height: 50%;
+      top: 0;
+      left: 1rem;
+      bottom: 0;
+      right: auto;
+      margin: auto;
+      @include breakpoint(large) {
+        left: 0;
+      }
     }
+    &:hover {
+      background-color: darken($white, 2%);
+      &::before {
+        width: 1px;
+      }
+    }
+  }
+  &.-current .c-nav_link::before {
+    width: 3px;
+    top: 0;
+    right: auto;
+    left: 1rem;
+    bottom: 0;
+    height: 50%;
+    margin: auto;
+    @include breakpoint(large) {
+      left: 0;
+    }
+  }
 }
 
-.is-dropdown-submenu-parent>span::after {
-    @include breakpoint(medium down) {
-        right: 2rem !important;
-    }
-    @include breakpoint(large) {}
+.is-dropdown-submenu-parent>a::after {
+  @include breakpoint(medium down) {
+    right: 2rem !important;
+  }
+  @include breakpoint(large) {}
 }
 
 .is-dropdown-submenu {
-    @include breakpoint(medium down) {
-        position: static;
-        margin-left: 1.5rem !important;
-        font-size: .9em;
-    }
+  @include breakpoint(medium down) {
+    position: static;
+    margin-left: 1.5rem !important;
+    font-size: .9em;
+  }
 }
 
 .c-nav-overlay {
-    @include breakpoint(medium down) {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        background-color: rgba(#000, .5);
-        visibility: hidden;
-        opacity: 0;
-        transition: visibility 0s .4s cubic-bezier(.4, 0, .2, 1), opacity .4s 0s cubic-bezier(.4, 0, .2, 1);
-        z-index: 1;
-        .has-nav-open & {
-            visibility: visible;
-            opacity: 1;
-            transition-delay: 0s;
-        }
+  @include breakpoint(medium down) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(#000, .5);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s .4s cubic-bezier(.4, 0, .2, 1), opacity .4s 0s cubic-bezier(.4, 0, .2, 1);
+    z-index: 1;
+    .has-nav-open & {
+      visibility: visible;
+      opacity: 1;
+      transition-delay: 0s;
     }
+  }
 }

@@ -32,7 +32,7 @@
 								get_template_part( 'templates/contact' );
 							} elseif ( is_404() ) {
 								get_template_part( 'templates/404' );
-							} elseif ( is_page() || is_single() || is_search() || is_archive() ) {
+							} elseif ( is_single() || is_search() || is_archive() || is_home() ) {
 								get_template_part( 'templates/blog' );
 							}
 						}
