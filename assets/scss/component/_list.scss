@@ -1,7 +1,20 @@
 .c-list_service {
-    @extend .no-bullet;
-    li {
-        display: inline-block;
-        margin: .5rem 1rem;
-    }
+  @extend .no-bullet;
+  li {
+    display: inline-block;
+    margin: .5rem 1rem;
+  }
+}
+
+.c-list_wrap {
+  padding: 2rem 0;
+  &:not(:last-of-type) {
+    border-bottom: 1px solid $light-gray;
+  }
+}
+
+.c-list {
+  .column {
+    padding: 0 .8rem;
+  }
 }

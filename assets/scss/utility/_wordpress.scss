@@ -1,0 +1,14 @@
+img {
+  &.alignright {
+    display: block;
+    margin: 0 0 0 auto;
+  }
+  &.aligncenter {
+    display: block;
+    margin: 0 auto;
+  }
+  &.alignleft {
+    display: block;
+    margin: 0 auto 0 0;
+  }
+}
