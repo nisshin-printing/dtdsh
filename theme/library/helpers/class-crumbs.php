@@ -12,218 +12,122 @@
  * Class NID_Crumbs
  *
  */
-class NID_Crumbs {
+class NID_Crumbs
+{
 
 
-	/**
-	 * Print the breadcrumbs HTML
-	 * based on the given menu
-	 * location
-	 *
-	 * @param string $theme_location
-	 * @param array  $options
-	 */
-	public static function crumbs( $theme_location = 'primary', $options = array() ) {
-		echo self::get_crumbs( $theme_location, $options );
-	}
+    /**
+     * 一番下の階層のカテゴリーを返す
+     */
+    public static function get_youngest_cat($categories)
+    {
+        global $post;
+        if (count( $categories ) === 1) {
+            $youngest = $categories[0];
+        } else {
+            $count = 0;
+            foreach ($categories as $category) {
+                $children = get_term_children( $category->term_id, 'category' );
+                if ($children) {
+                    if ($count < count( $children )) {
+                        $count = count( $children );
+                        $lot_children = $children;
+                        foreach ($lot_children as $child) {
+                            if (in_category( $child, $post->ID )) {
+                                $youngest = get_category( $child );
+                            }
+                        }
+                    }
+                } else {
+                    $youngest = $category;
+                }
+            }
+        }
+        return $youngest;
+    }
 
+     /**
+     * 一番下のタクソノミーを返す関数
+     */
+    public static function get_youngest_tax($taxes, $mytaxonomy)
+    {
+        global $post;
+        if (count( $taxes ) === 1) {
+            $youngest - $taxes[key( $taxes ) ];
+        } else {
+            $count = 0;
+            foreach ($taxes as $tax) {
+                $children = get_term_children( $tax->term_id, $mytaxonomy );
+                if ($children) {
+                    if ($count < count( $children )) {
+                        $count = count( $children );
+                        $lot_children = $children;
+                        foreach ($lot_children as $child) {
+                            if (is_object_in_term( $post->ID, $mytaxonomy )) {
+                                $youngest = get_term( $child, $mytaxonomy );
+                            }
+                        }
+                    }
+                } else {
+                    $youngest = $tax;
+                }
+            }
+        }
+        return $youngest;
+    }
 
-	/**
-	 * Return the breadcrumbs HTML
-	 * based on the given menu
-	 * location
-	 *
-	 * @param string $theme_location
-	 * @param array  $options
-	 *
-	 * @return string
-	 */
-	public static function get_crumbs( $theme_location = 'primary', $options = array() ) {
-		$breadcrumbs_items = self::get_crumbs_array( $theme_location, $options );
-		if ( ! $breadcrumbs_items || empty( $breadcrumbs_items ) ) {
-			return '';
-		}
+    /**
+     * パンくずリスト
+     */
+    public static function breadcrumbs($arg = array())
+    {
+        global $post;
+        $defaults = array(
+            'menu_class' => 'breadcrumbs',
+            'home' => 'トップページ',
+            'search' => 'で検索した結果',
+            'tag' => 'タグ',
+            'notfound' => 'ページがありません！',
+            'ul_option' => 'itemscope itemtype="http://schema.org/BreadcrumbList"',
+            'li_option' => 'itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"',
+            'a_option' => 'itemprop="item"',
+            'span_option' => 'itemprop="name"',
+            'meta_option' => 'itemprop="position"'
+        );
+        $args = wp_parse_args( $args, $defaults );
+        extract( $args, EXTR_SKIP );
+        if (! is_front_page() && ! is_admin()) {
+            $str .= '<nav aria-label="あなたは今ここにいます！" role="navigation">';
+            $str .= "<ul class=\"$menu_class\" $ul_options>";
+            $str .= "<li $li_optioin>";
+            $str .= "<a href=\"" . home_url() . "\" $a_option>";
+            $str .= "<span $span_option>$home</span>";
+            $str .= "<meta $meta_option content=\"1\">";
+            $str .= '</a></li>';
 
-		ob_start();
-		?>
-
-		<nav aria-label="あなたはここにいます!!" role="navigation">
-			<ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
-				<?php
-					$count = 1;
-					foreach ( $breadcrumbs_items as $item ) :
-				?>
-
-					<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-						<?php
-							$classes = '';
-							if ( $item['current'] ) {
-								$classes .= 'current';
-							}
-
-							$tag   = 'span';
-							$attrs = array(
-								'class' => $classes,
-								'itemprop' => 'item'
-							);
-							if ( $item['link'] && '#' !== $item['link'] ) {
-								$tag           = 'a';
-								$attrs['href'] = $item['link'];
-							}
-
-							$content = '<span itemprop="name">' . $item['text'] . '</span>';
-
-							NID_Html::element( $tag, $attrs, $content );
-						?>
-						<meta itemprop="position" content="<?php echo $count; ?>">
-					</li>
-
-				<?php
-						$count++;
-					endforeach;
-				?>
-			</ul>
-		</nav>
-
-		<?php
-		return ob_get_clean();
-	}
-
-
-	/**
-	 * Get the breadcrumbs based on
-	 * a menu location for the
-	 * current content
-	 *
-	 * @param string $theme_location
-	 * @param array  $options
-	 *
-	 * @return array
-	 */
-	public static function get_crumbs_array( $theme_location = 'primary', $options = array() ) {
-		$clean_options = wp_parse_args( $options, array(
-			'home_title'   => 'トップ'
-		) );
-
-		$current_item = self::get_current_crumb_item();
-		$crumbs       = array( $current_item );
-
-		if ( $current_item['id'] && ( $parents = NID_Menu::get_parent_menu_items( $theme_location, $current_item['id'] ) ) ) {
-			$crumbs = array_merge( self::menu_items_to_crumbs( $parents ), $crumbs );
-		}
-
-		if ( ! is_front_page() ) {
-			array_unshift( $crumbs, self::get_crumb_item( 'home', home_url(), $clean_options['home_title'], array(
-				'type' => 'home'
-			) ) );
-		}
-
-		return apply_filters( 'NID_crumbs_array', $crumbs, $theme_location, $options );
-	}
-
-
-	/**
-	 * Transform menu items into
-	 * breadcrumb items
-	 *
-	 * @param $menu_items
-	 *
-	 * @return array
-	 */
-	public static function menu_items_to_crumbs( $menu_items ) {
-		$crumbs = array();
-		foreach ( $menu_items as $i => $menu_item ) {
-			$crumbs[] = self::get_crumb_item(
-				$menu_item->object_id,
-				$menu_item->url,
-				$menu_item->title
-			);
-		}
-
-		return $crumbs;
-	}
-
-
-	/**
-	 * Get the breadcrumb item
-	 * for the content being
-	 * currently viewed
-	 *
-	 * @return array
-	 */
-	public static function get_current_crumb_item() {
-		$item_id = $type = $url = $title = false;
-
-		if ( is_search() ) {
-			$url     = get_search_link();
-			$title   = __( 'Search' );
-			$type    = 'search';
-
-		} else if ( is_author() ) {
-			/* @var $user WP_User */
-			$user    = get_queried_object();
-
-			$item_id = $user->ID;
-			$url     = get_author_posts_url( $user->ID );
-			$title   = $user->display_name;
-			$type    = 'author';
-
-		} else if ( is_post_type_archive() ) {
-			$item_id = get_post_type();
-			$url     = get_post_type_archive_link( $item_id );
-			$title   = post_type_archive_title( '', false );
-			$type    = 'archive';
-
-		} else if ( is_archive() ) {
-			$term    = get_queried_object();
-
-			$item_id = $term->term_id;
-			$url     = get_term_link( $item_id, $term->taxonomy );
-			$title   = single_term_title( '', false );
-			$type    = 'taxonomy';
-
-		} else if ( is_single() ) {
-			$item_id = get_the_ID();
-			$url     = get_permalink();
-			$title   = get_the_title();
-			$type    = 'single';
-
-		} else if ( is_page() ) {
-			$item_id = get_the_ID();
-			$url     = get_permalink();
-			$title   = get_the_title();
-			$type    = 'page';
-		}
-
-		return self::get_crumb_item( $item_id, $url, $title, array(
-			'current' => true,
-			'type'    => $type
-		) );
-	}
-
-
-	/**
-	 * Return a single normalized
-	 * breadcrumb properties array
-	 *
-	 * @param string $item_id
-	 * @param string $link
-	 * @param string $text
-	 * @param array  $flags
-	 *
-	 * @return array
-	 */
-	protected static function get_crumb_item( $item_id, $link, $text, $flags = array() ) {
-		$flags = wp_parse_args( $flags, array(
-			'current'   => false,
-			'parent'    => false,
-			'type'      => false
-		) );
-
-		return array_merge( array(
-			'id'   => $item_id,
-			'link' => $link,
-			'text' => $text,
-		), $flags );
-	}
+            // カテゴリー -> Archive
+            if (is_archive() || is_home()) {
+                $str .= "<li $li_option><a href=\"" . get_page_link( get_page_by_path( 'blog' ) ) . "\" $a_option><span $span_option>" . get_the_title( get_page_by_path( 'blog' ) ) . "</span><meta $meta_option content=\"2\"></a></li>";
+                
+                if (is_category()) {
+                    $cat = get_queried_object();
+                    $count = 3;
+                    if ($cat->parent !== 0) {
+                        $ancestors = array_reverse( get_ancestors( $cat->cat_ID, 'category' ) );
+                        $ancestor_Num = count( $ancestors );
+                        $count = $ancestor_Num + 2;
+                        while ($count < $ancestor_Num + 3) {
+                            $str .= "<li $li_option><a href=\"" . get_category_link( $ancestors[$count - 3] ) . "\" $a_option><span $span_option>" . get_cat_name( $ancestors[$count - 3] ) . "</span><meta $meta_option content=\"$count\"></a></li>";
+                            $count++;
+                        }
+                    }
+                    $str .= "<li class=\"current\" $li_option><span $span_option>" . $cat->name . "</span><meta $meta_option content=\"$count\"></li>";
+                } elseif (is_date()) {
+                    if (get_query_var( 'day' ) !== 0) {
+                        $str .= "<li $li_option><a href=\"" . get_year_link( get_query_var( 'year' ) ) . "\" $a_option><span $span_option>" . get_query_var( 'year' ) . "年</span><meta $meta_option content=\"3\"></a></li>"
+                    }
+                }
+            }
+        }
+    }
 }
