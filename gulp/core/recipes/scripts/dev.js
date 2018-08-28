@@ -21,24 +21,24 @@ var config = require('../../config/scripts');
  * @returns {*}
  */
 module.exports = function() {
-    return gulp.src(config.paths.src)
-        .pipe(plumber())
+		return gulp.src(config.paths.src)
+				.pipe(plumber())
 
-    .pipe(named()) // vinyl-named is used to allow for
-        // multiple entry files
-        .pipe(gulpWebpack(
-            deepMerge(
-                config.options.webpack.defaults,
-                config.options.webpack.dev
-            ), null,
-            function(err, stats) {
-                logStats(err, stats);
+		.pipe(named()) // vinyl-named is used to allow for
+				// multiple entry files
+				.pipe(gulpWebpack(
+						deepMerge(
+								config.options.webpack.defaults,
+								config.options.webpack.dev
+						), null,
+						function(err, stats) {
+								logStats(err, stats);
 
-                // reload browser-sync when
-                // a package is updated
-                browserSync.reload();
-                notifaker(pumped('JS Packaged'));
-            }))
+								// reload browser-sync when
+								// a package is updated
+								browserSync.reload();
+								notifaker(pumped('JS Packaged'));
+						}))
 
-    .pipe(gulp.dest(config.paths.dest));
+		.pipe(gulp.dest(config.paths.dest));
 };

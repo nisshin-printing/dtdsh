@@ -1,5 +1,5 @@
 <?php
-if (empty( $_GET['_pjax'] )) {
+if ( empty( $_GET['_pjax'] ) ) {
     get_header();
 }
 ?>
@@ -17,23 +17,25 @@ if (empty( $_GET['_pjax'] )) {
                         NID_Crumbs::crumbs();
                     if (is_front_page()) {
                         get_template_part( 'templates/front' );
-                    } elseif (is_page( 'service' )) {
+                    } else if (is_page( 'service' )) {
                         get_template_part( 'templates/service' );
-                    } elseif (is_page( 'service/balance-design' )) {
+                    } else if (is_page( 'service/balance-design' )) {
                         get_template_part( 'templates/service/item' );
-                    } elseif (is_page( 'service/web-consulting' )) {
+                    } else if (is_page( 'service/web-consulting' )) {
                         get_template_part( 'templates/service/web-consulting' );
-                    } elseif (is_page( 'price' )) {
+										} else if (is_page( 'service/marketing-automation' )) {
+                        get_template_part( 'templates/service/marketing-automation' );
+                    } else if (is_page( 'price' )) {
                         get_template_part( 'templates/price' );
-                    } elseif (is_page( 'about' )) {
+                    } else if (is_page( 'about' )) {
                         get_template_part( 'templates/about' );
-                    } elseif (is_page( 'recruit' )) {
+                    } else if (is_page( 'recruit' )) {
                         get_template_part( 'templates/recruit' );
-                    } elseif (is_page( 'contact' )) {
+                    } else if (is_page( 'contact' )) {
                         get_template_part( 'templates/contact' );
-                    } elseif (is_404()) {
+                    } else if (is_404()) {
                         get_template_part( 'templates/404' );
-                    } elseif (is_single() || is_search() || is_archive() || is_home()) {
+                    } else if (is_single() || is_search() || is_archive() || is_home() || is_page() ) {
                         get_template_part( 'templates/blog' );
                     }
                     ?>
@@ -45,6 +47,6 @@ if (empty( $_GET['_pjax'] )) {
 
 
 <?php
-if (empty( $_GET['_pjax'] )) {
+if ( empty( $_GET['_pjax'] ) ) {
     get_footer();
 }

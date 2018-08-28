@@ -24,7 +24,7 @@
 	<div class="c-block -secondary -extended js-wow u-fadeInUp">
 		<div class="row o-row">
 			<?php
-				if ( is_single() ) {
+				if ( is_single() || is_page() ) {
 					get_template_part( 'templates/content-single' );
 				} elseif ( is_home() || is_search() || is_archive() ) {
 					get_template_part( 'templates/content-list' );

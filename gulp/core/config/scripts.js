@@ -1,6 +1,8 @@
 var path = require('path');
 var webpack = require('webpack-stream').webpack;
 var BowerWebpackPlugin = require('bower-webpack-plugin');
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 // utils
 var deepMerge = require('../utils/deepMerge');
@@ -10,7 +12,7 @@ var overrides = require('../../config/scripts');
 var assets = require('./common').paths.assets;
 
 let = definePlugin = new webpack.DefinePlugin({
-    __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true'))
+		__DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true'))
 });
 
 /**
@@ -21,109 +23,104 @@ let = definePlugin = new webpack.DefinePlugin({
  * @type {{}}
  */
 module.exports = deepMerge({
-    paths: {
-        watch: assets.src + '/js/**/*.js',
-        src: [
-            assets.src + '/js/*.js',
-            '!' + assets.src + '/js/**/_*'
-        ],
-        dest: assets.dest + '/js',
-        clean: assets.dest + '/js/**/*.{js,map}'
-    },
+		paths: {
+				watch: assets.src + '/js/**/*.js',
+				src: [
+						assets.src + '/js/*.js',
+						'!' + assets.src + '/js/**/_*'
+				],
+				dest: assets.dest + '/js',
+				clean: assets.dest + '/js/**/*.{js,map}'
+		},
 
-    options: {
-        webpack: {
+		options: {
+				webpack: {
 
-            // merged with defaults
-            // for :watch task
-            watch: {
-                cache: true,
-                watch: true,
-                devtool: 'eval',
-                keepalive: true
-            },
+						// merged with defaults
+						// for :watch task
+						watch: {
+								watch: true,
+								cache: true
+						},
 
 
-            // merged with defaults
-            // for :dev task
-            dev: {
-                devtool: 'eval'
-            },
+						// merged with defaults
+						// for :dev task
+						dev: {
+								mode: 'development',
+								devtool: true,
+								cache: true
+						},
 
 
-            // merged with defaults
-            // for :prod task
-            prod: {
-                plugins: [
-                    new webpack.optimize.DedupePlugin(),
-                    new webpack.optimize.OccurenceOrderPlugin(true),
-                    new webpack.optimize.UglifyJsPlugin({
-                        sourceMap: false,
-                        comments: false,
-                        screw_ie8: true,
-                        compress: {
-                            drop_console: true,
-                            unsafe: true,
-                            unsafe_comps: true,
-                            screw_ie8: true,
-                            warnings: false
-                        }
-                    })
-                ],
-                eslint: {
-                    failOnError: false,
-                    failOnWarning: false
-                }
-            },
+						// merged with defaults
+						// for :prod task
+						prod: {
+								mode: 'production',
+								devtool: false,
+								optimization: {
+										minimizer: [
+												new UglifyJsPlugin({
+														uglifyOptions: {
+																compress: {
+																		drop_console: true
+																},
+																cache: false,
+																parallel: true,
+																sourceMap: false,
+																minify: {}
+														}
+												})
+										]
+								}
+						},
 
-            defaults: {
-                resolve: {
-                    extensions: ['', '.js', '.jsx']
-                },
-                output: {
-                    chunkFilename: 'chunk-[name].js'
-                },
-                stats: {
-                    colors: true
-                },
-                module: {
-                    preLoaders: [{
-                        test: /\.jsx?$/,
-                        exclude: [
-                            /bower_components/,
-                            /vendor/,
-                            /polyfills/,
-                            /node_modules/
-                        ],
-                        loader: 'eslint'
-                    }],
-                    loaders: [{
-                        test: /\.jsx?$/,
-                        exclude: [
-                            /bower_components/,
-                            /polyfills/,
-                            /node_modules/
-                        ],
-                        loader: 'babel',
-                        query: {
-                            presets: ['es2015', 'stage-2'],
-                            plugins: ['transform-runtime']
-                        }
-                    }]
-                },
-                plugins: [
-                    new BowerWebpackPlugin({
-                        includes: /\.jsx?$/
-                    }),
-                    definePlugin
-                ],
-                eslint: {
-                    emitError: true,
-                    emitWarning: true,
-                    configFile: path.resolve('./.eslintrc')
-                }
-            }
+						defaults: {
+								mode: 'development',
 
-        }
-    }
+								resolve: {
+										extensions: ['.js', '.jsx']
+								},
+								output: {
+										chunkFilename: 'chunk-[name].js'
+								},
+								module: {
+										rules: [{
+														test: /\.jsx?$/,
+														exclude: [
+																/bower_components/,
+																/vendor/,
+																/polyfills/,
+																/node_modules/
+														],
+														use: [{
+																loader: 'babel-loader',
+																options: {
+																		presets: [
+																				['env', { modules: false }]
+																		]
+																}
+														}]
+												},
+												{
+														enforce: 'pre',
+														test: /\.jsx?$/,
+														exclude: [
+																/bower_components/,
+																/vendor/,
+																/polyfills/,
+																/node_modules/
+														],
+														loader: 'eslint-loader',
+												}
+										]
+								},
+								plugins: [
+										new LodashModuleReplacementPlugin,
+										definePlugin
+								]
+						}
+
+				}
+		}
 }, overrides);
