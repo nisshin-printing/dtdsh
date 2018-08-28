@@ -32,15 +32,20 @@
 				</tr>
 				<tr>
 					<th>代表取締役社長</th>
-					<td>福田　信彦（三代目）</td>
+					<td>
+						<a href="https://www.facebook.com/kazuki.fukuda.35" target="_blank">福田　一生（五代目）</a>
+					</td>
 				</tr>
 				<tr>
 					<th>所在地</th>
-					<td>〒733-0001<br>広島県広島市西区大芝一丁目19-20　A2ビル3F（事務所）</td>
+					<td>〒733-0001
+						<br>広島県広島市西区大芝一丁目19-20　A2ビル3F（事務所）</td>
 				</tr>
 				<tr>
 					<th>連絡先</th>
-					<td>TEL：　<a href="tel:0822371611">（082）237-1611</a><br>FAX：　（082）237-1622</td>
+					<td>TEL：
+						<a href="tel:0822371611">（082）237-1611</a>
+						<br>FAX：　（082）237-1622</td>
 				</tr>
 				<tr>
 					<th>事業内容</th>
@@ -52,7 +57,7 @@
 							<li>コンピュータソフトウェアの開発及び販売</li>
 							<li>印刷業、製版業及び印刷業のデザインの制作</li>
 							<li>雑貨の企画・デザイン・製造・販売及びそれらのコンサルティング</li>
-	<!--						<li>不動産賃貸業及び付随する関連業務</li>  -->
+							<!--						<li>不動産賃貸業及び付随する関連業務</li>  -->
 						</ol>
 					</td>
 				</tr>
@@ -73,15 +78,15 @@
 			<table class="stack">
 				<tr>
 					<th>1928年2月</th>
-					<td>日進印刷一代目が日進印刷所として創業</td>
+					<td>日進印刷所として創業</td>
 				</tr>
 				<tr>
 					<th>1948年3月</th>
-					<td>日進印刷二代目（のちに株式会社福萬の二代目）が日進印刷株式会社を設立</td>
+					<td>日進印刷株式会社を設立</td>
 				</tr>
 				<tr>
 					<th>1956年1月</th>
-					<td>福萬一代目が株式会社福萬を設立</td>
+					<td>株式会社福萬を設立</td>
 				</tr>
 				<tr>
 					<th>1967年9月</th>
@@ -89,7 +94,11 @@
 				</tr>
 				<tr>
 					<th>1981年6月</th>
-					<td>三代目が株式会社福萬・日進印刷株式会社両社の三代目代表取締役社長に就任</td>
+					<td>四代目が株式会社福萬・日進印刷株式会社両社の四代目代表取締役に就任</td>
+				</tr>
+				<tr>
+					<th>2017年7月</th>
+					<td>五代目が株式会社福萬・日進印刷株式会社両社の五代目代表取締役に就任</td>
 				</tr>
 			</table>
 		</div>
@@ -104,14 +113,18 @@
 </div>
 <div class="column small-12 o-whole">
 	<article class="c-block -secondary -extended -expanded js-wow u-fadeInUp">
-		<div id="map" class="c-block_expanded-expanded"><iframe width="100%" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCdDGTfL9O8g5Z0nxO_6M2T_YGrzfya1tc&q=日進印刷株式会社&attribution_source=" allowfullscreen>
-</iframe></div>
+		<div id="map" class="c-block_expanded-expanded">
+			<iframe width="100%" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCdDGTfL9O8g5Z0nxO_6M2T_YGrzfya1tc&q=日進印刷株式会社&attribution_source="
+			    allowfullscreen>
+			</iframe>
+		</div>
 	</article>
 </div>
 <div class="column small-12 o-whole">
 	<div class="c-block c-service row align-middle align-center -flex -cta">
 		<div class="c-action_link-wrap column">
-			<a class="c-action_link js-next-link js-wow u-slideUp" href="<?php echo get_permalink( get_page_by_path( 'recruit' ) ); ?>" data-hover="採用情報">採用情報</a>
+			<a class="c-action_link js-next-link js-wow u-slideUp" href="<?php echo get_permalink( get_page_by_path( 'recruit' ) ); ?>"
+			    data-hover="採用情報">採用情報</a>
 		</div>
 	</div>
 </div>
