@@ -12,7 +12,7 @@
 	<div class="c-block -primary -title -extended c-block_container row -flex align-middle c-cover js-wow u-fadeInUp">
 		<div class="column">
 			<div class="c-block_title -center o-row">
-				<p><img src="<?php echo get_template_directory_uri(), '/assets/img/slogan-white.png'; ?>" alt="Your Success is Our Business." class="c-cover_image" width="594" height="52"></p>
+				<p><img data-src="<?php echo get_template_directory_uri(), '/assets/img/slogan-white.png'; ?>" alt="Your Success is Our Business." class="c-cover_image lazyload" width="594" height="52"></p>
 				<p class="c-cover_desc" style="margin-top:3rem">日進印刷のサービスは、Webサイト制作やマーケティング・印刷という単品ではなく、<br>今も昔も“クライアントが真に求めている課題を解決する”ことです。<br>企画や戦略立案から運用マネジメント、エンドユーザーを理解するためのリサーチやマーケティング<!--  、好立地な不動産貸借  -->。<br>すべては“クライアントが真に求めている課題を解決する”ために、サービスや事業を広げていきます。
 				</p>
 			</div>
@@ -104,14 +104,14 @@
 	</div>
 </div>
 <div class="column small-12 o-whole">
-	<a id="works-seo" class="c-block -link -disabled -extended -bg_img js-nojax -contain js-wow u-fadeInUp">
+	<a id="works-seo" class="c-block -link -disabled -extended -bg_img js-nojax -contain js-wow u-fadeInUp lazyload" data-bgset="<?php echo get_template_directory_uri(), '/assets/img/google-search.gif'; ?>" >
 		<article class="c-block_container">
 			<h3 class="c-block_title -big -center">「○○　広島」で10年以上上位を維持するSEO対策</h3>
 		</article>
 	</a>
 </div>
 <div class="column small-12 o-whole">
-	<a id="works-print" class="c-block -link -disabled -extended -bg_img js-nojax js-wow u-fadeInUp">
+	<a id="works-print" class="c-block -link -disabled -extended -bg_img js-nojax js-wow u-fadeInUp lazyload" data-bgset="<?php echo get_template_directory_uri(), '/assets/img/storage.jpg'; ?>">
 		<article class="c-block_container">
 			<h3 class="c-block_title -big -center">分けて納品してくれるから安い大部数印刷でお得</h3>
 		</article>
@@ -119,14 +119,14 @@
 	</a>
 </div>
 <div class="column small-12 o-whole">
-	<a id="works-web" class="c-block -link -disabled -extended -bg_img js-nojax -contain js-wow u-fadeInUp">
+	<a id="works-web" class="c-block -link -disabled -extended -bg_img js-nojax -contain js-wow u-fadeInUp lazyload" data-bgset="<?php echo get_template_directory_uri(), '/assets/img/responsive.png'; ?>">
 		<article class="c-block_container">
 			<h3 class="c-block_title -big -center">サイトリニューアルでPV数62%・直帰率-26%改善</h3>
 		</article>
 	</a>
 </div>
 <div class="column small-12 o-whole">
-	<a id="works-consult" class="c-block -link -disabled -extended -bg_img js-nojax js-wow u-fadeInUp">
+	<a id="works-consult" class="c-block -link -disabled -extended -bg_img js-nojax js-wow u-fadeInUp lazyload" data-bgset="<?php echo get_template_directory_uri(), '/assets/img/reviews.jpg'; ?>">
 		<article class="c-block_container">
 			<h3 class="c-block_title -big -center">悪影響の口コミだらけ。どうすればよいの？</h3>
 		</article>

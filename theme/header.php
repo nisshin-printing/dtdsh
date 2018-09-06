@@ -20,7 +20,7 @@
 	<script>document.documentElement.className=document.documentElement.className.replace(/\bno-js\b/,'js')</script>
 
 	<?php // load the core js polyfills ?>
-	<script async defer src="<?php echo get_template_directory_uri(), '/assets/js/core.js?ver=', DTDSH_THEME_VERSION; ?>"></script>
+	<script async defer src="<?php echo get_template_directory_uri(), '/assets/js/lazysizes.js?ver=', DTDSH_THEME_VERSION; ?>"></script>
 
 	<?php // Theming ?>
 	<meta name="theme-color" content="#FFFFFF">
@@ -65,16 +65,13 @@
 							<a href="https://www.facebook.com/nisshin.dtdsh" class="c-social_link" target="_blank"><?php NID_SVG::icon( 'facebook', array( 'class' => 'facebook' ), 'Facebook' ); ?></a>
 						</li>
 						<li class="c-social_item">
-							<a href="https://plus.google.com/+%E6%97%A5%E9%80%B2%E5%8D%B0%E5%88%B7%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E8%A5%BF%E5%8C%BA" class="c-social_link" target="_blank"><?php NID_SVG::icon( 'google-plus', array( 'class' => 'google-plus' ), 'Google+' ); ?></a>
-						</li>
-						<li class="c-social_item">
 							<a href="https://twitter.com/nisshin_inc" class="c-social_link" target="_blank"><?php NID_SVG::icon( 'twitter', array( 'class' => 'twitter'), 'Twitter' ); ?></a>
 						</li>
 							<li class="c-social_item">
 							<a href="https://www.instagram.com/nisshin_inc/" class="c-social_link" target="_blank"><?php NID_SVG::icon( 'instagram', array( 'class' => 'instagram' ), 'Instagram' ); ?></a>
 						</li>
 					</ul>
-					<div class="c-social_proof"><img src="<?php echo get_template_directory_uri(), '/assets/img/google-partner.png'; ?>" alt="日進印刷はGoogle Partnerです。" class="c-social_proof-image" width="180" height="100"></div>
+					<div class="c-social_proof"><img data-src="<?php echo get_template_directory_uri(), '/assets/img/google-partner.png'; ?>" alt="日進印刷はGoogle Partnerです。" class="c-social_proof-image lazyload" width="180" height="100"></div>
 				</div>
 			</div>
 			<div class="c-nav-overlay js-nav-main-button"></div>
@@ -100,7 +97,7 @@
 				} elseif ( is_page( 'price' ) ) {
 					$header_copy = '低価格のサービスも<br>高価格のサービスも<br>費用対効果を評価してください。';
 				} elseif ( is_page( 'about' ) ) {
-					$header_copy = '<img src="' . get_template_directory_uri() . '/assets/img/slogan-black.png" alt="Your Success is Our Business.">';
+					$header_copy = '<img class="lazyload" data-src="' . get_template_directory_uri() . '/assets/img/slogan-black.png" alt="Your Success is Our Business.">';
 				} elseif ( is_page( 'recruit' ) ) {
 					$header_copy = '採用情報';
 					$header_desc = '<p>こんにちは。日進印刷株式会社は、デザインやウェブ開発、印刷、広告などクライアントとエンドユーザーとを繋ぐコミュニケーションツールを提供する会社です。弊社は常に最高の人材を募集しています。</p>';

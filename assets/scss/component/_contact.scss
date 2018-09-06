@@ -57,12 +57,14 @@
     input,
     select,
     option,
-    .o-file_wrap,
-    .o-contact_submit {
+    .o-file_wrap {
         padding: 0 1.25rem;
         height: 3.75rem;
         width: 95%;
-    }
+		}
+		.o-contact_submit {
+			width: 100%;
+		}
     textarea {
         resize: vertical;
     }
@@ -71,13 +73,15 @@
         select,
         option,
         textarea,
-        .o-file_wrap,
-        .o-contact_submit {
+        .o-file_wrap {
             width: 95%;
             @include breakpoint(large) {
                 width: 98%;
             }
-        }
+				}
+				.o-contact_submit {
+					width: 100%;
+				}
     }
 }
 
@@ -234,13 +238,13 @@
 
 .c-contact_submit {
     position: relative;
-    width: 100%;
+    width: 100% !important;
     padding: 0;
     input[type="submit"] {
         @extend .button;
         @extend .large;
         @extend .secondary;
-        width: 100%;
+        width: 100% !important;
         height: 78px;
         margin: 0 !important;
         z-index: 50;
@@ -254,8 +258,9 @@
 }
 
 .ajax-loader {
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+		height: 100% !important;
+		background-image: none !important;
     opacity: 0;
     position: absolute;
     left: 0;

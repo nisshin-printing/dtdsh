@@ -49,7 +49,7 @@ button.o-tooltip {
     border-radius: $tooltip-radius;
     color: $tooltip-color;
     content: attr(data-tooltip);
-    font-size: $tooltip-base-size + 2;
+    font-size: $tooltip-font-size;
     padding: .5em 1em;
     position: absolute;
     white-space: nowrap;

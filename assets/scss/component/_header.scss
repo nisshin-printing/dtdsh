@@ -31,37 +31,20 @@
 .c-header-main_logo {
   position: absolute;
   top: 0;
-  right: 0;
+  right: auto;
   left: 0;
   padding: 2rem;
   text-align: center;
   margin: 0;
-  display: block;
+	display: block;
+	z-index: 1010;
+	font-size: calc(2rem + .25vw);
   @include breakpoint(small only) {
     display: none;
   }
   @include breakpoint(medium only) {
-    font-size: calc(1rem + .25vw);
-  }
-  @include breakpoint(large) {
-    top: auto;
-    left: auto;
-    bottom: 0;
-    width: 250px;
-    padding: 5rem;
-    padding-bottom: 1rem !important;
-    font-size: rem-calc(37.7575);
-    .home &,
-    .error404 & {
-      font-size: calc(2rem + .25vh);
-    }
-  }
-  @include breakpoint(large only) {
-    width: 180px;
-    padding: 3.75rem
-  }
-  a {
-    z-index: 1010;
+		font-size: calc(1rem + .25vw);
+		right: 0;
   }
 }
 

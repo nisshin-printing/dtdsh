@@ -5,8 +5,8 @@
  *
  */
 module.exports = {
-    proxy: "dtdsh.dev",
-    logSnippet: true,
-    ghostMode: true,
-    open: "local"
+		proxy: "dtdsh.local",
+		logSnippet: true,
+		ghostMode: true,
+		open: "local"
 };

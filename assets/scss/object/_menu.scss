@@ -14,7 +14,7 @@
             box-align: start;
             align-items: flex-start;
             display: flex;
-            padding: $menu-item-padding;
+            padding: $button-padding;
             margin-bottom: 0;
             background-color: transparent;
             &:hover {
@@ -49,4 +49,8 @@
     font-weight: bold;
     line-height: 1;
     color: $dark-gray;
+}
+
+li.is-dropdown-submenu-parent > a::after {
+	margin-top: -6px !important;
 }
