@@ -59,7 +59,7 @@ class NID_SVG {
 
 		$content = NID_Html::get_element( 'use', array(
 			'xmlns:xlink' => 'http://www.w3.org/1999/xlink',
-			'xlink:href'  => get_template_directory_uri() . "/assets/svg/sprite-icon.svg#icon-$icon"
+			'xlink:href'  => get_template_directory_uri() . "/assets/svg/sprite.svg#icon-$icon"
 		) );
 
 		if ( $alt ) {

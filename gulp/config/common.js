@@ -1,7 +1,20 @@
+// config
+const project = require('../../project.config');
+
 /**
- * Override the Default
- * Core Commmon
- * Config
+ * Common config
+ * for all tasks
  *
  */
-module.exports = {};
+module.exports = {
+		paths: {
+				theme: {
+						src: 'theme',
+						dest: '../' + project.name
+				},
+				assets: {
+						src: 'assets',
+						dest: '../' + project.name + '/assets'
+				}
+		}
+};

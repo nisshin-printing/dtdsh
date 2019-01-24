@@ -154,7 +154,12 @@ if (! function_exists( 'theme_setup' )) {
 
 				// Table of contents Create.
 				new NInc_TOC;
-    }
+
+				/**
+				 * Custom Post Type
+				 */
+				include_once( "$theme_dir/post-type/init.php" );
+	}
 }
 
 

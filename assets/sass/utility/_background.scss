@@ -1,0 +1,22 @@
+::selection {
+		color: $white;
+		background: rgba(#000, .5);
+		text-shadow: none;
+}
+
+.u-background {
+		background: $white;
+		color: $black;
+		a:hover {
+				color: darken($black, 20%);
+		}
+}
+
+.u-background-accent {
+		background: $black;
+		color: $white;
+}
+
+.u-underline {
+		background: linear-gradient( transparent 40%, #FF0 40%);
+}

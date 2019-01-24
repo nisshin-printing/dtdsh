@@ -1,16 +1,4 @@
 /**
- * Setup webpack public path
- * to enable lazy-including of
- * js chunks
- *
- */
-import './vendor/webpack.publicPath';
-
-// vendor
-/** import 'echo-js/dist/echo';
- * // eslint-disable-line import/no-extraneous-dependencies, import/first
- */
-/**
  * Your theme's js starts
  * Utility
  */

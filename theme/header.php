@@ -37,7 +37,7 @@
 
 
 <?php // common header content goes here ?>
-	<div class="c-loader u-background-accent"><span class="c-loader_bars"><span></span></span></div>
+	<div class="c-loader u-background"><span class="c-loader_bars"><span></span></span></div>
 	<header class="c-header-main" id="js-header-main">
 		<div class="o-row">
 			<h1 id="nav-front" class="c-header-main_logo"><a href="<?php bloginfo( 'url' ); ?>">日進印刷株式会社</a></h1>
@@ -116,7 +116,7 @@
 				}
 				
 			?>
-				<div class="c-cover_wrap -main">
+				<div class="c-cover_wrap -main u-background">
 					<div class="c-block row -flex align-middle -title -extended js-wow u-fadeInUp">
 						<div id="js-title" class="column">
 							<h1 id="copy-header" class="c-block_title"><?php echo $header_copy; ?></h1>
