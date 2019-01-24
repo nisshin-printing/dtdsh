@@ -1,0 +1,388 @@
+// @import './config/images';
+@import './config/colors';
+@import './config/fonts';
+
+/**
+ * Vendor Styles
+ * ( - Not Modified for Maintainability - )
+* ( - Reset/Normalize First - )
+ */
+
+@import './config/foundation';
+@import 'foundation';
+// Global styles
+@include foundation-global-styles;
+// @include foundation-forms;
+@include foundation-typography;
+// Grids
+@include foundation-flex-grid;
+// Generic components
+@include foundation-button;
+// @include foundation-button-group;
+// @include foundation-close-button;
+@include foundation-label;
+// @include foundation-progress-bar;
+// @include foundation-slider;
+// @include foundation-switch;
+@include foundation-table;
+// Basic components
+// @include foundation-badge;
+// @include foundation-breadcrumbs;
+// @include foundation-callout;
+// @include foundation-card;
+// @include foundation-dropdown;
+// @include foundation-pagination;
+// @include foundation-tooltip;
+// Containers
+// @include foundation-accordion;
+// @include foundation-media-object;
+// @include foundation-orbit;
+// @include foundation-responsive-embed;
+// @include foundation-tabs;
+// @include foundation-thumbnail;
+// Menu-based containers
+// @include foundation-menu;
+// @include foundation-menu-icon;
+// @include foundation-accordion-menu;
+// @include foundation-drilldown-menu;
+// @include foundation-dropdown-menu;
+// Layout components
+// @include foundation-off-canvas;
+// @include foundation-reveal;
+// @include foundation-sticky;
+// @include foundation-title-bar;
+// @include foundation-top-bar;
+// Helpers
+// @include foundation-float-classes;
+@include foundation-flex-classes;
+// @include foundation-visibility-classes;
+@include foundation-prototype-classes;
+@import './contact';
+
+/**
+ * Your Custom Styles.
+ * Global
+ */
+
+body {
+		font-feature-settings: "palt" 1;
+}
+
+section {
+		text-align: center;
+		padding: 2rem 0;
+}
+
+.mainview--wrap {
+		background: linear-gradient(0deg, rgba(73, 164, 153, 1) 0%, rgba(80, 167, 152, 1) 2.79%, rgba(106, 178, 150, 1) 15.95%, rgba(126, 187, 149, 1) 30.48%, rgba(140, 193, 148, 1) 46.92%, rgba(148, 197, 147, 1) 66.85%, rgba(151, 198, 147, 1) 100%);
+		.row {
+				max-width: 1200px;
+				padding-top: 2rem;
+		}
+		img {
+				display: inline-block;
+				vertical-align: bottom;
+		}
+		h1 {
+				margin: 0 auto;
+		}
+}
+
+.mainview {
+		max-width: 100%;
+}
+
+.cta--wrap {
+		text-align: center;
+		font-size: 1.7vw;
+		background-color: get-color(third);
+		.button {
+				padding: 1em 3em;
+				@include breakpoint(medium down) {
+						padding: .5em 2em;
+				}
+		}
+		p {
+				text-shadow: 3px 3px 10px rgba(#000, .2);
+		}
+}
+
+.big {
+		font-size: 1.5em;
+}
+
+.slash {
+		position: relative;
+		display: inline-block;
+		padding: 0 2em;
+		&::before,
+		&::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				display: inline-block;
+				width: 1px;
+				height: 95%;
+				background-color: $body-font-color;
+				transform: rotate(-30deg);
+				left: 0;
+		}
+		&::after {
+				transform: rotate(30deg);
+				right: 0;
+				left: auto;
+		}
+}
+
+.border {
+		position: relative;
+		margin-bottom: 1em;
+		&::after {
+				content: '';
+				position: absolute;
+				bottom: -.5em;
+				width: 2.5em;
+				height: 3px;
+				background-color: $body-font-color;
+		}
+		&.border--align-left::after {
+				left: 0;
+		}
+		&.border--align-center::after {
+				left: 0;
+				right: 0;
+				margin: auto;
+				width: 1.5em;
+		}
+}
+
+.underline {
+		background: linear-gradient(transparent 50%, #fffacc 50%);
+}
+
+.difference--wrap {
+		background: linear-gradient(0deg, rgba(73, 164, 153, 0.3) 0%, rgba(92, 172, 152, 0.3) 5.44%, rgba(114, 182, 150, 0.3) 13.75%, rgba(131, 189, 149, 0.3) 23.56%, rgba(142, 194, 148, 0.3) 35.69%, rgba(149, 197, 147, 0.3) 52.72%, rgba(151, 198, 147, 0.3) 100%);
+}
+
+.difference--title {
+		width: 80vw;
+		margin: 1em auto;
+}
+
+.image--wrap {
+		margin: 2rem auto 1rem;
+		width: 200px;
+		height: 200px;
+		border-radius: 100%;
+		background-color: get-color(third);
+		img {
+				width: auto;
+				height: 50%;
+				margin: 25%;
+		}
+		@include breakpoint(small only) {
+				width: 100px;
+				height: 100px;
+				border-radius: 100%;
+		}
+}
+
+.cta--difference {
+		margin: 3em auto;
+		font-size: 3vw;
+		text-shadow: 3px 3px 10px rgba(#000, .2);
+}
+
+.support--wrap {
+		text-align: left;
+}
+
+.support--box {
+		padding: 1em;
+		&:not(:last-of-type) {
+				border-bottom: 1px solid #DDD;
+		}
+		&:nth-of-type(2n) {
+				background-color: rgba(#DDD, .25);
+		}
+		@include breakpoint(medium) {
+				text-align: left;
+				display: flex;
+				align-items: center;
+		}
+}
+
+.support--image {
+		background-color: get-color(secondary);
+		@include breakpoint(medium only) {
+				width: 150px;
+				height: 150px;
+		}
+}
+
+.support--textbox {
+		@include breakpoint(small only) {
+				text-align: center;
+		}
+		p {
+				display: inline-block;
+				margin: 0 auto;
+				text-align: left;
+		}
+		@include breakpoint(medium) {
+				padding-left: 2em;
+				flex: 1;
+				.disc--none {
+						margin-top: 0;
+						margin-bottom: 0;
+						padding-top: 0;
+						padding-bottom: 0;
+				}
+		}
+}
+
+.appeal--wrap {
+		background-color: get-color(third);
+}
+
+.appeal--title {
+		color: #FFF;
+		padding-left: 0;
+		margin-left: 1em;
+		display: inline-block;
+		&::after {
+				background-color: #FFF;
+		}
+}
+
+.appeal--box {
+		margin: 1em auto;
+		padding: 2em;
+		background-color: #FFF;
+		box-shadow: 3px 3px 10px rgba(#000, .2);
+		h3 {
+				color: get-color(third);
+				font-weight: bold;
+		}
+}
+
+.merit--title {
+		color: get-color(secondary);
+		margin-bottom: 2em;
+}
+
+.merit--box {
+		position: relative;
+		margin: 2em auto;
+		padding: 2em;
+		box-shadow: 3px 3px 10px rgba(#000, .2);
+		&::before {
+				content: '';
+				position: absolute;
+				background: {
+						image: url('../img/merit--01.png');
+						size: contain;
+						repeat: no-repeat;
+						position: center center;
+				}
+				top: -50px;
+				left: -50px;
+				width: 100px;
+				height: 100px;
+		}
+		&:nth-of-type(2)::before {
+				background-image: url('../img/merit--02.png');
+		}
+		&:nth-of-type(3)::before {
+				background-image: url('../img/merit--03.png');
+		}
+		h3 {
+				margin: 1em auto .5em;
+				font-weight: bold;
+		}
+		p {
+				text-align: left;
+				display: inline-block;
+				margin: auto;
+		}
+}
+
+.flow--title {
+		@extend .merit--title;
+}
+
+.flow--images {
+		margin: 3em auto;
+}
+
+.flow--box {
+		@extend .support--box;
+		padding: 1em;
+}
+
+.flow--image-wrap {
+		width: 100px;
+		display: inline-block;
+		margin: 1em auto;
+}
+
+.flow--textbox {
+		@extend .support--textbox;
+		h3 {
+				font-weight: bold;
+		}
+}
+
+.area--wrap {
+		.column>img {
+				margin: 2em auto;
+		}
+		p {
+				text-align: left;
+		}
+}
+
+.about--wrap {
+		background-color: rgba(#DDD, .2);
+}
+
+.about--message {
+		margin: 3em auto;
+		display: inline-block;
+		text-align: left;
+}
+
+.about--name {
+		width: 50%;
+		max-width: 361px;
+}
+
+ol.text-left {
+		display: inline-block;
+		margin: 1em auto;
+}
+
+.about--box {
+		@extend .appeal--box;
+}
+
+.about--wrap {
+		th,
+		td {
+				padding: 1em;
+		}
+		th {
+				text-align: center;
+		}
+		td {
+				text-align: center;
+				@include breakpoint(large) {
+						text-align: left;
+				}
+		}
+}
+
+.cta--title {
+		margin: 1em auto 0;
+		font-size: 4vw;
+}

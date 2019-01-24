@@ -23,8 +23,6 @@ if ( empty( $_GET['_pjax'] ) ) {
                         get_template_part( 'templates/service/item' );
                     } else if (is_page( 'service/web-consulting' )) {
                         get_template_part( 'templates/service/web-consulting' );
-										} else if (is_page( 'service/marketing-automation' )) {
-                        get_template_part( 'templates/service/marketing-automation' );
                     } else if (is_page( 'price' )) {
                         get_template_part( 'templates/price' );
                     } else if (is_page( 'about' )) {

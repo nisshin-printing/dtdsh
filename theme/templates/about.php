@@ -31,7 +31,7 @@
 					<td>\10,000,000-</td>
 				</tr>
 				<tr>
-					<th>代表取締役社長</th>
+					<th>代表取締役</th>
 					<td>
 						<a href="https://www.facebook.com/kazuki.fukuda.35" target="_blank">福田　一生（五代目）</a>
 					</td>
@@ -43,9 +43,7 @@
 				</tr>
 				<tr>
 					<th>連絡先</th>
-					<td>TEL：
-						<a href="tel:0822371611">（082）237-1611</a>
-						<br>FAX：　（082）237-1622</td>
+					<td>TEL：　<a href="tel:0822371611">（082）237-1611</a><br>FAX：　（082）237-1622</td>
 				</tr>
 				<tr>
 					<th>事業内容</th>
@@ -60,45 +58,6 @@
 							<!--						<li>不動産賃貸業及び付随する関連業務</li>  -->
 						</ol>
 					</td>
-				</tr>
-			</table>
-		</div>
-	</article>
-</div>
-<div class="column small-12 o-whole">
-	<div class="c-block c-titlebox_wrap -extended js-wow u-fadeInUp">
-		<div class="o-row">
-			<h2 class="c-titlebox_title">沿革</h2>
-		</div>
-	</div>
-</div>
-<div class="column small-12 o-whole">
-	<article class="c-block -primary -extended js-wow u-fadeInUp">
-		<div class="row o-row">
-			<table class="stack">
-				<tr>
-					<th>1928年2月</th>
-					<td>日進印刷所として創業</td>
-				</tr>
-				<tr>
-					<th>1948年3月</th>
-					<td>日進印刷株式会社を設立</td>
-				</tr>
-				<tr>
-					<th>1956年1月</th>
-					<td>株式会社福萬を設立</td>
-				</tr>
-				<tr>
-					<th>1967年9月</th>
-					<td>新住居表示により大芝一丁目19番20号に変更</td>
-				</tr>
-				<tr>
-					<th>1981年6月</th>
-					<td>四代目が株式会社福萬・日進印刷株式会社両社の四代目代表取締役に就任</td>
-				</tr>
-				<tr>
-					<th>2017年7月</th>
-					<td>五代目が株式会社福萬・日進印刷株式会社両社の五代目代表取締役に就任</td>
 				</tr>
 			</table>
 		</div>

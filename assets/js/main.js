@@ -13,4 +13,3 @@ import './utils/_file';
  */
 import './scripts/_header';
 import './scripts/_contact';
-import './scripts/_blog';

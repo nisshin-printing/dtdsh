@@ -54,10 +54,6 @@ gulp.task('images:dev', () => {
 		.on('end', $.browser.reload);
 });
 
-gulp.task('images:watch', done => {
-		$.watch(config.images.watch, () => {
-				gulp.start('images:dev');
-		});
-
-		done();
+gulp.task('images:watch', () => {
+		$.watch(config.images.watch, gulp.series('images:dev'));
 });
