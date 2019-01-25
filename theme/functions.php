@@ -9,7 +9,7 @@
 /* =========================================
 		Define
    ========================================= */
-define( 'DTDSH_THEME_VERSION', '1.6' );
+define( 'DTDSH_THEME_VERSION', '1.7' );
 
 /* =========================================
 		ACTION HOOKS & FILTERS
@@ -29,9 +29,9 @@ add_filter( 'tiny_mce_before_init', 'theme_editor_styles' );
 
 add_filter( 'mce_buttons', 'theme_editor_buttons' );
 
-if (! preg_match( '/(local|dev)/', $_SERVER['SERVER_NAME'] ) && ! is_user_logged_in()) :
-    add_action( 'wp_head', 'tagmanager_install' );
-endif;
+if (! preg_match( '/(local|dev)/', $_SERVER['SERVER_NAME'] ) && ! is_user_logged_in() && ! is_page( 'print' ) ) {
+	add_action( 'wp_head', 'tagmanager_install' );
+}
 
 // expose php variables to js. just uncomment line
 // below and see function theme_scripts_localize
@@ -152,13 +152,6 @@ if (! function_exists( 'theme_setup' )) {
         include "$theme_dir/includes/includes-loader.php";
         include "$theme_dir/components/components-loader.php";
 
-				// Table of contents Create.
-				new NInc_TOC;
-
-				/**
-				 * Custom Post Type
-				 */
-				include_once( "$theme_dir/post-type/init.php" );
 	}
 }
 
@@ -174,9 +167,12 @@ if (! function_exists( 'theme_styles' )) {
     {
         $theme_dir = get_stylesheet_directory_uri();
 
-        wp_enqueue_style( 'poiret-one', '//fonts.googleapis.com/css?family=Poiret+One&text=BalanceDesign', array(), '', 'all' );
+        if ( ! is_page('print') ) {
+					wp_enqueue_style( 'poiret-one', '//fonts.googleapis.com/css?family=Poiret+One&text=BalanceDesign', array(), '', 'all' );
         wp_enqueue_style( 'lato', '//fonts.googleapis.com/css?family=Lato&text=1234567890', array(), '', 'all' );
-        wp_enqueue_style( 'main', "$theme_dir/assets/css/main.css", array(), DTDSH_THEME_VERSION, 'all' );
+
+					wp_enqueue_style( 'main', "$theme_dir/assets/css/main.css", array(), DTDSH_THEME_VERSION, 'all' );
+				}
     }
 }
 
@@ -190,9 +186,12 @@ if (! function_exists( 'theme_scripts' )) {
     function theme_scripts()
     {
         $theme_dir = get_stylesheet_directory_uri();
-        wp_deregister_script( 'jquery' );
-        wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js', array(), false, true );
-        wp_enqueue_script( 'main', "$theme_dir/assets/js/main.js", array( 'jquery' ), DTDSH_THEME_VERSION, true );
+        
+				wp_deregister_script( 'jquery' );
+				wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js', array(), false, true );
+				if ( ! is_page( 'print' ) ) {
+					wp_enqueue_script( 'main', "$theme_dir/assets/js/main.js", array( 'jquery' ), DTDSH_THEME_VERSION, true );
+				}
     }
 }
 
@@ -240,17 +239,14 @@ function theme_favicon()
 
 
 // Install Google Tag Manager.
-function tagmanager_install()
-{
-        echo <<< EOT
+function tagmanager_install() {
+echo <<< EOT
 <!-- Google Tag Manager -->
-<script>
-	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-WV7S6J');
-</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WV7S6J');</script>
 <!-- End Google Tag Manager -->
 EOT;
 }

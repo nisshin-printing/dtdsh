@@ -2,10 +2,28 @@
 <html class="site no-js" <?php language_attributes(); ?>>
 <head prefix="og:http://ogp.me/ns# fb:http://ogp.me/ns/fb# website:http://ogp.me/ns/website#">
 		<meta charset="UTF-8">
-				<meta http-equiv="X-UA-Compatible" content="IE=edge,chorme=1">
-				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<title>ネット印刷ではできないその印刷、日進印刷へお任せください。</title>
-				<link rel="stylesheet" href="<?php echo get_template_directory_uri(), '/assets/css/print/main.css'; ?>">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chorme=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>ネット印刷ではできないその印刷、日進印刷へお任せください。</title>
+		<link rel="stylesheet" href="<?php echo get_template_directory_uri(), '/assets/css/print/main.css'; ?>">
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-51409078-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-51409078-1');
+		</script>
+		<?php wp_head(); ?>
+		<script>
+			document.addEventListener('wpcf7mailsent', function(event) {
+				gtag('event', 'フォーム送信', {
+					'event_category': 'お問い合わせ',
+					'event_label': '印刷LP'
+				});
+			}, false);
+		</script>
 </head>
 
 <body>
@@ -285,13 +303,16 @@
 										<a href="https://www.chatwork.com/nisshin-dtdsh" class="button large" target="_blank"><img alt="ChatWork" data-src="<?php echo get_template_directory_uri(), '/assets/img/print/logo--chatwork.png'; ?>" class="lazyload"></a>
 								</div>
 								<div class="column small-12">
-								<h3 class="border border--align-center margin-top-2 margin-bottom-3">フォーム</h3>
-								<?php echo do_shortcode( '[contact-form-7 id="27" title="見積もり/仕事の依頼"]' ); ?>
+								<h3 class="border border--align-center">フォーム</h3>
+								<?php
+										echo do_shortcode( '[contact-form-7 id="534" title="印刷LP"]' );
+								?>
 								</div>
 						</div>
 				</section>
 		</main>
 		<script src="<?php echo get_template_directory_uri(), '/assets/js/lazysizes.js'; ?>" aync></script>
+		<?php wp_footer(); ?>
 </body>
 
 </html>
