@@ -1,0 +1,14 @@
+.trust--item {
+		margin-bottom: 2rem;
+		.trust--item {
+				background-color: $light-gray;
+				padding: 1rem;
+				min-height: 200px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+		}
+		.start {
+				font-size: 2rem;
+		}
+}

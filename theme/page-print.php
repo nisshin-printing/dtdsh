@@ -14,6 +14,7 @@
 			gtag('js', new Date());
 
 			gtag('config', 'UA-51409078-1');
+			gtag('config', 'AW-942956048');
 		</script>
 		<?php wp_head(); ?>
 		<script>
@@ -21,6 +22,10 @@
 				gtag('event', 'フォーム送信', {
 					'event_category': 'お問い合わせ',
 					'event_label': '印刷LP'
+				});
+				gtag('event', 'conversion', {
+						'send_to': 'AW-942956048/1LOICPqs4HIQkLzRwQM',
+						'event_callback': window.location
 				});
 			}, false);
 		</script>

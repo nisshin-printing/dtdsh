@@ -1,0 +1,25 @@
+.angle--up,
+.angle--right,
+.angle--left,
+.angle--down {
+		width: 3rem;
+		height: 3rem;
+		border: 5px solid;
+		border-color: transparent transparent $primary-color $primary-color;
+}
+
+.angle--up {
+		transform: rotate(135deg);
+}
+
+.angle--right {
+		transform: rotate(-135deg);
+}
+
+.angle--left {
+		transform: rotate(45deg);
+}
+
+.angle--down {
+		transform: rotate(-45deg);
+}

@@ -1,0 +1,39 @@
+.border--bottom {
+		position: relative;
+		margin-top: 3rem;
+		margin-bottom: 3rem;
+		text-align: center;
+		&__left {
+				@extend .border--bottom;
+				text-align: left;
+		}
+		&__right {
+				@extend .border--bottom;
+				text-align: right;
+		}
+		&::after,
+		&__left::after,
+		&__right::after {
+				content: '';
+				position: absolute;
+				bottom: -1rem;
+				left: 0;
+				right: 0;
+				margin: auto;
+				width: 1em;
+				height: 1px;
+				background-color: $dark-gray;
+		}
+		&__left::after {
+				right: auto;
+		}
+		&__right::after {
+				left: auto;
+		}
+}
+
+.subtitle {
+		display: inline-block;
+		margin: 1rem auto 3rem;
+		@extend .text-left;
+}

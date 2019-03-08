@@ -1,6 +1,4 @@
-'use strict';
-
-const { gulp, src, task, series, dest } = require('gulp');
+const { watch, src, task, series, dest } = require('gulp');
 const config = require('./config/settings');
 
 // utils

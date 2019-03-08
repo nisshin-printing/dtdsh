@@ -4,19 +4,45 @@
 		text-shadow: none;
 }
 
-.u-background {
+.u-main {
 		background: $white;
-		color: $black;
-		a:hover {
-				color: darken($black, 20%);
-		}
+		color: lighten($black, 20%);
 }
 
-.u-background-accent {
+.u-main--turn {
 		background: $black;
-		color: $white;
+		color: darken($white, 20%);
+}
+
+.u-main--accent {
+		background: #2ecc71;
+		color: $black;
 }
 
 .u-underline {
-		background: linear-gradient( transparent 40%, #FF0 40%);
+		background: linear-gradient(transparent 60%, #eeff41 60%);
+}
+
+@each $name,
+$value in $service {
+		.u-#{$name} {
+				color: nth($value, 1);
+				background-color: $white;
+				transition: .3s;
+		}
+		.u-#{$name}--turn {
+				color: $white;
+				background-color: nth($value, 1);
+		}
+		.u-#{$name}--accent {
+				color: $white;
+				background-color: nth($value, 2);
+		}
+}
+
+@each $name,
+$color in $social {
+		.hover--#{$name} {
+				color: $color;
+		}
 }

@@ -1,41 +1,28 @@
 table {
-    width: 100%;
-    margin-bottom: 1rem;
-    border-collapse: collapse;
-    border-spacing: 0;
+		border-collapse: collapse;
+		width: 100%;
 }
 
-tr:last-child() {
-    th,
-    td {
-        border-bottom: 0;
-    }
+.table-scroll {
+		display: block;
+		overflow-x: auto;
+		white-space: nowrap;
 }
 
-th,
-td {
-    padding: $table-padding;
-    border-bottom: $table-border;
-}
 
-.c-table_stack {
-    @include breakpoint(medium down) {
-        tr,
-        th,
-        td {
-            display: block;
-            text-align: left;
-            border: none;
-        }
-        td {
-            border-bottom: $table-border;
-        }
-    }
-}
+/**
+ * Foundation
+ */
 
-.-hover tr:hover {
-    >th,
-    >td {
-        background-color: $table-row-hover;
-    }
+@include -zf-table-stripe;
+@include -zf-table-children-styles;
+table {
+		th {
+				text-align: center;
+		}
+		&.stack {
+				@include breakpoint($table-stack-breakpoint down) {
+						@include table-stack;
+				}
+		}
 }

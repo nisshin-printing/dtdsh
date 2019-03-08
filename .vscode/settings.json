@@ -1,0 +1,8 @@
+{
+	"git.ignoreLimitWarning": true,
+	"emmet.showSuggestionsAsSnippets": true,
+	"emmet.triggerExpansionOnTab": true,
+	"editor.minimap.showSlider": "always",
+	"editor.minimap.renderCharacters": false,
+	"editor.wordWrap": "bounded",
+}

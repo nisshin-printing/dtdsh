@@ -1,6 +1,4 @@
-'use strict';
-
-const gulp = require('gulp');
+const { task, series, dest, src, watch } = require('gulp');
 const path = require('path');
 const config = require('./config/settings');
 
@@ -15,7 +13,7 @@ const getFolders = require('./utils/getFolders');
  * 本番テーマAssetsディレクトリーから
  * SVG Spriteを消去
  */
-gulp.task('sprite:clean', done => {
+task('sprite:clean', done => {
 		$.del(config.svg.clean, {
 						force: true
 				})
@@ -28,8 +26,8 @@ gulp.task('sprite:clean', done => {
 /**
  * Dev & Prod
  */
-gulp.task('sprite:dev', () => {
-		gulp.src(config.sprite.src).pipe($.plumber())
+task('sprite:dev', () => {
+		src(config.sprite.src).pipe($.plumber())
 				.pipe($.svgSprite({
 						mode: {
 								inline: true,
@@ -55,7 +53,7 @@ gulp.task('sprite:dev', () => {
 				]
 		}))
 
-		.pipe(gulp.dest(config.sprite.dest))
+		.pipe(dest(config.sprite.dest))
 				.pipe($.notify({
 						message: pumped('Svg Sprites Generated'),
 						onLast: true
@@ -69,8 +67,8 @@ gulp.task('sprite:dev', () => {
 /**
  * Production
  */
-gulp.task('sprite:prod', done => {
-		gulp.src(config.sprite.src).pipe($.plumber())
+task('sprite:prod', done => {
+		src(config.sprite.src).pipe($.plumber())
 				.pipe($.svgSprite({
 						mode: {
 								inline: true,
@@ -96,7 +94,7 @@ gulp.task('sprite:prod', done => {
 				]
 		}))
 
-		.pipe(gulp.dest(config.sprite.dest))
+		.pipe(dest(config.sprite.dest))
 				.pipe($.notify({
 						message: pumped('Svg Sprites Generated'),
 						onLast: true
@@ -111,6 +109,6 @@ gulp.task('sprite:prod', done => {
 /**
  * Watch
  */
-gulp.task('sprite:watch', () => {
-		$.watch(config.svg.watch, gulp.series('sprite:dev'));
+task('sprite:watch', () => {
+		watch(config.svg.watch, series('sprite:dev'));
 });

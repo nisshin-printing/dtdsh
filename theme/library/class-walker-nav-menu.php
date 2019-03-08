@@ -39,16 +39,16 @@ class NID_Walker_Nav_Menu extends Walker_Nav_Menu {
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$list_classes = array(
-			'_item',
-			'_item -submenu is-dropdown-submenu'
+			'--item',
+			'--item has-submenu is-dropdown-submenu'
 		);
 
 		if ( isset( $args->show_level_class ) && $args->show_level_class ) {
-			$list_classes[] = '_list-level-' . ($depth + 1);
+			$list_classes[] = '--list__level-' . ($depth + 1);
 		}
 
 		// BEM-ify the given sub classes
-		$list_classes_str = NID_FLOCSS::get_flocss( 'c-nav', $list_classes );
+		$list_classes_str = NID_FLOCSS::get_flocss( 'nav', $list_classes );
 
 		$output .= "<ul class=\"$list_classes_str\" role=\"submenu\">";
 	}
@@ -72,24 +72,24 @@ class NID_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 		/// Menu Item Opening
 
-		$item_classes = array( '_item' );
+		$item_classes = array( '--item' );
 
 		// add classes to current/parent/ancestor items
 		if ( isset( $item->current ) && $item->current ) {
-			$item_classes[] = '_item -current';
+			$item_classes[] = '--item is-current';
 		}
 		if ( isset( $item->current_item_ancestor ) && $item->current_item_ancestor ) {
-			$item_classes[] = '_item -ancestor';
+			$item_classes[] = '--item is-ancestor';
 		}
 		if ( isset( $item->current_item_parent ) && $item->current_item_parent ) {
-			$item_classes[] = '_item -parent';
+			$item_classes[] = '--item is-parent';
 		}
 		if ( isset( $item->has_children ) && $item->has_children ) {
-			$item_classes[] = '_item -has-children';
+			$item_classes[] = '--item has-children';
 		}
 
 		// BEM-ify the given sub classes
-		$item_classes_str = NID_FLOCSS::get_flocss( 'c-nav', $item_classes );
+		$item_classes_str = NID_FLOCSS::get_flocss( 'nav', $item_classes );
 
 		if ( isset( $item->classes[0] ) && ! empty( $item->classes[0] ) ) {
 			// the first item in the 'classes' array is the user-set class
@@ -106,7 +106,7 @@ class NID_Walker_Nav_Menu extends Walker_Nav_Menu {
 			'target' => $item->target,
 			'rel'    => $item->xfn,
 			'href'   => ( ! empty( $item->url ) && '#' !== $item->url ) ? $item->url : '',
-			'class'  => 'c-nav_link'
+			'class'  => 'nav--link'
 		), function ( $attr ) {
 			// filter out the empty
 			// attributes
@@ -138,7 +138,7 @@ class NID_Walker_Nav_Menu extends Walker_Nav_Menu {
 	 * @param array  $args   An array of arguments. @see wp_nav_menu()
 	 */
 	public function end_lvl( &$output, $depth = 0, $args = array() ) {
-		$output .= '</ul>'; // end of .c-nav_list
+		$output .= '</ul>'; // end of .nav--list
 	}
 
 

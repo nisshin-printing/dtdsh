@@ -2,7 +2,6 @@
  * Your theme's js starts
  * Utility
  */
-import './utils/_foundation';
 import './utils/_page-scroll';
 import './utils/_file';
 // import './utils/_sticky';
@@ -11,5 +10,5 @@ import './utils/_file';
  * Your theme's js starts
  * here...
  */
-import './scripts/_header';
+import './component/slideNav';
 import './scripts/_contact';

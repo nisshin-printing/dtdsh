@@ -1,6 +1,4 @@
-'use strict';
-
-const gulp = require('gulp');
+const { task, src, dest, watch, series } = require('gulp');
 const config = require('./config/settings');
 
 // utils
@@ -11,7 +9,7 @@ const pumped = require('./utils/pumped');
  * 本番テーマAssetsディレクトリーから
  * すべての画像を消去
  */
-gulp.task('images:clean', done => {
+task('images:clean', done => {
 		$.del(config.images.clean, {
 						force: true
 				})
@@ -23,8 +21,8 @@ gulp.task('images:clean', done => {
  * Image圧縮
  */
 
-gulp.task('images:prod', done => {
-		gulp.src(config.images.src)
+task('images:prod', done => {
+		src(config.images.src)
 				.pipe($.plumber())
 
 		.pipe($.imagemin({
@@ -32,7 +30,7 @@ gulp.task('images:prod', done => {
 				interlaced: true
 		}))
 
-		.pipe(gulp.dest(config.images.dest))
+		.pipe(dest(config.images.dest))
 				.pipe($.notify({
 						message: pumped('Images Compressed'),
 						onLast: true
@@ -41,11 +39,11 @@ gulp.task('images:prod', done => {
 		done();
 });
 
-gulp.task('images:dev', () => {
-		gulp.src(config.images.src)
+task('images:dev', () => {
+		src(config.images.src)
 				.pipe($.plumber())
 
-		.pipe(gulp.dest(config.images.dest))
+		.pipe(dest(config.images.dest))
 				.pipe($.notify({
 						message: pumped('Images Moved'),
 						onLast: true
@@ -54,6 +52,6 @@ gulp.task('images:dev', () => {
 		.on('end', $.browser.reload);
 });
 
-gulp.task('images:watch', () => {
-		$.watch(config.images.watch, gulp.series('images:dev'));
+task('images:watch', () => {
+		watch(config.images.watch, series('images:dev'));
 });

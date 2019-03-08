@@ -1,0 +1,30 @@
+.sns--wrap {
+		text-align: left;
+		display: flex;
+		align-items: center;
+		padding: 1rem;
+		* {
+				margin: 0;
+				padding: 0;
+		}
+}
+
+.sns--title {
+		margin-right: 2rem;
+}
+
+.sns--list,
+.sns--item,
+.sns--link {
+		margin: 0;
+		list-style: none;
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: 5px;
+}
+
+.sns--icon {
+		display: block;
+		width: 1.5rem;
+		height: 1.5rem;
+}

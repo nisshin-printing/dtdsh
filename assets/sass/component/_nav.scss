@@ -1,193 +1,216 @@
-.has-nav-open {
-  overflow: hidden;
+/**
+ * Global
+ */
+
+.nav--list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
 }
 
-.c-nav-wrap.-main {
-  z-index: 1000;
-  @include breakpoint (medium down) {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100vh;
-    padding: 0;
-    background-color: $secondary-color;
-    text-align: left;
-    overflow-y: auto;
-    transition: transform .4s;
-    transition-timing-function: cubic-bezier( .4, 0, .2, 1);
-  }
-  @include breakpoint(medium only) {
-    width: 50%;
-    left: -50%;
-  }
-  @include breakpoint(large) {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-  }
-  .has-nav-open & {
-    transform: translateX(100%);
-  }
+.nav--link,
+.header--cta__link {
+		display: block;
+		color: inherit;
+		transition: .3s;
+		opacity: .5;
+		text-decoration: none;
+		&:hover,
+		&:focus {
+				color: inherit;
+				opacity: .7;
+		}
 }
 
-.c-nav.-main {
-  text-align: left;
-  position: relative;
-  font-size: 1.5rem;
-  transform: translateY(0);
-  transition: transform, background-color;
-  transition-duration: .3s, 0s;
-  pointer-events: auto;
-  margin-top: 8rem;
-  @include breakpoint(large) {
-    margin-top: 0;
-    font-size: 1rem;
-    text-align: right;
-  }
+.nav--link {
+		background-color: transparent !important;
+		&:hover {
+				background-color: transparent !important;
+		}
 }
 
-.c-nav_list {
-  display: inline-block;
-  @extend .no-bullet;
-  padding: 0;
-  margin: 0;
-  position: relative;
-  text-align: left;
-  @include breakpoint(large) {
-    text-align: right;
-  }
-  >.c-nav_item {
-    @include breakpoint(large) {
-      display: inline-block;
-    }
-    &.-current>.c-nav_link::before,
-    &>.c-nav_link:hover::before {
-      width: 2rem;
-    }
-    .-submenu {
-      @extend .no-bullet;
-      @include breakpoint(large) {
-        left: 20% !important;
-      }
-    }
-  }
+.nav--item {
+		display: inline-block;
 }
 
-.c-nav_link {
-  position: relative;
-  display: block;
-  text-decoration: none;
-  color: currentColor;
-  transition: .3s;
-  line-height: 1.5 !important;
-  .c-nav_list>.c-nav_item>& {
-    padding: .5rem 1.5625rem;
-    @include breakpoint(medium) {
-      padding: 1rem 3.75rem
-    }
-    @include breakpoint(large) {
-      padding: 2.1rem 1.5625rem;
-      height: 6.25rem;
-    }
-  }
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 1.8rem;
-    margin: 0 auto;
-    width: 0;
-    height: 1px;
-    background-color: currentColor;
-    transition: width .1s cubic-bezier( .4, 0, .2, 1);
-    @include breakpoint(small only) {
-      left: 1.5625rem;
-      right: auto;
-      bottom: -.22rem;
-    }
-    @include breakpoint(medium only) {
-      left: 3.75rem;
-      right: auto;
-      bottom: .5rem;
-    }
-  }
+.nav--item.is-current .nav--link {
+		opacity: 1;
 }
 
-.is-submenu-item {
-  .c-nav_link {
-    height: auto;
-    text-align: left;
-    padding: 1rem 3.75rem;
-    @include breakpoint(large) {
-      padding: .5rem 1.5rem;
-    }
-    &::before {
-      width: 1px;
-      height: 50%;
-      top: 0;
-      left: 1rem;
-      bottom: 0;
-      right: auto;
-      margin: auto;
-      @include breakpoint(large) {
-        left: 0;
-      }
-    }
-    &:hover {
-      background-color: darken($white, 2%);
-      &::before {
-        width: 1px;
-      }
-    }
-  }
-  &.-current .c-nav_link::before {
-    width: 3px;
-    top: 0;
-    right: auto;
-    left: 1rem;
-    bottom: 0;
-    height: 50%;
-    margin: auto;
-    @include breakpoint(large) {
-      left: 0;
-    }
-  }
+
+/**
+ * Overflow Navigation
+ */
+
+.overflow {
+		display: none;
+		@include breakpoint(medium) {
+				display: block;
+				width: 100%;
+				height: 3rem;
+		}
 }
 
-.is-dropdown-submenu-parent>a::after {
-  @include breakpoint(medium down) {
-    right: 2rem !important;
-  }
-  @include breakpoint(large) {}
+.overflow--list,
+.overflowNav--nav__invisible {
+		@include breakpoint(medium) {
+				display: block;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				.nav--link {
+						position: relative;
+						display: inline-block;
+						margin: 0 .25rem;
+						padding: 0 .25rem;
+						line-height: 3rem;
+						font-size: 12px;
+						&::before {
+								position: absolute;
+								bottom: 0;
+								left: 50%;
+								color: inherit;
+								content: '•';
+								text-shadow: 0 0 inherit;
+								font-size: 1.2em;
+								transform: translateX(-50%);
+								opacity: 0;
+								transition: text-shadow .6s, opacity .1s, bottom .3s;
+						}
+						&:hover,
+						&:focus {
+								&::before {
+										bottom: -1em;
+										opacity: .7;
+										text-shadow: 6px 0 #FFF, -6px 0 #FFF;
+								}
+						}
+				}
+				&.is-current .nav--link {
+						&::before {
+								bottom: -1em;
+								opacity: 1;
+								text-shadow: 6px 0 #FFF, -6px 0 #FFF;
+						}
+				}
+		}
 }
 
-.is-dropdown-submenu {
-  @include breakpoint(medium down) {
-    position: static;
-    margin-left: 1.5rem !important;
-    font-size: .9em;
-  }
+
+/**
+ * Main Navigation
+ */
+
+.nav--main {
+		z-index: 100;
+		position: fixed;
+		top: 3rem;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		background-color: lighten($black, 2.5%);
+		display: block;
+		transform: translateX(-100%);
+		transition: .5s;
+		.is-nav-open & {
+				transform: translateX(0);
+		}
+		.nav--item {
+				display: block;
+				margin: 0;
+				padding: 0;
+				position: relative;
+				left: -100%;
+				@for $i from 1 through 15 {
+						.is-nav-open &:nth-of-type(#{$i}) {
+								animation: in .15s (.15s + $i/15) forwards;
+						}
+				}
+		}
+		.nav--link {
+				padding: 1rem 2rem;
+				&:hover {
+						border-left: 3px solid;
+				}
+		}
 }
 
-.c-nav-overlay {
-  @include breakpoint(medium down) {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: rgba(#000, .5);
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s .4s cubic-bezier(.4, 0, .2, 1), opacity .4s 0s cubic-bezier(.4, 0, .2, 1);
-    z-index: 1;
-    .has-nav-open & {
-      visibility: visible;
-      opacity: 1;
-      transition-delay: 0s;
-    }
-  }
+@keyframes in {
+		from {
+				left: -100%;
+				opacity: 0;
+		}
+		to {
+				left: 0;
+				opacity: 1;
+		}
+}
+
+.nav--cta {
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: inline-block;
+		width: 3rem;
+		height: 3rem;
+		color: $white;
+		transition: .3s;
+		background-color: $dark-gray;
+		&:hover {
+				background-color: $black;
+		}
+}
+
+.nav--cta__icon {
+		width: 2rem;
+		height: 2rem;
+		margin: .5rem;
+		text-align: center;
+		fill: $white;
+}
+
+
+/**
+ * Sub Navigation
+ */
+
+.nav--sub {
+		.nav--list {
+				white-space: nowrap;
+		}
+		.nav--link {
+				position: relative;
+				display: inline-block;
+				margin: 0 .25rem;
+				padding: 0 .25rem;
+				line-height: 3rem;
+				font-size: 12px;
+				&::before {
+						position: absolute;
+						bottom: 0;
+						left: 50%;
+						color: inherit;
+						content: '•';
+						text-shadow: 0 0 inherit;
+						font-size: 1.2em;
+						transform: translateX(-50%);
+						opacity: 0;
+						transition: text-shadow .6s, opacity .1s, bottom .3s;
+				}
+				&:hover,
+				&:focus {
+						&::before {
+								bottom: -1em;
+								opacity: .7;
+								text-shadow: 6px 0 #FFF, -6px 0 #FFF;
+						}
+				}
+		}
+		&.is-current .nav--link {
+				&::before {
+						bottom: -1em;
+						opacity: 1;
+						text-shadow: 6px 0 #FFF, -6px 0 #FFF;
+				}
+		}
 }

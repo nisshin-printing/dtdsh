@@ -1,0 +1,130 @@
+.price--table {
+		text-align: center;
+		thead {
+				th {
+						text-align: center;
+						padding: 1rem;
+						width: 33%;
+						&:nth-of-type(1) {
+								color: $white;
+								background-color: $dark-gray;
+						}
+						&:nth-of-type(2) {
+								color: $white;
+								background-color: lighten(nth(map-get($service, web), 1), 30%);
+						}
+						&:nth-of-type(3) {
+								color: $white;
+								background-color: nth(map-get($service, web), 1);
+						}
+				}
+		}
+		tbody {
+				tr:not(:last-of-type) {
+						border-bottom: 1px solid $medium-gray;
+				}
+				th,
+				td {
+						text-align: center;
+						padding: 10px;
+				}
+				th {
+						&:nth-of-type(1) {
+								background-color: lighten($light-gray, 5%);
+						}
+				}
+				td {
+						&:nth-of-type(1) {
+								background-color: $white;
+						}
+						&:nth-of-type(2) {
+								color: $white;
+								background-color: lighten(nth(map-get($service, web), 1), 15%);
+						}
+				}
+		}
+}
+
+.table--item__desc {
+		text-align: left;
+		white-space: normal;
+		min-width: 200px;
+}
+
+.table--item__price {
+		text-align: right;
+		font-weight: bold;
+}
+
+.price--table__breakdown {
+		thead {
+				th {
+						color: $white;
+						background-color: $dark-gray;
+						&:not(:last-of-type) {
+								border-right: 1px solid $light-gray;
+						}
+				}
+		}
+		tbody {
+				th,
+				td:nth-of-type(1) {
+						border-right: 1px solid $light-gray;
+				}
+		}
+		.table--item__breakdown {
+				&:nth-of-type(even) {
+						background-color: lighten($light-gray, 5%);
+				}
+				&:nth-of-type(odd) {
+						background-color: lighten($light-gray, 7%);
+				}
+				th {
+						text-align: left;
+						padding-left: 1rem;
+				}
+		}
+		&.hover {
+				.table--item__breakdown {
+						&:nth-of-type(even):hover {
+								background-color: lighten($light-gray, 10%);
+						}
+						&:nth-of-type(odd):hover {
+								background-color: lighten($light-gray, 12%);
+						}
+				}
+		}
+}
+
+@each $name,
+$value in $service {
+		.u-table__#{$name} {
+				thead th {
+						color: $white;
+						background-color: nth($value, 1);
+				}
+				th[colspan] {
+						text-align: left;
+						color: $white;
+						background-color: lighten(nth($value, 1), 10%);
+				}
+				.table--item__target {
+						&:nth-of-type(even) {
+								background-color: lighten(nth($value, 1), 35%);
+						}
+						&:nth-of-type(odd) {
+								background-color: lighten(nth($value, 1), 40%);
+						}
+				}
+				&.hover {
+						.table--item__target {
+								&:nth-of-type(even):hover {
+										background-color: lighten(nth($value, 1), 38%);
+								}
+								&:nth-of-type(odd):hover {
+										background-color: lighten(nth($value, 1), 45%);
+								}
+						}
+				}
+		}
+}

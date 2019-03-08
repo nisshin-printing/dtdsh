@@ -1,0 +1,58 @@
+body {
+		font-size: 16px;
+		line-height: 1.6;
+		mix-blend-mode: difference
+}
+
+h1 {
+		font-size: 1.5rem;
+		@include breakpoint(medium) {
+				font-size: 2rem;
+		}
+}
+
+h2 {
+		font-size: 20px;
+		@include breakpoint(medium) {
+				font-size: 1.5rem;
+		}
+}
+
+h3 {
+		font-size: 19px;
+		@include breakpoint(medium) {
+				font-size: 18px;
+		}
+}
+
+h4 {
+		font-size: 18px;
+		@include breakpoint(medium) {
+				font-size: 17px;
+		}
+}
+
+h5 {
+		font-size: 17px;
+		@include breakpoint(medium) {
+				font-size: 1rem;
+		}
+}
+
+h6 {
+		font-size: 1rem;
+		@include breakpoint(medium) {
+				font-size: 1rem;
+		}
+}
+
+.fs--big {
+		font-size: 1.5em;
+}
+
+$alignName: (right, left, center);
+@each $item in $alignName {
+		.text-#{$item} {
+				text-align: #{$item};
+		}
+}

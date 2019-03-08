@@ -1,53 +1,55 @@
-@import './config/fonts';
-body.mceContentBody {
-    font-size: 23px;
-    @include font-family('serif');
-}
+/**
+ * Global Project Specific Variables
+ */
 
-.editor-area {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5 {
-        color: #222;
-        font-weight: 700;
-        line-height: 1.3;
-    }
-    h2 {
-        font-size: 1.4em;
-        margin: 1.7em 0 .7em;
-    }
-    h3 {
-        font-size: 1.3em;
-        margin: 1.7em 0 .5em;
-    }
-    h4 {
-        font-size: 1.2em;
-        margin: 1.7em 0 .5em;
-    }
-    h5 {
-        font-size: 1.1;
-        margin: 1.7em 0 .5em;
-    }
-    hr {
-        background: #DDD;
-        border: 0;
-        height: 1px;
-        margin: 1em 0 1.5em;
-        padding: 0;
-    }
-    p {
-        margin: 0 0 1.5em;
-        color: #313131;
-    }
-    a {
-        text-decoration: underline;
-        &:hover {
-            text-decoration: none;
-        }
-    }
-    .u-underline {
-        background: linear-gradient( transparent 40%, #FF0 40%);
-    }
-}
+@import './config/paths';
+@import './config/colors';
+
+/**
+	* Functions & Mixins & Animations
+	*/
+
+// utilities
+// styling utilities
+// css shapes
+// form elements
+// transitions
+
+/**
+	* Your Custom Styles.
+	* - Config
+	*/
+
+@import './config/images';
+@import './config/fonts';
+$timing-function: cubic-bezier(.080, 1.090, .320, 1.275);
+
+/**
+	* Vendor Styles
+	* ( - Not Modified for Maintainability - )
+ * ( - Reset/Normalize First - )
+	*/
+
+@import './config/foundation';
+@import 'foundation';
+// Global styles
+@include foundation-global-styles;
+@include foundation-visibility-classes;
+
+/**
+	* Your Custom Styles.
+	* - Utility
+	*/
+
+@import './utility/background';
+
+/**
+	* Your Custom Styles.
+	* - Components
+	*/
+
+@import './component/angle';
+@import './component/buttons';
+// @import './component/loading';
+@import './component/typography';
+@import './component/title';

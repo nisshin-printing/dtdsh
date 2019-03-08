@@ -1,50 +1,28 @@
 <?php
 if ( empty( $_GET['_pjax'] ) ) {
-    get_header();
+		$bg = $post->post_name;
+		include locate_template( './header.php' );
 }
 ?>
 
+<main>
+		<section class="hero--wrap" style="background-image:url(//liginc.co.jp/wp-content/themes/ligtheme/assets/images/hero-web.jpg)">
+			<h1 class="hero--title"><?php the_title(); ?></h1>
+		</section>
 
-<?php
-    $is_single = ( is_single() ) ? ' itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog"' : '';
-?>
-<main id="js-main" role="main"<?php echo $is_single; ?>>
-    <div class="o-container">
-        <div class="row expanded o-content">
-            <div class="column small-12">
-                <div class="row expanded o-grid">
-                    <?php
-                        NID_Crumbs::crumbs();
-                    if (is_front_page()) {
-                        get_template_part( 'templates/front' );
-                    } else if (is_page( 'service' )) {
-                        get_template_part( 'templates/service' );
-                    } else if (is_page( 'service/balance-design' )) {
-                        get_template_part( 'templates/service/item' );
-                    } else if (is_page( 'service/web-consulting' )) {
-                        get_template_part( 'templates/service/web-consulting' );
-                    } else if (is_page( 'price' )) {
-                        get_template_part( 'templates/price' );
-                    } else if (is_page( 'about' )) {
-                        get_template_part( 'templates/about' );
-                    } else if (is_page( 'recruit' )) {
-                        get_template_part( 'templates/recruit' );
-                    } else if (is_page( 'contact' )) {
-                        get_template_part( 'templates/contact' );
-                    } else if (is_404()) {
-                        get_template_part( 'templates/404' );
-                    } else if (is_single() || is_search() || is_archive() || is_home() || is_page() ) {
-                        get_template_part( 'templates/blog' );
-                    }
-                    ?>
-                </div>
-            </div>
-        </div>
-    </div>
+		<?php NID_Crumbs::crumbs(); ?>
+
+		<section class="content">
+			<?php
+				while ( have_posts() ) : the_post();
+					the_content();
+				endwhile;
+			?>
+		</section>
 </main>
 
 
 <?php
 if ( empty( $_GET['_pjax'] ) ) {
-    get_footer();
+	include locate_template( './footer.php' );
 }

@@ -85,7 +85,7 @@ class NID_Crumbs
         $str = '';
         $defaults = array(
             'menu_class' => 'breadcrumbs',
-            'home' => 'トップページ',
+            'home' => '<svg role="img" class="breadcrumbs--home"><title>トップページ</title><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="//localhost:3000/wp-content/themes/dtdsh/assets/svg/sprite.svg#icon-home"></use></svg>',
             'search' => 'で検索した結果',
             'tag' => 'タグ',
             'notfound' => 'ページがありません！',

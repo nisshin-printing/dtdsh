@@ -1,6 +1,4 @@
-'use strict';
-
-const gulp = require('gulp');
+const { task, series, watch, dest, src } = require('gulp');
 const config = require('./config/settings');
 const webpack = require('webpack');
 const gulpWebpack = require('webpack-stream');
@@ -17,6 +15,7 @@ const deepMerge = require('./utils/deepMerge');
 
 let recipe = {
 		mode: 'development',
+		watch: true,
 		cache: true,
 		resolve: {
 				extensions: ['.js', '.jsx']
@@ -45,15 +44,21 @@ let recipe = {
 				new LodashModuleReplacementPlugin,
 				new webpack.DefinePlugin({
 						__DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true'))
+				}),
+				new webpack.ProvidePlugin({
+						'$': 'jquery'
 				})
-		]
+		],
+		externals: {
+				jquery: 'window.jQuery'
+		}
 };
 
 
 /**
  * Clean
  */
-gulp.task('scripts:clean', done => {
+task('scripts:clean', done => {
 		$.del(config.scripts.clean, {
 				force: true
 		}).then(() => { done(); });
@@ -63,34 +68,17 @@ gulp.task('scripts:clean', done => {
 /**
  * Watch
  */
-gulp.task('scripts:watch', () => {
-		recipe = deepMerge(recipe, { mode: 'development' });
-		gulp.src(config.scripts.src)
-				.pipe($.plumber())
-
-		.pipe(named())
-
-		.pipe(gulpWebpack(
-						recipe,
-						null,
-						function(err, stats) {
-								logStats(err, stats, {
-										watch: true
-								});
-
-								$.browser.reload();
-								notifaker(pumped('JS Packaged'));
-						}))
-				.pipe(gulp.dest(config.scripts.dest));
+task('scripts:watch', () => {
+		watch(config.scripts.watch, series('scripts:dev'));
 });
 
 
 /**
  * Develop
  */
-gulp.task('scripts:dev', () => {
+task('scripts:dev', () => {
 		recipe = deepMerge(recipe, { mode: 'development' });
-		gulp.src(config.scripts.src)
+		src(config.scripts.src)
 				.pipe($.plumber())
 				.pipe(named())
 				.pipe(gulpWebpack(
@@ -102,21 +90,21 @@ gulp.task('scripts:dev', () => {
 								notifaker(pumped('JS Packaged'));
 						}))
 
-		.pipe(gulp.dest(config.scripts.dest));
+		.pipe(dest(config.scripts.dest));
 });
 
 /**
  * Production
  */
-gulp.task('scripts:prod', done => {
+task('scripts:prod', done => {
 		recipe = deepMerge(recipe, { mode: 'production' });
-		gulp.src(config.scripts.src)
+		src(config.scripts.src)
 				.pipe($.plumber())
 
 		.pipe(named())
 
 		.pipe(gulpWebpack(recipe))
-				.pipe(gulp.dest(config.scripts.dest))
+				.pipe(dest(config.scripts.dest))
 				.pipe($.notify({
 						message: pumped('JS Packaged & Minified!'),
 						onLast: true

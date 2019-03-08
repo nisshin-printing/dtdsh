@@ -1,54 +1,47 @@
-.c-accordion_item {
-    color: $black;
-    background-color: $white;
-    &.is-active {
-        color: $white;
-        background-color: $black;
-    }
+.accordion--title {
+		position: relative;
+		padding: 1rem 2rem;
+		color: $black;
+		background-color: rgba(#000, .1);
+		cursor: pointer;
+		margin-bottom: 0;
+		z-index: 5;
 }
 
-.c-accordion_title {
-    position: relative;
-    display: block;
-    padding: 1.25rem 1rem;
-    padding-right: 2rem;
-    color: $black;
-    background-color: $white;
-    transition: .3s;
-    &:hover,
-    .is-active & {
-        color: $white;
-        background-color: $black;
-    }
+.accordion--icon {
+		position: absolute;
+		right: 2rem;
+		top: 50%;
+		transform: translateY(-75%) rotate(-45deg);
+		width: 1.5rem;
+		height: 1.5rem;
+		border: 1px solid;
+		border-color: transparent transparent $black $black;
+		transition: .6s cubic-bezier(0.080, 1.090, 0.320, 1.275);
+		z-index: 1;
+		.is-open & {
+				transform: translateY(-25%) rotate(-225deg);
+		}
 }
 
-.c-accordion_icon {
-    width: 1rem;
-    height: 1rem;
-    position: absolute;
-    top: 50%;
-    right: 1rem;
-    margin-top: -.5rem;
-    transform: rotate(90deg);
-    transition: .3s;
+.accordion--content__wrap {
+		opacity: 0;
+		padding: 1rem;
+		margin-top: -2rem;
+		height: 2rem;
+		transition: 350ms cubic-bezier(0.080, 1.090, 0.320, 1.275);
+		background-color: #FAFAFA;
+		.is-open & {
+				opacity: 1;
+				height: auto;
+				margin-top: 0;
+		}
 }
 
-.is-active .c-accordion_icon {
-    transform: rotate( 270deg);
-}
-
-.c-accordion_content {
-    padding: 1.25rem 1rem;
-    display: none;
-    a {
-        color: $white;
-        &:hover {
-            color: rgba($white, .5);
-        }
-    }
-}
-
-.is-active .c-accordion_content {
-    color: $white;
-    background-color: $black;
+.accordion--content {
+		visibility: hidden;
+		transition: .2s ease-in;
+		.is-open & {
+				visibility: visible;
+		}
 }

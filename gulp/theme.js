@@ -1,6 +1,4 @@
-'use strict';
-
-const gulp = require('gulp');
+const { task, src, watch, dest, series } = require('gulp');
 const config = require('./config/settings');
 const transform = require('vinyl-transform');
 const path = require('path');
@@ -18,7 +16,7 @@ const bSSnippet = require('./templates/browser-sync-snippet');
 /**
  * 本番テーマを消去
  */
-gulp.task('theme:clean', done => {
+task('theme:clean', done => {
 		$.del(config.theme.clean, {
 						force: true
 				})
@@ -30,11 +28,11 @@ gulp.task('theme:clean', done => {
  * Move the Theme
  */
 
-gulp.task('theme:dev', () => {
+task('theme:dev', () => {
 		const filterPHP = $.filter('**/*.php', { restore: true });
 		const filterFunc = $.filter('functions.php', { restore: true });
 
-		return gulp.src(config.theme.src)
+		return src(config.theme.src)
 				.pipe($.plumber())
 
 		.pipe(filterPHP)
@@ -61,7 +59,7 @@ gulp.task('theme:dev', () => {
 				.pipe($.insert.append(bSSnippet))
 				.pipe(filterFunc.restore)
 
-		.pipe(gulp.dest(config.theme.dest))
+		.pipe(dest(config.theme.dest))
 				.pipe($.notify({
 						message: pumped('Theme Moved!'),
 						onLast: true
@@ -71,8 +69,8 @@ gulp.task('theme:dev', () => {
 });
 
 
-gulp.task('theme:prod', done => {
-		return gulp.src(config.theme.src)
+task('theme:prod', done => {
+		return src(config.theme.src)
 				.pipe($.plumber())
 
 		.pipe($.add({
@@ -80,16 +78,16 @@ gulp.task('theme:prod', done => {
 				'style.css': style
 		}))
 
-		.pipe(gulp.dest(config.theme.dest))
+		.pipe(dest(config.theme.dest))
 				.pipe($.notify({
 						message: pumped('Theme Moved!'),
 						onLast: true
-				}));
+				}))
 
 		done();
 });
 
 
-gulp.task('theme:watch', () => {
-		$.watch(config.theme.watch, gulp.series('theme:dev'));
+task('theme:watch', () => {
+		watch(config.theme.watch, series('theme:dev'));
 });

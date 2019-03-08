@@ -257,7 +257,7 @@ class NID_Pagination {
 		}
 
 		// Add page number pages to array
-		for ( $n = 1; $n <= $total; $n ++ ) {
+		for ( $n = 1; $n <= $total; ++$n ) {
 
 			// Add current page number to array
 			if ( $n == $current ) {

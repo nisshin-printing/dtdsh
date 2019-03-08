@@ -9,7 +9,7 @@
 /* =========================================
 		Define
    ========================================= */
-define( 'DTDSH_THEME_VERSION', '1.7' );
+define( 'DTDSH_THEME_VERSION', '1.8' );
 
 /* =========================================
 		ACTION HOOKS & FILTERS
@@ -84,8 +84,17 @@ if (! function_exists( 'theme_setup' )) {
 
         // Register navigation menus for theme
         register_nav_menus( array(
-            'primary' => 'Main Menu',
-            'footer'  => 'Footer Menu'
+						'main'   => 'Main Menu',
+						'web'       => 'S -- Web',
+						'print'     => 'S -- Print',
+						'design'     => 'S -- Design',
+						'ads'       => 'S -- Ads',
+						'manage'    => 'S -- Manage',
+						'Web-cs'    => 'S -- WebCS',
+						'variety'   => 'S -- Variety',
+						'ms-manage' => 'S -- M/S Manage',
+						'ms-lease'  => 'S -- M/S Lease',
+            'about'    => 'Footer about'
         ) );
 
 
@@ -151,6 +160,7 @@ if (! function_exists( 'theme_setup' )) {
         include "$theme_dir/library/library-loader.php";
         include "$theme_dir/includes/includes-loader.php";
         include "$theme_dir/components/components-loader.php";
+        include "$theme_dir/editor/add-buttons.php";
 
 	}
 }
@@ -190,7 +200,10 @@ if (! function_exists( 'theme_scripts' )) {
 				wp_deregister_script( 'jquery' );
 				wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js', array(), false, true );
 				if ( ! is_page( 'print' ) ) {
-					wp_enqueue_script( 'main', "$theme_dir/assets/js/main.js", array( 'jquery' ), DTDSH_THEME_VERSION, true );
+					wp_enqueue_script( 'main', "$theme_dir/assets/js/main.js", array( 'jquery' ), false, true );
+					wp_enqueue_script( 'overflowNav', "$theme_dir/assets/js/overflowNav.js", array( 'jquery' ), false, true );
+					wp_enqueue_script( 'lightslider', "$theme_dir/assets/js/lightslider.js", array( 'jquery' ), false, true );
+					wp_enqueue_script( 'nid-accordion', "$theme_dir/assets/js/accordion.js", array( 'jquery' ), false, true );
 				}
     }
 }

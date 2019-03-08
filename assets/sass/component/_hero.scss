@@ -1,0 +1,43 @@
+.hero--wrap {
+		width: 100%;
+		height: 315px;
+		background: {
+				size: cover;
+				position: center;
+				repeat: no-repeat;
+		}
+		position: relative;
+		text-align: center;
+		margin: 0 auto;
+		z-index: 1;
+		&::before,
+		&::after {
+				content: '';
+				width: 1px;
+				height: 35px;
+				display: block;
+				margin: 0 auto;
+				position: absolute;
+				left: 0;
+				right: 0;
+				z-index: 5;
+		}
+		&::before {
+				background-color: $white;
+				bottom: 0;
+		}
+		&::after {
+				background-color: $black;
+				bottom: -35px;
+		}
+}
+
+.hero--title {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		right: 0;
+		transform: translateY(-50%);
+		margin: 0 auto;
+		color: $white;
+}

@@ -1,0 +1,25 @@
+.next--wrap {
+		background-color: $light-gray;
+		text-align: right;
+		padding: 2rem 1rem;
+}
+
+.next--link {
+		font-size: 1rem;
+		text-decoration: none;
+		vertical-align: middle;
+		display: inline-block;
+		color: inherit;
+		@include breakpoint(medium) {
+				font-size: 1.5rem;
+		}
+}
+
+.next--link__icon {
+		display: inline-block;
+		vertical-align: middle;
+		width: 1.5rem;
+		height: 1.5rem;
+		border: 1px solid;
+		border-color: transparent transparent $black $black;
+}

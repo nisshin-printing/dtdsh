@@ -1,80 +1,113 @@
-.c-header-main {
-		position: relative;
-		z-index: 1;
+.header--main {
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+		height: 3rem;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
 		width: 100%;
-		margin: 0 auto;
-		max-height: 637px;
-		@include breakpoint(large) {
-				min-height: 637px;
-		}
-		.c-block.-extended {
-				height: 75vh;
-				min-height: 450px;
-				max-height: 637px;
-				@include breakpoint(large) {
-						min-height: 637px;
-				}
-				.home &,
-				.error404 & {
-						height: 100vh;
-						max-height: none;
-				}
-		}
-		.home &,
-		.error404 & {
-				height: 100vh;
-				max-height: none;
-				background-color: #FFF;
+		z-index: 1000;
+		flex-direction: row-reverse;
+		@include breakpoint(medium) {
+				flex-direction: row;
 		}
 }
 
-.c-header-main_logo {
-		position: absolute;
-		top: 0;
-		right: auto;
-		left: 0;
-		padding: 2rem;
-		text-align: center;
-		margin: 0;
-		display: block;
-		z-index: 1010;
-		font-size: calc(2rem + .25vw);
+.header--logo {
 		@include breakpoint(small only) {
-				display: none;
-		}
-		@include breakpoint(medium only) {
-				font-size: calc(1rem + .25vw);
-				right: 0;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				display: inline-block;
+				margin: auto;
 		}
 		a {
-				color: currentColor;
+				font-size: 1.5rem;
+				font-weight: normal;
+				transition: .3s;
+				background-color: transparent;
+				&:hover {
+						background-color: transparent;
+				}
+		}
+		@include breakpoint(medium) {
+				display: flex;
+				align-self: stretch;
+				align-items: center;
+				margin: 0;
+				position: relative;
+				white-space: nowrap;
+				&::after {
+						content: '';
+						display: inline-block;
+						position: absolute;
+						top: 0;
+						bottom: 0;
+						right: 0;
+						margin: auto;
+						width: 1px;
+						height: 2rem;
+						background-color: $dark-gray;
+				}
+				a {
+						font-size: 2rem;
+				}
+		}
+		a {
+				color: inherit;
+				text-decoration: none;
+				line-height: 3rem;
+				padding: 0 1rem;
 		}
 }
 
-.c-header-main_nav-button {
-		position: absolute;
-		top: 0;
-		left: 0;
+
+/**
+ * Navigation Button
+ */
+
+.nav--button {
+		width: 3rem;
+		height: 3rem;
+		position: relative;
+		display: inline-block;
+		vertical-align: top;
+		width: 3rem;
+		height: 3rem;
 		cursor: pointer;
-		z-index: 1010;
 		user-select: none;
-		transition: transform 0.4s;
+		transition: .3s;
 		-webkit-tap-highlight-color: transparent;
-		text-align: left;
-		margin-left: -1rem;
-		padding: 1.6rem 1.5rem;
+		margin: 0;
+		padding: 0;
 		@include breakpoint(medium) {
-				padding: 1.5rem 2rem;
-		}
-		@include breakpoint(large) {
 				display: none;
 		}
+		&::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				left: 0;
+				transition: border 0s linear;
+				border-radius: 50%;
+				border: 0;
+		}
+		.is-nav-open &::after {
+				transition: border 0s linear .4s;
+				border: 2px solid currentColor;
+		}
 		&:hover {
-				.c-header-main_nav-button_lines::before {
-						transform: translateY(-8px);
+				.nav--button__lines::before {
+						transform: translateY(-7px);
 				}
-				.c-header-main_nav-button_lines::after {
-						transform: translateY(8px);
+				.nav--button__lines::after {
+						transform: translateY(7px);
 				}
 		}
 }
@@ -99,44 +132,12 @@
 		}
 }
 
-.c-header-main_nav-button_button {
-		position: relative;
-		border-radius: 50%;
-		display: inline-block;
-		vertical-align: middle;
-		cursor: pointer;
-		z-index: 3;
-		@include breakpoint(small only) {
-				width: 42px;
-				height: 42px;
-		}
-		@include breakpoint(medium only) {
-				width: 54px;
-				height: 54px;
-		}
-		&::after {
-				content: '';
-				position: absolute;
-				top: 1px;
-				bottom: 1px;
-				right: 1px;
-				left: 1px;
-				transition: border 0s linear;
-				border-radius: 50%;
-				border: 0;
-		}
-		.has-nav-open &::after {
-				transition: border 0s linear .4s;
-				border: 2px solid currentColor;
-		}
-}
-
-.c-header-main_nav-button_lines {
+.nav--button__lines {
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		display: block;
-		width: 22px;
+		width: 1rem;
 		border-bottom: 2px solid;
 		transform: translateX(-50%) translateY(-50%);
 		transition: border-color 0.4s steps(1, end);
@@ -147,23 +148,23 @@
 				top: 0;
 				left: 0;
 				display: block;
-				width: 22px;
+				width: 1rem;
 				border-top: 2px solid;
-				transform: translateY(-6px);
-				transition: transform .4s;
+				transform: translateY(-7px);
+				transition: .3s;
 				transform-origin: 100% 50%;
 		}
 		&::after {
-				transform: translateY(6px);
+				transform: translateY(7px);
 		}
-		.has-nav-open & {
+		.is-nav-open & {
 				transition: border-color .4s steps(1, start);
 				border-color: transparent;
 				&::before {
-						transform: translateX(-3px) translateY(-8px) rotate(-45deg) !important;
+						transform: translateX(-2px) translateY(-6px) rotate(-45deg) !important;
 				}
 				&::after {
-						transform: translateX(-3px) translateY(8px) rotate(45deg) !important;
+						transform: translateX(-2px) translateY(6px) rotate(45deg) !important;
 				}
 		}
 }
@@ -189,22 +190,18 @@
 		}
 }
 
-.c-header-main_nav-button_path {
+.nav--button__path {
 		opacity: 0;
 		fill: transparent;
-		stroke-width: 2px;
-		stroke: currentColor;
+		stroke-width: 1px;
+		stroke: $white;
 		stroke-dasharray: 22 230;
 		transition: stroke-dasharray 0.4s, stroke-dashoffset 0.4s, opacity 0.4s steps(1, end);
 		animation: pathanimation-out 0.4s linear;
-		width: 42px;
-		height: 42px;
+		width: 3rem;
+		height: 3rem;
 		vertical-align: middle;
-		@include breakpoint(medium) {
-				width: 54px;
-				height: 54px;
-		}
-		.has-nav-open & {
+		.is-nav-open & {
 				opacity: 0;
 				transition: opacity .4s steps(1, start);
 				animation: pathanimation .4s linear;
@@ -212,13 +209,25 @@
 		}
 }
 
-.c-header-main_nav-button_label {
+
+/**
+ * Header CTA
+ */
+
+.header--cta,
+.header--cta__link {
 		display: inline-block;
 		vertical-align: middle;
-		transition: transform .3s cubic-bezier(.4, 0, .2, 1), opacity .3s cubic-bezier(.4, 0, .2, 1);
-		margin-left: -10px;
-		margin-bottom: 1px;
-		.has-nav-open & {
-				opacity: 0;
-		}
+		width: 3rem;
+		height: 3rem;
+		line-height: 3rem;
+		text-align: center;
+		opacity: 1 !important;
+}
+
+.header--cta__icon {
+		display: inline-block;
+		width: 1.8rem;
+		height: 1.8rem;
+		vertical-align: middle;
 }

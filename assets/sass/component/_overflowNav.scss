@@ -1,0 +1,68 @@
+.overflowNav--loaded {
+		overflow-x: hidden;
+}
+
+.overflowNav:not(.loaded) {
+		visibility: hidden;
+		user-select: none;
+}
+
+.overflowNav--nav__visible {
+		overflow: hidden;
+		white-space: nowrap;
+		float: left;
+}
+
+.overflowNav--nav__invisible {
+		position: fixed;
+		top: 3rem;
+		background-color: $black;
+		right: 0;
+		transform: translateX(100%);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		li {
+				display: block;
+		}
+}
+
+.overflowNav--menu__toggle:not(.overflowNav--invisible) {
+		cursor: pointer;
+		position: relative;
+		display: inline-block;
+		width: 3rem;
+		height: 3rem;
+		transition: .3s;
+		span {
+				display: block;
+				position: absolute;
+				margin: auto;
+				width: 4px;
+				height: 4px;
+				background-color: $white;
+				border-radius: 50%;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				transition: .3s;
+				&:nth-of-type(1) {
+						transform: translateY(6px);
+				}
+				&:nth-of-type(2) {
+						transform: translateY(-6px);
+				}
+		}
+		&:hover {
+				span:nth-of-type(1) {
+						transform: translateY(8px);
+				}
+				span:nth-of-type(2) {
+						transform: translateY(-8px);
+				}
+		}
+		&.is-active {
+				transform: rotate(90deg);
+		}
+}

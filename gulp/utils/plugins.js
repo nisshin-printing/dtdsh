@@ -4,8 +4,8 @@
  */
 const loader = require('gulp-load-plugins');
 const browser = require('browser-sync');
-const del = require('del');
 const merge = require('merge-stream');
+const del = require('del');
 
 const $ = loader({
 		pattern: ['gulp-*', 'gulp.*'],
@@ -13,7 +13,7 @@ const $ = loader({
 });
 
 $.browser = browser;
-$.del = del;
 $.merge = merge;
+$.del = del;
 
 module.exports = $;

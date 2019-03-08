@@ -1,0 +1,93 @@
+.button {
+		color: #454545;
+		background: transparent;
+		border-width: 2px;
+		border-style: solid;
+		border-color: #454545;
+		position: relative;
+		margin: 1em;
+		display: inline-block;
+		padding: .5em 1em;
+		transition: .5s $timing-function;
+		text-align: center;
+		text-decoration: none;
+		cursor: pointer;
+		@include breakpoint(medium) {
+				padding: .8em 1.5em;
+		}
+		&::before,
+		&::after {
+				content: '';
+				display: block;
+				position: absolute;
+				border-color: #454545;
+				box-sizing: border-box;
+				border-style: solid;
+				width: 1em;
+				height: 1em;
+				transition: .5s $timing-function;
+		}
+		&::before {
+				top: -6px;
+				left: -6px;
+				border-width: 2px 0 0 2px;
+				z-index: 5;
+		}
+		&::after {
+				bottom: -6px;
+				right: -6px;
+				border-width: 0 2px 2px 0;
+		}
+		&:hover::before,
+		&:hover::after {
+				width: calc(100% + 12px);
+				height: calc(100% + 12px);
+				border-color: #fff
+		}
+		&:hover {
+				color: #353535;
+				background-color: #fff;
+				border-color: #fff
+		}
+}
+
+.button.turn {
+		color: $white;
+		border-color: $white;
+		background-color: transparent;
+		&:hover {
+				border-color: $white;
+				color: #353535;
+				background-color: $white;
+		}
+		&::before,
+		&::after {
+				border-color: $white;
+		}
+		&::hover:before,
+		&::hover:after {
+				width: calc(100% + 12px);
+				height: calc(100% + 12px);
+				border-color: $white;
+		}
+}
+
+.borderless.button {
+		border-color: rgba(0, 0, 0, 0);
+		color: #999;
+		&:hover {
+				border-color: #353535;
+				background-color: transparent;
+				color: #353535
+		}
+		&::before,
+		&::after {
+				border-color: transparent;
+		}
+		&::hover:before,
+		&::hover:after {
+				width: calc(100% + 12px);
+				height: calc(100% + 12px);
+				border-color: #353535
+		}
+}

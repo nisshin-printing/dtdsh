@@ -82,7 +82,7 @@ class NInc_TOC {
 		$this->collision_collector = array();
 		
 		// find the minimum heading to establish our baseline
-		for ( $i = 0; $i < count( $matches ); $i++ ) {
+		for ( $i = 0; $i < count( $matches ); ++$i ) {
 			if ( $current_depth > $matches[$i][2] ) {
 				$current_depth = (int) $matches[$i][2];
 			}
@@ -91,7 +91,7 @@ class NInc_TOC {
 		$numbered_items[$current_depth] = 0;
 		$numbered_items_min = $current_depth;
 
-		for ( $i = 0; $i < count( $matches ); $i++ ) {
+		for ( $i = 0; $i < count( $matches ); ++$i ) {
 
 			if ( $current_depth === (int) $matches[$i][2] ) {
 				$html .= '<li>';
@@ -158,11 +158,11 @@ class NInc_TOC {
 	) {
 		if ( is_array( $find ) && is_array( $replace ) && $string ) {
 			if ( function_exists( 'mb_strpos' ) ) {
-				for ( $i = 0; $i < count( $find ); $i++ ) {
+				for ( $i = 0; $i < count( $find ); ++$i ) {
 					$string = mb_substr( $string, 0, mb_strpos( $string, $find[$i]) ) . $replace[$i] . mb_substr( $string, mb_strpos( $string, $find[$i]) + mb_strlen( $find[$i]) );
 				}
 			} else {
-				for ( $i = 0; $i < count( $find ); $i++ ) {
+				for ( $i = 0; $i < count( $find ); ++$i ) {
 					$string = substr_replace(
 						$string,
 						$replace[$i],
@@ -188,7 +188,7 @@ class NInc_TOC {
 			if ( preg_match_all( '/(<h([1-6]{1})[^>]*>).*<\/h\2>/msuU', $content, $matches, PREG_SET_ORDER ) ) {
 
 				$new_matches = array();
-				for ( $i = 0; $i < count( $matches ); $i++) {
+				for ( $i = 0; $i < count( $matches ); ++$i) {
 					if ( trim( strip_tags( $matches[$i][0] ) ) !== false ) {
 						$new_matches[] = $matches[$i];
 					}
@@ -200,7 +200,7 @@ class NInc_TOC {
 
 				if ( count( $matches ) >= 4 ) {
 
-					for ( $i = 0; $i < count( $matches ); $i++ ) {
+					for ( $i = 0; $i < count( $matches ); ++$i ) {
 						$anchor = $this->url_anchor_target( $matches[$i][0] );
 						$find[] = $matches[$i][0];
 						$replace[] = str_replace(

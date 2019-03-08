@@ -63,7 +63,7 @@
 // 1. Global
 // ---------
 $global-font-size: 100%;
-$global-width: rem-calc(1200);
+$global-width: rem-calc(960);
 $global-lineheight: 1.5;
 $foundation-palette: ( primary: #1F1F1F, secondary: #FFFFFF, success: #3adb76, warning: #ffae00, alert: #cc4b37, );
 $light-gray: #e6e6e6;
@@ -73,7 +73,7 @@ $black: #1F1F1F;
 $white: #FFFFFF;
 $body-background: $white;
 $body-font-color: $black;
-$body-font-family: $serif;
+$body-font-family: $sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -97,9 +97,9 @@ $print-breakpoint: large;
 $breakpoint-classes: (small medium large);
 // 3. The Grid
 // -----------
-$grid-row-width: none;
+$grid-row-width: $global-width;
 $grid-column-count: 12;
-$grid-column-gutter: ( small: 20px, medium: 0, );
+$grid-column-gutter: ( small: 20px, medium: 20px, );
 $grid-column-align-edge: true;
 $grid-column-alias: 'columns';
 $block-grid-max: 8;
@@ -578,14 +578,14 @@ $table-row-stripe-hover: darken($table-background, $table-color-scale + $table-h
 $table-is-striped: true;
 $table-striped-background: smart-scale($table-background, $table-color-scale);
 $table-stripe: even;
-$table-head-background: smart-scale($table-background, $table-color-scale / 2);
+$table-head-background: smart-scale($table-background, $table-color-scale);
 $table-head-row-hover: darken($table-head-background, $table-hover-scale);
 $table-foot-background: smart-scale($table-background, $table-color-scale);
 $table-foot-row-hover: darken($table-foot-background, $table-hover-scale);
 $table-head-font-color: $body-font-color;
 $table-foot-font-color: $body-font-color;
-$show-header-for-stacked: false;
-$table-stack-breakpoint: medium;
+$show-header-for-stacked: true;
+$table-stack-breakpoint: small;
 // 51. Tabs
 // --------
 $tab-margin: 0;
