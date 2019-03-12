@@ -38,39 +38,26 @@ class WC_Address_Book {
 		add_filter( 'woocommerce_account_menu_items', array( $this, 'wc_address_book_add_to_menu' ), 10 );
 		add_action( 'woocommerce_account_edit-address_endpoint', array( $this, 'wc_address_book_page' ), 20 );
 
-		// Shipping Address fields.
+		// アドレス帳にWCの国選択フィールド追加
 		add_filter( 'woocommerce_form_field_country', array( $this, 'shipping_address_country_select' ), 20, 4 );
 
-		// Standardize the address edit fields to match Woo's IDs.
+		// WooのIDにマッチするようフィールドを標準化
 		add_action( 'woocommerce_form_field_args', array( $this, 'standardize_field_ids' ), 20, 3 );
 
 		add_action( 'woocommerce_shipping_fields', array( $this, 'replace_address_key' ), 1001, 2 );
 
 	} // end constructor
 
-	/**
-	 * Version
-	 *
-	 * @since 1.0.0
-	 *
-	 * @var string
-	 */
-	public $version;
 
-	/**
-	 * Fired when the plugin is activated.
-	 *
-	 * @param boolean $network_wide - True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog.
-	 * @since 1.0.0
-	 */
+	public $version;
 	public function activate( $network_wide ) {
 
-		// Make sure only admins can wipe the date.
+		// アクティベートできる権限があるか
 		if ( ! current_user_can( 'activate_plugins' ) ) {
 			return;
 		}
 
-		// Write a user's shipping address to the user_meta if they do not already have an address book saved.
+		// アドレス帳機能をまだ使用していないとき
 		$users = get_users( array( 'fields' => 'ID' ) );
 		foreach ( $users as $user_id ) {
 
@@ -89,51 +76,17 @@ class WC_Address_Book {
 		flush_rewrite_rules();
 	}
 
-	/**
-	 * Fired when the plugin is deactivated.
-	 *
-	 * @param boolean $network_wide - True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog.
-	 * @since 1.0.0
-	 */
-	public function deactivate( $network_wide ) {
-
-		flush_rewrite_rules();
-
-	}
-
-	/**
-	 * Fired when the plugin is uninstalled.
-	 *
-	 * @param boolean $network_wide - True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog.
-	 * @since 1.0.0
-	 */
-	public function uninstall( $network_wide ) {
-
-		flush_rewrite_rules();
-	}
-
-	/**
-	 * Loads the plugin text domain for translation
-	 *
-	 * @since 1.0.0
-	 */
-	public function plugin_textdomain() {
-
-		load_plugin_textdomain( 'wc-address-book', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
-
-	}
 
 	/**
 	 * Enqueue scripts and styles
-	 *
 	 * @since 1.0.0
 	 */
 	public function scripts_styles() {
 		if ( ! is_admin() ) {
 			wp_enqueue_script( 'jquery' );
 
-			wp_enqueue_style( 'wc-address-book', plugins_url( '/assets/css/style.css', __FILE__ ), array(), $this->version );
-			wp_enqueue_script( 'wc-address-book', plugins_url( '/assets/js/scripts.js', __FILE__ ), array( 'jquery' ), $this->version, true );
+			wp_enqueue_style( 'wc-address-book', get_template_directory_uri() . '/assets/css/wc-adress-book.css', array(), $this->version );
+			wp_enqueue_script( 'wc-address-book', get_template_directory_uri() . '/assets/js/wc-adress-book.js', array( 'jquery' ), $this->version, true );
 
 			wp_localize_script(
 				'wc-address-book',
@@ -146,8 +99,7 @@ class WC_Address_Book {
 	}
 
 	/**
-	 * Adds a link/button to the my account page under the addresses for adding additional addresses to their account.
-	 *
+	 * マイページの下に、アドレス帳追加ボタン追加
 	 * @since 1.0.0
 	 */
 	public function add_additional_address_button() {
@@ -158,23 +110,20 @@ class WC_Address_Book {
 		$name = $this->set_new_address_name( $address_names );
 
 		?>
-
-		<div class="add-new-address">
-			<a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', 'shipping/?address-book=' . $name ) ); ?>" class="add button"><?php echo esc_html_e( 'Add New Shipping Address', 'wc-address-book' ); ?></a>
-		</div>
-
-		<?php
+<div class="add-address--wrap">
+	<a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', " shipping/?address-book=$name" ) ); ?>"
+		class="button add">新しい配送先を追加</a>
+</div>
+<?php
 	}
 
 	/**
-	 * Returns the next available shipping address name.
-	 *
-	 * @param string $address_names - An array of saved address names.
+	 * 配送先Name（shipping1～10）を返す
 	 * @since 1.0.0
 	 */
 	public function set_new_address_name( $address_names ) {
 
-		// Check the address book entries and add a new one.
+		// アドレス帳を確認して新しい配送先Nameを取得
 		if ( isset( $address_names ) && ! empty( $address_names ) ) {
 
 			$new = str_replace( 'shipping', '', end( $address_names ) );
@@ -184,20 +133,14 @@ class WC_Address_Book {
 			} else {
 				$name = 'shipping' . intval( $new + 1, 10 );
 			}
-		} else { // Start the address book.
-
+		} else { // アドレス帳を初めて使うなら...。
 			$name = 'shipping';
-
 		}
-
 		return $name;
-
 	}
 
 	/**
-	 * Replace My Address with the Address Book to My Account Menu.
-	 *
-	 * @param Array $items - An array of menu items.
+	 * 「住所」→「アドレス帳」へ置き換え。
 	 * @since 1.0.0
 	 */
 	public function wc_address_book_add_to_menu( $items ) {
@@ -207,7 +150,7 @@ class WC_Address_Book {
 		foreach ( $items as $key => $value ) {
 
 			if ( 'edit-address' === $key ) {
-				$new_items[ $key ] = __( 'Address Book', 'wc-address-book' );
+				$new_items[ $key ] = '請求・配送先住所';
 			} else {
 				$new_items[ $key ] = $value;
 			}
@@ -217,25 +160,18 @@ class WC_Address_Book {
 	}
 
 	/**
-	 * Adds Address Book Content.
-	 *
-	 * @param String $type - The type of address.
+	 * アドレス帳ページを作成
 	 * @since 1.0.0
 	 */
 	public function wc_address_book_page( $type ) {
 
-		wc_get_template( 'myaccount/my-address-book.php', array( 'type' => $type ), '', plugin_dir_path( __FILE__ ) . 'templates/' );
+		wc_get_template( 'myaccount/my-address-book.php', array( 'type' => $type ), '', get_template_directory_uri() . '/templates/' );
 
 	}
 
 	/**
 	 * Modify the shipping address field to allow for available countries to displayed correctly. Overides most of woocommerce_form_field().
-	 *
-	 * @param String $field Field.
-	 * @param String $key Key.
-	 * @param Mixed  $args Arguments.
-	 * @param String $value (default: null).
-	 *
+	 * WCフィールドを上書き。
 	 * @since 1.0.0
 	 */
 	public function shipping_address_country_select( $field, $key, $args, $value ) {
@@ -328,9 +264,6 @@ class WC_Address_Book {
 
 	/**
 	 * Update Address Book Values
-	 *
-	 * @param Int    $user_id - User's ID.
-	 * @param String $name - The name of the address being updated.
 	 * @since 1.0.0
 	 */
 	public function update_address_names( $user_id, $name ) {
@@ -379,9 +312,7 @@ class WC_Address_Book {
 	}
 
 	/**
-	 * Returns an array of the customer's address names.
-	 *
-	 * @param Int $user_id - User's ID.
+	 * アドレス帳を返す
 	 * @since 1.0.0
 	 */
 	public function get_address_names( $user_id = null ) {
@@ -393,9 +324,7 @@ class WC_Address_Book {
 	}
 
 	/**
-	 * Returns an array of the customer's addresses with field values.
-	 *
-	 * @param Int $user_id - User's ID.
+	 * アドレス帳のフィールドを返す
 	 * @since 1.0.0
 	 */
 	public function get_address_book( $user_id = null ) {
@@ -452,8 +381,6 @@ class WC_Address_Book {
 	/**
 	 * Returns an array of the users/customer additional address key value pairs.
 	 *
-	 * @param int   $user_id User's ID.
-	 * @param array $new_value Address book names.
 	 * @since 1.0.0
 	 */
 	public function save_address_names( $user_id, $new_value ) {
