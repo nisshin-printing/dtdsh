@@ -4,7 +4,7 @@
 		<?php NID_SVG::icon( 'envelope', array( 'class' => 'fab--icon contact--icon__open' ) ); ?>
 		<?php NID_SVG::icon( 'close', array( 'class' => 'fab--icon contact--icon__close' ) ); ?>
 	</button>
-	<button class="fab--button u-main--turn nav--button js--nav__button" type="button" title="Browse navigation">
+	<button class="fab--button u-main nav--button js--nav__button" type="button" title="Browse navigation">
 		<span class="nav--button__lines"></span><?php NID_SVG::icon( 'menu-path', array( 'class' => 'nav--button__path' ), 'Menu Path' ); ?>
 	</button>
 </div>

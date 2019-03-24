@@ -10,7 +10,7 @@ class WC_Address_Book {
 		$this->version = '1.0.0';
 
 		// スタイル追加
-		add_action( 'wp_enqueue_scripts', array( $this, 'scripts_styles' ), 20 );
+		// add_action( 'wp_enqueue_scripts', array( $this, 'scripts_styles' ), 20 );
 
 		// アドレス帳に住所を保存
 		add_action( 'woocommerce_customer_save_address', array( $this, 'update_address_names' ), 10, 2 );
@@ -35,7 +35,6 @@ class WC_Address_Book {
 		add_filter( 'woocommerce_checkout_update_customer_data', array( $this, 'woocommerce_checkout_update_customer_data' ), 10, 2 );
 
 		// マイページメニューへアドレス帳を追加
-		add_filter( 'woocommerce_account_menu_items', array( $this, 'wc_address_book_add_to_menu' ), 10 );
 		add_action( 'woocommerce_account_edit-address_endpoint', array( $this, 'wc_address_book_page' ), 20 );
 
 		// アドレス帳にWCの国選択フィールド追加
@@ -45,17 +44,6 @@ class WC_Address_Book {
 		add_action( 'woocommerce_form_field_args', array( $this, 'standardize_field_ids' ), 20, 3 );
 
 		add_action( 'woocommerce_shipping_fields', array( $this, 'replace_address_key' ), 1001, 2 );
-
-	} // end constructor
-
-
-	public $version;
-	public function activate( $network_wide ) {
-
-		// アクティベートできる権限があるか
-		if ( ! current_user_can( 'activate_plugins' ) ) {
-			return;
-		}
 
 		// アドレス帳機能をまだ使用していないとき
 		$users = get_users( array( 'fields' => 'ID' ) );
@@ -74,29 +62,11 @@ class WC_Address_Book {
 		}
 
 		flush_rewrite_rules();
-	}
+
+	} // end constructor
 
 
-	/**
-	 * Enqueue scripts and styles
-	 * @since 1.0.0
-	 */
-	public function scripts_styles() {
-		if ( ! is_admin() ) {
-			wp_enqueue_script( 'jquery' );
-
-			wp_enqueue_style( 'wc-address-book', get_template_directory_uri() . '/assets/css/wc-adress-book.css', array(), $this->version );
-			wp_enqueue_script( 'wc-address-book', get_template_directory_uri() . '/assets/js/wc-adress-book.js', array( 'jquery' ), $this->version, true );
-
-			wp_localize_script(
-				'wc-address-book',
-				'wc_address_book',
-				array(
-					'ajax_url' => admin_url( 'admin-ajax.php' ),
-				)
-			);
-		}
-	}
+	public $version;
 
 	/**
 	 * マイページの下に、アドレス帳追加ボタン追加
@@ -140,38 +110,23 @@ class WC_Address_Book {
 	}
 
 	/**
-	 * 「住所」→「アドレス帳」へ置き換え。
-	 * @since 1.0.0
-	 */
-	public function wc_address_book_add_to_menu( $items ) {
-
-		$new_items = array();
-
-		foreach ( $items as $key => $value ) {
-
-			if ( 'edit-address' === $key ) {
-				$new_items[ $key ] = '請求・配送先住所';
-			} else {
-				$new_items[ $key ] = $value;
-			}
-		}
-
-		return $new_items;
-	}
-
-	/**
-	 * アドレス帳ページを作成
+	 * 住所ページにアドレス帳を表示
 	 * @since 1.0.0
 	 */
 	public function wc_address_book_page( $type ) {
 
-		wc_get_template( 'myaccount/my-address-book.php', array( 'type' => $type ), '', get_template_directory_uri() . '/templates/' );
+		wc_get_template(
+			'myaccount/my-address-book.php',
+			array( 'type' => $type ),
+			'',
+			get_template_directory() . '/woocommerce/templates/'
+		);
 
 	}
 
 	/**
-	 * Modify the shipping address field to allow for available countries to displayed correctly. Overides most of woocommerce_form_field().
-	 * WCフィールドを上書き。
+	 * 配送先住所フィールドを変更して、利用可能国が正しく表示されるように
+	 * WCフィールドの大部分を上書き。
 	 * @since 1.0.0
 	 */
 	public function shipping_address_country_select( $field, $key, $args, $value ) {
@@ -216,7 +171,7 @@ class WC_Address_Book {
 		$field_container = '<p class="form-row %1$s" id="%2$s" data-priority="' . esc_attr( $sort ) . '">%3$s</p>';
 
 		/**
-		* HALL EDIT: The primary purpose for this override is to replace the default 'shipping_country' with 'billing_country'.
+		* デフォルトの'shipping_country' を 'billing_country' に置き換える。
 		*/
 
 		$countries = 'billing_country' === $key ? WC()->countries->get_allowed_countries() : WC()->countries->get_shipping_countries();

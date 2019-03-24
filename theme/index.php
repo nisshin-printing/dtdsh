@@ -1,6 +1,6 @@
 <?php
 if ( empty( $_GET['_pjax'] ) ) {
-		$bg = $post->post_name;
+		$bg = 'main';
 		include locate_template( './header.php' );
 }
 ?>
